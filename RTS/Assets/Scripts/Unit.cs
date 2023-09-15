@@ -1,16 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
-    public Transform leader;  // The leader unit to follow
-    public Vector3 offset;    // The offset position relative to the leader
-    public float formationSpacing = 2.0f;  // Spacing between units in the formation
-
     private NavMeshAgent navMeshAgent;
-    private Vector3 targetPosition;
+    private bool isSelected = false;
 
     void Start()
     {
@@ -19,16 +13,22 @@ public class Unit : MonoBehaviour
 
     void Update()
     {
-        if (leader == null)
+        if (isSelected)
         {
-            return; // No leader assigned
+            // Implement visual feedback for selected units (e.g., highlighting).
         }
+    }
 
-        // Calculate the target position based on the leader's position and the offset
-        Vector3 desiredPosition = leader.position + leader.TransformDirection(offset);
+    public void SetSelected(bool selected)
+    {
+        isSelected = selected;
+        // Implement visual feedback for selected units (e.g., highlighting).
+    }
 
-        // Calculate the final position in the formation, considering the spacing
-        Vector3 formationPosition = desiredPosition + (transform.position - desiredPosition).normalized * formationSpacing;
+    public void MoveTo(Vector3 targetPosition)
+    {
+        // Calculate the formation position based on the target position
+        Vector3 formationPosition = targetPosition;
 
         // Set the destination for the NavMeshAgent
         navMeshAgent.SetDestination(formationPosition);
