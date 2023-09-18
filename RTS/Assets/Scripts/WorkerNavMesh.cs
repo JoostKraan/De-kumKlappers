@@ -5,17 +5,40 @@ using UnityEngine.AI;
 
 public class WorkerNavMesh : MonoBehaviour
 {
-    [SerializeField] private Transform movePositionTransform;
-
+    [SerializeField] private Transform[] movePositionTransforms;
+    [SerializeField] private float waitTime = 2f;
+    bool cooldownRunning = false;
+    Animator animator;
+    
     private NavMeshAgent navMeshAgent;
+    private int currentDestinationIndex = 0;
+
     private void Awake()
     {
-       
-        navMeshAgent = GetComponent<NavMeshAgent>();  
-    }
-    private void Update()
-    {
-            navMeshAgent.destination = movePositionTransform.position;
+        animator = GetComponent<Animator>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
+    private void Update()
+    {
+        if (cooldownRunning)
+        {
+            animator.SetBool("isRunning", false);
+        }
+    }
+
+    private void Start()
+    {
+        StartCoroutine(MoveBetweenPoints());
+    }
+
+    private IEnumerator MoveBetweenPoints()
+    {
+        while (true)
+        {
+            navMeshAgent.destination = movePositionTransforms[currentDestinationIndex].position;
+            yield return new WaitForSeconds(waitTime);
+            currentDestinationIndex = (currentDestinationIndex + 1) % movePositionTransforms.Length;
+        }
+    }
 }
