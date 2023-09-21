@@ -7,9 +7,7 @@ public class WorkerNavMesh : MonoBehaviour
 {
     [SerializeField] private bool Miners = false;
     [SerializeField] private bool TreeHarvesters = false;
-    [SerializeField] private float waitTime = 2f;
-    [SerializeField] bool cooldownRunning = false;
-    Animator animator;
+    [SerializeField] Animator animator;
 
     private NavMeshAgent navMeshAgent;
     private Transform[] targetTransforms;
@@ -28,16 +26,6 @@ public class WorkerNavMesh : MonoBehaviour
         else if (TreeHarvesters)
         {
             targetTransforms = FindObjectsWithTag("TreeHarvest");
-        }
-    }
-
-    private void Update()
-    {
-        // Remove this part if it's not needed
-        // It sets the "isRunning" parameter of the animator to false when cooldownRunning is true
-        if (cooldownRunning)
-        {
-            animator.SetBool("isRunning", false);
         }
     }
 
@@ -65,7 +53,7 @@ public class WorkerNavMesh : MonoBehaviour
                 {
                     animator.SetBool("isRunning", true);
                 }
-                yield return new WaitForSeconds(waitTime);
+                yield return null; // Remove the WaitForSeconds to remove the cooldown
                 currentDestinationIndex = (currentDestinationIndex + 1) % targetTransforms.Length;
             }
             yield return null;
