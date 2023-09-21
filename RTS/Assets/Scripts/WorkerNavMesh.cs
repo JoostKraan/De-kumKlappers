@@ -5,37 +5,29 @@ using UnityEngine.AI;
 
 public class WorkerNavMesh : MonoBehaviour
 {
-    [SerializeField] private string firstTargetTag = "FirstTag";
-    [SerializeField] private string secondTargetTag = "SecondTag";
+    [SerializeField] private bool Miners = false;
+    [SerializeField] private bool TreeHarvesters = false;
     [SerializeField] private float waitTime = 2f;
     [SerializeField] bool cooldownRunning = false;
     Animator animator;
 
     private NavMeshAgent navMeshAgent;
-    private Transform[] firstTargetTransforms;
-    private Transform[] secondTargetTransforms;
+    private Transform[] targetTransforms;
     private int currentDestinationIndex = 0;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
-        // Find objects with the first tag
-        GameObject[] firstTargetObjects = GameObject.FindGameObjectsWithTag(firstTargetTag);
-        // Find objects with the second tag
-        GameObject[] secondTargetObjects = GameObject.FindGameObjectsWithTag(secondTargetTag);
-        // Initialize the arrays with the transforms of the found objects
-        firstTargetTransforms = new Transform[firstTargetObjects.Length];
-        secondTargetTransforms = new Transform[secondTargetObjects.Length];
 
-        for (int i = 0; i < firstTargetObjects.Length; i++)
+        // Automatically assign tags based on boolean variables
+        if (Miners)
         {
-            firstTargetTransforms[i] = firstTargetObjects[i].transform;
+            targetTransforms = FindObjectsWithTag("Miner");
         }
-
-        for (int i = 0; i < secondTargetObjects.Length; i++)
+        else if (TreeHarvesters)
         {
-            secondTargetTransforms[i] = secondTargetObjects[i].transform;
+            targetTransforms = FindObjectsWithTag("TreeHarvest");
         }
     }
 
@@ -58,21 +50,10 @@ public class WorkerNavMesh : MonoBehaviour
     {
         while (true)
         {
-            // Determine which set of targets to use based on the currentDestinationIndex
-            Transform[] currentTargets;
-            if (currentDestinationIndex % 2 == 0)
+            // Check if targetTransforms is empty to avoid errors
+            if (targetTransforms != null && targetTransforms.Length > 0)
             {
-                currentTargets = firstTargetTransforms;
-            }
-            else
-            {
-                currentTargets = secondTargetTransforms;
-            }
-
-            // Check if currentTargets is empty to avoid errors
-            if (currentTargets.Length > 0)
-            {
-                navMeshAgent.destination = currentTargets[currentDestinationIndex % currentTargets.Length].position;
+                navMeshAgent.destination = targetTransforms[currentDestinationIndex].position;
                 // Calculate the distance to the target position
                 float distance = Vector3.Distance(transform.position, navMeshAgent.destination);
                 // If the distance is less than a small threshold, set "isRunning" to false
@@ -85,9 +66,23 @@ public class WorkerNavMesh : MonoBehaviour
                     animator.SetBool("isRunning", true);
                 }
                 yield return new WaitForSeconds(waitTime);
-                currentDestinationIndex++;
+                currentDestinationIndex = (currentDestinationIndex + 1) % targetTransforms.Length;
             }
             yield return null;
         }
+    }
+
+    // Helper function to find objects with a specific tag
+    private Transform[] FindObjectsWithTag(string tag)
+    {
+        GameObject[] targetObjects = GameObject.FindGameObjectsWithTag(tag);
+        Transform[] targetTransforms = new Transform[targetObjects.Length];
+
+        for (int i = 0; i < targetObjects.Length; i++)
+        {
+            targetTransforms[i] = targetObjects[i].transform;
+        }
+
+        return targetTransforms;
     }
 }
