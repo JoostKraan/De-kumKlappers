@@ -1,53 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class UnitSelection : MonoBehaviour
 {
-    public LayerMask unitLayer;
-    public List<Unit> selectedUnits = new List<Unit>();
+    public LayerMask unitLayer; // Layer where your units are placed
+    private Vector3 selectionStart;
+    private List<Unit> selectedUnits = new List<Unit>();
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            selectionStart = Input.mousePosition;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            Vector3 selectionEnd = Input.mousePosition;
+            SelectUnits(selectionStart, selectionEnd);
+        }
+
+        if (Input.GetMouseButtonDown(1) && selectedUnits.Count > 0) // Right-click to move
+        {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, unitLayer))
+            if (Physics.Raycast(ray, out hit))
             {
-                Unit unit = hit.collider.gameObject.GetComponent<Unit>();
+                Vector3 targetPosition = hit.point;
 
-                if (unit != null)
+                // Move all selected units to the target position
+                foreach (var unit in selectedUnits)
                 {
-                    // Toggle the selection state of the unit
-                    if (selectedUnits.Contains(unit))
-                    {
-                        selectedUnits.Remove(unit);
-                        unit.Selected = false;
-                    }
-                    else
-                    {
-                        selectedUnits.Add(unit);
-                        unit.Selected = true;
-                    }
+                    unit.MoveTo(targetPosition);
                 }
-            }
-            else
-            {
-                // Deselect all units if no unit was clicked
-                DeselectAllUnits();
             }
         }
     }
 
-    // Helper method to deselect all units
-    private void DeselectAllUnits()
+    void SelectUnits(Vector3 start, Vector3 end)
     {
-        foreach (Unit unit in selectedUnits)
-        {
-            unit.Selected = false;
-        }
-        selectedUnits.Clear();
+        // Perform a box selection here and add selected units to the 'selectedUnits' list.
+        // You'll need to use Physics.RaycastAll or other methods to detect units within the selection box.
     }
 }
