@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class BuildingPlacement : MonoBehaviour
 {
     public GameObject[] buildingPrefabs;
+    public List<GameObject> ActiveBuildings = new List<GameObject>();
+
     public GameObject pendingPrefab;
     [SerializeField] private Material[] materials;
 
@@ -94,6 +96,7 @@ public class BuildingPlacement : MonoBehaviour
     public void PlaceObject()
     {
         pendingPrefab.GetComponent<MeshRenderer>().material = materials[2];
+        ActiveBuildings.Add(pendingPrefab);
         pendingPrefab = null;
     }
 
