@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Gamemanager
+  - Miner
+  - TreeHarvest
+  - treeTransform
+  - deliveryTransform
   layers:
   - Default
   - TransparentFX
