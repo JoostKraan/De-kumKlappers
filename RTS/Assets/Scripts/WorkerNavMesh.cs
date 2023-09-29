@@ -7,7 +7,11 @@ public class WorkerNavMesh : MonoBehaviour
 {
     [SerializeField] private bool Miners = false;
     [SerializeField] private bool TreeHarvesters = false;
-    [SerializeField] Animator animator;
+    [SerializeField] private Animator animator;
+
+    // Worker upgrade properties
+    [SerializeField] private int maxUpgradeLevel = 3;
+    [SerializeField] private int currentUpgradeLevel = 0;
 
     private NavMeshAgent navMeshAgent;
     private Transform[] targetTransforms;
@@ -72,5 +76,22 @@ public class WorkerNavMesh : MonoBehaviour
         }
 
         return targetTransforms;
+    }
+
+    // Function to upgrade the worker unit
+    public void Upgrade()
+    {
+        if (currentUpgradeLevel < maxUpgradeLevel)
+        {
+            // Implement your upgrade logic here, e.g., increase worker's stats
+            currentUpgradeLevel++;
+
+            // Example: Increase worker speed after each upgrade
+            navMeshAgent.speed += 1.0f;
+        }
+        else
+        {
+            Debug.Log("Worker unit is already fully upgraded.");
+        }
     }
 }
