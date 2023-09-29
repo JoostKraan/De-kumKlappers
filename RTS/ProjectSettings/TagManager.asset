@@ -9,6 +9,9 @@ TagManager:
   - TreeHarvest
   - treeTransform
   - deliveryTransform
+  - DeliveryPoint
+  - minerHarvestingPoint
+  - miningDeliveryPoint
   layers:
   - Default
   - TransparentFX
