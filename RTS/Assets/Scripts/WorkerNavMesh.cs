@@ -10,7 +10,7 @@ public class WorkerNavMesh : MonoBehaviour
     [SerializeField] private bool isAtDeliveryPoint = false;
     [Header("Roles")]
     [SerializeField] private bool Miners = false;
-    [SerializeField] private bool TreeHarvesters = false;
+    [SerializeField] private bool TreeHarvesters;
     [Header("Variables")]
     [SerializeField] private float timer = 5f;
     [SerializeField] private int woodCollected = 0;
@@ -98,19 +98,19 @@ public class WorkerNavMesh : MonoBehaviour
             isAtHarvesterSpot = true;
             workerMesh.enabled = false; 
         }
-        else if (Miners && other.CompareTag("miningDeliveryPoint"))
+        if (Miners && other.CompareTag("miningDeliveryPoint"))
         {
             timer = 5f;
             isAtDeliveryPoint = true;
         }
 
-        if (TreeHarvesters && other.CompareTag("TreeHarvest"))
+        if (TreeHarvesters && other.CompareTag("treeTransform"))
         {
             timer = 5f;
             isAtHarvesterSpot = true;
             workerMesh.enabled = false; 
         }
-        else if (TreeHarvesters && other.CompareTag("DeliveryPoint"))
+         if (TreeHarvesters && other.CompareTag("deliveryTransform"))
         {
             timer = 5f;
             isAtDeliveryPoint = true;
