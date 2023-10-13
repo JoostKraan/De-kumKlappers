@@ -12,11 +12,13 @@ TagManager:
   - DeliveryPoint
   - minerHarvestingPoint
   - miningDeliveryPoint
+  - PlaceObject
+  - Unit
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Unit
   - Water
   - UI
   - ShadowLayer
