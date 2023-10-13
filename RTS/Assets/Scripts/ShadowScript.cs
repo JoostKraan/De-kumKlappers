@@ -5,54 +5,63 @@ using UnityEngine;
 public class ShadowScript : MonoBehaviour
 {
     public GameObject shadowPlane;
-    public Transform player;
+    public Transform[] detectors;
     public LayerMask shadowLayer;
     public float shadowRadius = 10f;
-    private float radiuscircle { get { return shadowRadius * shadowRadius; } }
+    private float radiusSquared { get { return shadowRadius * shadowRadius; } }
 
     private Mesh mesh;
-    private Vector3[] vertecies;
+    private Vector3[] vertices;
     private Color[] colors;
+
     void Start()
     {
         Initialize();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Ray r = new Ray(transform.position, player.position - transform.position);
-        RaycastHit hit;
-        if(Physics.Raycast(r, out hit,100,shadowLayer, QueryTriggerInteraction.Collide))
+        for (int j = 0; j < detectors.Length; j++)
         {
-            for (int i = 0; i < vertecies.Length; i++) 
+            Vector3 direction = detectors[j].position - transform.position;
+            Ray r = new Ray(transform.position, direction);
+            RaycastHit hit;
+
+            if (Physics.Raycast(r, out hit, 100, shadowLayer, QueryTriggerInteraction.Collide))
             {
-                Vector3 v = shadowPlane.transform.TransformPoint(vertecies[i]);
-                float distance = Vector3.SqrMagnitude(v - hit.point);
-                if(distance < radiuscircle)
+                for (int i = 0; i < vertices.Length; i++)
                 {
-                    float alpha = Mathf.Min(colors[i].a, distance / radiuscircle);
-                    colors[i].a = alpha;
+                    Vector3 v = shadowPlane.transform.TransformPoint(vertices[i]);
+                    float distance = Vector3.SqrMagnitude(v - hit.point);
+
+                    if (distance < radiusSquared)
+                    {
+                        float alpha = Mathf.Min(colors[i].a, distance / radiusSquared);
+                        colors[i].a = alpha;
+                    }
                 }
             }
-
-            UpdateColors();
         }
+
+        UpdateColors();
     }
+
     public void UpdateColors()
     {
-        mesh.colors= colors;
+        mesh.colors = colors;
     }
 
     void Initialize()
     {
         mesh = shadowPlane.GetComponent<MeshFilter>().mesh;
-        vertecies = mesh.vertices;
-        colors = new Color[vertecies.Length];
+        vertices = mesh.vertices;
+        colors = new Color[vertices.Length];
+
         for (int i = 0; i < colors.Length; i++)
         {
             colors[i] = Color.black;
         }
+
         UpdateColors();
     }
 }
