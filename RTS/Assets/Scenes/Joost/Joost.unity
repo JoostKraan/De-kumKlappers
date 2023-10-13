@@ -377,7 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c58b40eed0d8d2446b5360524af81795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterMixerGroup: {fileID: 24300002, guid: 3bf1c1dfaea7d47498cc49406b2a19dc, type: 2}
+  masterMixerGroup: {fileID: -7834115787391608528, guid: 3bf1c1dfaea7d47498cc49406b2a19dc,
+    type: 2}
   soundGroups:
   - groupName: SoundTrack
     audioClips:
