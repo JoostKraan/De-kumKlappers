@@ -3,15 +3,25 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Gamemanager
+  - Miner
+  - TreeHarvest
+  - treeTransform
+  - deliveryTransform
+  - DeliveryPoint
+  - minerHarvestingPoint
+  - miningDeliveryPoint
+  - PlaceObject
+  - Unit
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Unit
   - Water
   - UI
-  - 
+  - ShadowLayer
   - 
   - 
   - 
