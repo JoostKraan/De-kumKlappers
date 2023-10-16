@@ -10,6 +10,7 @@ public class Selection : MonoBehaviour
     public TextMeshProUGUI objNameText;
     private BuildingPlacement buildingPlacement;
     public GameObject objUI;
+    internal static Terrain activeObject;
 
     // Start is called before the first frame update
     void Start()
