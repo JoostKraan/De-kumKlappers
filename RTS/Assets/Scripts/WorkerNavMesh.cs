@@ -5,27 +5,43 @@ using UnityEngine.AI;
 
 public class WorkerNavMesh : MonoBehaviour
 {
+    [Header("Toggles")]
+    [SerializeField] private bool isAtHarvesterSpot = false;
+    [SerializeField] private bool isAtDeliveryPoint = false;
+    [Header("Roles")]
     [SerializeField] private bool Miners = false;
     [SerializeField] private bool TreeHarvesters = false;
-    [SerializeField] Animator animator;
-
+    [Header("Variables")]
+    [SerializeField] private float timer = 5f;
+    [SerializeField] private int woodCollected = 0;
+    [SerializeField] private Animator animator;
+    private MeshRenderer workerMesh;
     private NavMeshAgent navMeshAgent;
-    private Transform[] targetTransforms;
-    private int currentDestinationIndex = 0;
+    private Transform treeTransform;
+    private Transform deliveryTransform;
+    private Transform minerHarvestingPoint; 
+    private Transform miningDeliveryPoint;  
 
     private void Awake()
     {
+        workerMesh = GetComponent<MeshRenderer>();
         animator = GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
 
-        // Automatically assign tags based on boolean variables
-        if (Miners)
+        treeTransform = GameObject.FindWithTag("treeTransform").GetComponent<Transform>();
+        deliveryTransform = GameObject.FindWithTag("deliveryTransform").GetComponent<Transform>();
+
+        // Add references to miner-specific points
+        minerHarvestingPoint = GameObject.FindWithTag("minerHarvestingPoint").GetComponent<Transform>();
+        miningDeliveryPoint = GameObject.FindWithTag("miningDeliveryPoint").GetComponent<Transform>();
+
+        if (TreeHarvesters)
         {
-            targetTransforms = FindObjectsWithTag("Miner");
+            navMeshAgent.destination = treeTransform.position;
         }
-        else if (TreeHarvesters)
+        else if (Miners)
         {
-            targetTransforms = FindObjectsWithTag("TreeHarvest");
+            navMeshAgent.destination = minerHarvestingPoint.position;
         }
     }
 
@@ -38,39 +54,81 @@ public class WorkerNavMesh : MonoBehaviour
     {
         while (true)
         {
-            // Check if targetTransforms is empty to avoid errors
-            if (targetTransforms != null && targetTransforms.Length > 0)
+            if (isAtHarvesterSpot)
             {
-                navMeshAgent.destination = targetTransforms[currentDestinationIndex].position;
-                // Calculate the distance to the target position
-                float distance = Vector3.Distance(transform.position, navMeshAgent.destination);
-                // If the distance is less than a small threshold, set "isRunning" to false
-                if (distance < 0.1f)
+                timer -= Time.deltaTime;
+                if (timer <= 0)
                 {
-                    animator.SetBool("isRunning", false);
+                    if (TreeHarvesters)
+                    {
+                        navMeshAgent.destination = deliveryTransform.position;
+                    }
+                    else if (Miners)
+                    {
+                        navMeshAgent.destination = miningDeliveryPoint.position;
+                    }
                 }
-                else
+            }
+            if (isAtDeliveryPoint)
+            {
+                timer -= Time.deltaTime;
+                if (timer <= 0)
                 {
-                    animator.SetBool("isRunning", true);
+                    if (TreeHarvesters)
+                    {
+                        navMeshAgent.destination = treeTransform.position;
+                    }
+                    else if (Miners)
+                    {
+                        navMeshAgent.destination = minerHarvestingPoint.position;
+                    }
                 }
-                yield return null; // Remove the WaitForSeconds to remove the cooldown
-                currentDestinationIndex = (currentDestinationIndex + 1) % targetTransforms.Length;
             }
             yield return null;
         }
     }
 
-    // Helper function to find objects with a specific tag
-    private Transform[] FindObjectsWithTag(string tag)
+   
+    private void OnTriggerEnter(Collider other)
     {
-        GameObject[] targetObjects = GameObject.FindGameObjectsWithTag(tag);
-        Transform[] targetTransforms = new Transform[targetObjects.Length];
-
-        for (int i = 0; i < targetObjects.Length; i++)
+        workerMesh.enabled = false;
+        if (Miners && other.CompareTag("minerHarvestingPoint"))
         {
-            targetTransforms[i] = targetObjects[i].transform;
+            timer = 5f;
+            isAtHarvesterSpot = true;
+            workerMesh.enabled = false; 
+        }
+        else if (Miners && other.CompareTag("miningDeliveryPoint"))
+        {
+            timer = 5f;
+            isAtDeliveryPoint = true;
         }
 
-        return targetTransforms;
+        if (TreeHarvesters && other.CompareTag("TreeHarvest"))
+        {
+            timer = 5f;
+            isAtHarvesterSpot = true;
+            workerMesh.enabled = false; 
+        }
+        else if (TreeHarvesters && other.CompareTag("DeliveryPoint"))
+        {
+            timer = 5f;
+            isAtDeliveryPoint = true;
+        }
     }
+
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if ((Miners && (other.CompareTag("minerHarvestingPoint") || other.CompareTag("miningDeliveryPoint"))) ||
+            (TreeHarvesters && (other.CompareTag("TreeHarvest") || other.CompareTag("DeliveryPoint"))))
+        {
+            isAtHarvesterSpot = false;
+            isAtDeliveryPoint = false; 
+        }
+
+        
+        workerMesh.enabled = true; 
+    }
+
 }
