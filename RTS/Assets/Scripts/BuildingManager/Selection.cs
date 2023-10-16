@@ -41,6 +41,7 @@ public class Selection : MonoBehaviour
 
     private void Select(GameObject obj)
     {
+        if (obj == buildingPlacement.pendingPrefab) return;
         if (obj == selectedObject) { Deselect(); return; };
         if (selectedObject != null) Deselect();
         Outline outline = obj.GetComponent<Outline>();
