@@ -42,6 +42,7 @@ public class Selection : MonoBehaviour
 
     private void Select(GameObject obj)
     {
+        if (obj == buildingPlacement.pendingPrefab) return;
         if (obj == selectedObject) { Deselect(); return; };
         if (selectedObject != null) Deselect();
         Outline outline = obj.GetComponent<Outline>();
@@ -64,12 +65,23 @@ public class Selection : MonoBehaviour
     public void Move()
     {
         buildingPlacement.pendingPrefab = selectedObject;
+
+        if (buildingPlacement.ActiveBuildings.Contains(selectedObject))
+        {
+            buildingPlacement.ActiveBuildings.Remove(selectedObject);
+        }
     }
 
     public void Delete()
     {
         GameObject objToDestroy = selectedObject;
         Deselect();
+
+        if (buildingPlacement.ActiveBuildings.Contains(objToDestroy))
+        {
+            buildingPlacement.ActiveBuildings.Remove(objToDestroy);
+        }
+
         Destroy(objToDestroy);
     }
 }
