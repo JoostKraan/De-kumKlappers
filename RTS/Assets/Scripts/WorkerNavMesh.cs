@@ -28,10 +28,10 @@ public class WorkerNavMesh : MonoBehaviour
         if (isCollectingWood)
         {
             woodCollectTimer += Time.deltaTime;
-            if (woodCollectTimer >= 5f) // Adjust the time limit as needed
+            if (woodCollectTimer >= 5f) 
             {
                 woodCollected++;
-                woodCollectTimer = 0f; // Reset the timer
+                woodCollectTimer = 0f; 
             }
         }
     }
@@ -46,7 +46,7 @@ public class WorkerNavMesh : MonoBehaviour
         treeTransform = GameObject.FindWithTag("treeTransform").GetComponent<Transform>();
         deliveryTransform = GameObject.FindWithTag("deliveryTransform").GetComponent<Transform>();
 
-        // Add references to miner-specific points
+        
         minerHarvestingPoint = GameObject.FindWithTag("minerHarvestingPoint").GetComponent<Transform>();
         miningDeliveryPoint = GameObject.FindWithTag("miningDeliveryPoint").GetComponent<Transform>();
 
