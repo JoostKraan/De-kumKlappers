@@ -65,6 +65,7 @@ public class BuildingPlacement : MonoBehaviour
 
     public void SelectObject(int index)
     {
+        Debug.Log(index);
         pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
         pendingPrefab.tag = "PlaceObject";
 
