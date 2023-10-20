@@ -21,17 +21,17 @@ public class WorkerNavMesh : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Transform treeTransform;
     private Transform deliveryTransform;
-    private Transform minerHarvestingPoint; 
+    private Transform minerHarvestingPoint;
     private Transform miningDeliveryPoint;
     private void Update()
     {
         if (isCollectingWood)
         {
             woodCollectTimer += Time.deltaTime;
-            if (woodCollectTimer >= 5f) // Adjust the time limit as needed
+            if (woodCollectTimer >= 5f) 
             {
                 woodCollected++;
-                woodCollectTimer = 0f; // Reset the timer
+                woodCollectTimer = 0f; 
             }
         }
     }
@@ -46,7 +46,7 @@ public class WorkerNavMesh : MonoBehaviour
         treeTransform = GameObject.FindWithTag("treeTransform").GetComponent<Transform>();
         deliveryTransform = GameObject.FindWithTag("deliveryTransform").GetComponent<Transform>();
 
-        // Add references to miner-specific points
+        
         minerHarvestingPoint = GameObject.FindWithTag("minerHarvestingPoint").GetComponent<Transform>();
         miningDeliveryPoint = GameObject.FindWithTag("miningDeliveryPoint").GetComponent<Transform>();
 
@@ -107,11 +107,12 @@ public class WorkerNavMesh : MonoBehaviour
         {
             timer = 5f;
             isAtHarvesterSpot = true;
-            workerMesh.enabled = false; 
+            workerMesh.enabled = false;
         }
         if (Miners && other.CompareTag("miningDeliveryPoint"))
         {
             timer = 5f;
+            isAtHarvesterSpot = false;
             isAtDeliveryPoint = true;
         }
 
@@ -120,24 +121,25 @@ public class WorkerNavMesh : MonoBehaviour
             timer = 5f;
             isCollectingWood = true;
             isAtHarvesterSpot = true;
-            workerMesh.enabled = false; 
+            workerMesh.enabled = false;
         }
-         if (TreeHarvesters && other.CompareTag("deliveryTransform"))
+        if (TreeHarvesters && other.CompareTag("deliveryTransform"))
         {
             timer = 5f;
+            isAtHarvesterSpot = false;
             isAtDeliveryPoint = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
         if ((Miners && (other.CompareTag("minerHarvestingPoint") || other.CompareTag("miningDeliveryPoint"))) ||
-            (TreeHarvesters && (other.CompareTag("TreeHarvest") || other.CompareTag("DeliveryPoint"))))
+            (TreeHarvesters && (other.CompareTag("treeTransform") || other.CompareTag("deliveryTransform"))))
         {
             woodCollectTimer = 0f;
             isCollectingWood = false;
             isAtHarvesterSpot = false;
-            isAtDeliveryPoint = false; 
+            isAtDeliveryPoint = false;
         }
-        workerMesh.enabled = true; 
+        workerMesh.enabled = true;
     }
 }
