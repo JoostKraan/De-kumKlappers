@@ -35,7 +35,7 @@ public class TrainingCamp : MonoBehaviour
             countdownTimer -= Time.deltaTime;
             UpdateCountdownText();
 
-            if (countdownTimer <= 0)
+            if (countdownTimer == 0)
             {
                 isCountingDown = false; // Stop the countdown
                 countdownTimer = 30f; // Reset the timer to 30 seconds
@@ -58,7 +58,7 @@ public class TrainingCamp : MonoBehaviour
     public void SetPrefabToSpawn(int index)
     {
         prefabIndex = index; // Set the index of the prefab to spawn
-       countdownTimer = prefabsToSpawn[index].GetComponent<Unit>().timeToSpawn;
+        countdownTimer = prefabsToSpawn[index].GetComponent<Unit>().timeToSpawn;
         ToggleCountdown();
     }
 
