@@ -12,7 +12,7 @@ public class BuildingPlacement : MonoBehaviour
     public List<GameObject> ActiveBuildings = new List<GameObject>();
 
     public GameObject pendingPrefab;
-    [SerializeField] public GameObject navMesh;
+    [SerializeField] private NavMeshSurface navMesh;
     [SerializeField] private Material[] materials;
 
     private Vector3 pos;
@@ -54,6 +54,11 @@ public class BuildingPlacement : MonoBehaviour
                 RotateObject();    
             }
             UpdateMaterials();
+        }
+
+        if (navMesh)
+        {
+            navMesh.BuildNavMesh();
         }
     }
 
@@ -102,8 +107,6 @@ public class BuildingPlacement : MonoBehaviour
         pendingPrefab.GetComponent<MeshRenderer>().material = materials[2];
         ActiveBuildings.Add(pendingPrefab);
         pendingPrefab = null;
-
-        navMesh.GetComponent<NavMeshSurface>().BuildNavMesh();
     }
 
     public void CancelPlacement()

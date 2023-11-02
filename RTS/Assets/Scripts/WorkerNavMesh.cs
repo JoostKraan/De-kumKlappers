@@ -15,6 +15,7 @@ public class WorkerNavMesh : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private float timer = 5f;
     [SerializeField] private float woodCollectTimer = 0f;
+    [SerializeField] private SkinnedMeshRenderer skinnedMeshRender;
     [SerializeField] private int woodCollected = 0;
     [SerializeField] private Animator animator;
     private MeshRenderer workerMesh;
@@ -102,12 +103,12 @@ public class WorkerNavMesh : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        workerMesh.enabled = false;
+        skinnedMeshRender.enabled = false;
         if (Miners && other.CompareTag("minerHarvestingPoint"))
         {
             timer = 5f;
             isAtHarvesterSpot = true;
-            workerMesh.enabled = false;
+            skinnedMeshRender.enabled = false;
         }
         if (Miners && other.CompareTag("miningDeliveryPoint"))
         {
@@ -121,7 +122,7 @@ public class WorkerNavMesh : MonoBehaviour
             timer = 5f;
             isCollectingWood = true;
             isAtHarvesterSpot = true;
-            workerMesh.enabled = false;
+            skinnedMeshRender.enabled = false;
         }
         if (TreeHarvesters && other.CompareTag("deliveryTransform"))
         {
@@ -139,7 +140,7 @@ public class WorkerNavMesh : MonoBehaviour
             isCollectingWood = false;
             isAtHarvesterSpot = false;
             isAtDeliveryPoint = false;
-            workerMesh.enabled = true;
+            skinnedMeshRender.enabled = true;
         }
         
     }
