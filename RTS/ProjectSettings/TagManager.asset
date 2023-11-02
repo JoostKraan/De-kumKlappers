@@ -9,6 +9,10 @@ TagManager:
   - Terrain
   - Unit
   - Train
+  - treeTransform
+  - deliveryTransform
+  - minerHarvestingPoint
+  - miningDeliveryPoint
   layers:
   - Default
   - TransparentFX
