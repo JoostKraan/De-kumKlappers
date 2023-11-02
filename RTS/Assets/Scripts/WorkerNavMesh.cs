@@ -139,7 +139,8 @@ public class WorkerNavMesh : MonoBehaviour
             isCollectingWood = false;
             isAtHarvesterSpot = false;
             isAtDeliveryPoint = false;
+            workerMesh.enabled = true;
         }
-        workerMesh.enabled = true;
+        
     }
 }
