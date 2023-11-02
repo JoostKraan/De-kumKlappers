@@ -123,6 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!4 &611374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8382181788378044708, guid: bc3ef6651aac99e41b52c8f9d5f84cea,
@@ -8861,6 +8862,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 636182730}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of c38b0c2 (Made TrainingCamp)
 --- !u!1 &152849023
 GameObject:
   m_ObjectHideFlags: 0
@@ -8967,7 +8970,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eaee49c047632d49bdd93663d6fbe8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   shadowPlane: {fileID: 8164078559300436738}
+=======
+  shadowPlane: {fileID: 1881368074}
+>>>>>>> parent of c38b0c2 (Made TrainingCamp)
   detectors:
   - {fileID: 447567802}
   - {fileID: 716603754}
@@ -9019,6 +9026,7 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+<<<<<<< HEAD
 --- !u!4 &153740837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8382181788378044708, guid: bc3ef6651aac99e41b52c8f9d5f84cea,
@@ -14423,6 +14431,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1040367460}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of c38b0c2 (Made TrainingCamp)
 --- !u!1 &276243488
 GameObject:
   m_ObjectHideFlags: 0
@@ -14486,6 +14496,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!4 &276773176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5230744131041545969, guid: 689cbdeb5e7b36c44a8bc2df374a9997,
@@ -20788,6 +20799,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc3ef6651aac99e41b52c8f9d5f84cea, type: 3}
+=======
+>>>>>>> parent of c38b0c2 (Made TrainingCamp)
 --- !u!1 &405876554
 GameObject:
   m_ObjectHideFlags: 0
@@ -76096,9 +76109,69 @@ Transform:
   - {fileID: 716603754}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!4 &1452148313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5230744131041545969, guid: 689cbdeb5e7b36c44a8bc2df374a9997,
+=======
+--- !u!1 &1737572043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1737572044}
+  - component: {fileID: 1737572045}
+  m_Layer: 0
+  m_Name: Movement
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1737572044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737572043}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.34827211, z: -0, w: 0.9373935}
+  m_LocalPosition: {x: 567.9, y: 58, z: 625.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 152849026}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 40.763, z: 0}
+--- !u!114 &1737572045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737572043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23ba081cf8e080439c7d0c7ef80ba77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 152849025}
+  zoomSpeed: 30
+  minZoomDistance: 1
+  maxZoomDistance: 10
+  moveSpeed: 10
+  minFOV: 20
+  maxFOV: 60
+  smoothTime: 0.2
+  zoomSensitivity: 1
+--- !u!1 &1881368074 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7067403700791407298, guid: 11b42101af0cfda4eacc1290d7751a72,
+>>>>>>> parent of c38b0c2 (Made TrainingCamp)
     type: 3}
   m_PrefabInstance: {fileID: 1563134932}
   m_PrefabAsset: {fileID: 0}
@@ -80466,6 +80539,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<< HEAD
   m_SourcePrefab: {fileID: 100100000, guid: b466aab79b7e2574aad843dd71025fd2, type: 3}
 --- !u!4 &1526283083 stripped
 Transform:
@@ -112337,6 +112411,9 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2432090755550338912, guid: 29b270f8dcb155446b6895c7c1096f5d, type: 3}
+=======
+  m_SourcePrefab: {fileID: 100100000, guid: 11b42101af0cfda4eacc1290d7751a72, type: 3}
+>>>>>>> parent of c38b0c2 (Made TrainingCamp)
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -112350,4 +112427,7 @@ SceneRoots:
   - {fileID: 1175427985}
   - {fileID: 1449517558}
   - {fileID: 276243490}
+<<<<<<< HEAD
   - {fileID: 1320953200}
+=======
+>>>>>>> parent of c38b0c2 (Made TrainingCamp)

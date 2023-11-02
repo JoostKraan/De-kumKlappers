@@ -7,11 +7,14 @@ TagManager:
   - Gamemanager
   - PlaceObject
   - Terrain
+<<<<<<< HEAD
   - minerHarvestingPoint
   - treeTransform
   - deliveryTransform
   - miningDeliveryPoint
   - Ground
+=======
+>>>>>>> parent of c38b0c2 (Made TrainingCamp)
   layers:
   - Default
   - TransparentFX
