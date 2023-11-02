@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 8523807592649544612}
   - component: {fileID: 7419502111468708107}
   m_Layer: 3
-  m_Name: Unit
+  m_Name: Unit 1
   m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4bcfc1900bac4534c920ad248e2de149, type: 2}
+  - {fileID: 2100000, guid: bd4c0722d28eee54ebbf77bc2d5a45e9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isSelected: 0
   Pijltje: {fileID: 1701628648553987353}
-  timeToSpawn: 30
+  timeToSpawn: 60
 --- !u!195 &7419502111468708107
 NavMeshAgent:
   m_ObjectHideFlags: 0

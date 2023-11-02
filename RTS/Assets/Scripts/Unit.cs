@@ -6,6 +6,7 @@ public class Unit : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     public bool isSelected = false;
     public GameObject Pijltje;
+    public float timeToSpawn;
 
     void Start()
     {
@@ -19,13 +20,11 @@ public class Unit : MonoBehaviour
             Pijltje.SetActive(true);
             if (Input.GetMouseButtonDown(1))
             {
-                // Raycast to get the target position from the mouse click
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
 
                 if (Physics.Raycast(ray, out hit))
                 {
-                    // Move the unit to the clicked position
                     MoveTo(hit.point);
                 }
             }
@@ -39,12 +38,10 @@ public class Unit : MonoBehaviour
     public void SetSelected(bool selected)
     {
         isSelected = selected;
-        // Implement visual feedback for selected units (e.g., highlighting).
     }
 
     public void MoveTo(Vector3 targetPosition)
     {
-        // Set the destination for the NavMeshAgent
         navMeshAgent.SetDestination(targetPosition);
     }
 }
