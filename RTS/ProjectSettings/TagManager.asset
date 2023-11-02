@@ -7,11 +7,8 @@ TagManager:
   - Gamemanager
   - PlaceObject
   - Terrain
-  - minerHarvestingPoint
-  - treeTransform
-  - deliveryTransform
-  - miningDeliveryPoint
-  - Ground
+  - Unit
+  - Train
   layers:
   - Default
   - TransparentFX

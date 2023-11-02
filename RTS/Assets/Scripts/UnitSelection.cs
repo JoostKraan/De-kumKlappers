@@ -28,6 +28,12 @@ public class UnitSelection : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
+
+                if (hit.transform.gameObject.CompareTag("Train"))
+                {
+                    hit.transform.gameObject.GetComponent<TrainingCamp>().Shop.GetComponentInChildren<Canvas>().enabled = true;
+                }
+
                 if (hit.transform.gameObject.CompareTag("Unit"))
                 {
                     GameObject selectedUnit = hit.transform.gameObject;
@@ -45,6 +51,7 @@ public class UnitSelection : MonoBehaviour
                 {
                     DeselectAllUnits();
                 }
+               
             }
         }
 
@@ -124,21 +131,21 @@ public class UnitSelection : MonoBehaviour
         }
     }
 
-   private void DeselectUnit(GameObject unit)
-{
-    if (unitList.Contains(unit))
+    private void DeselectUnit(GameObject unit)
     {
-        unitList.Remove(unit);
-        unit.GetComponent<Unit>().isSelected = false;
+        if (unitList.Contains(unit))
+        {
+            unitList.Remove(unit);
+            unit.GetComponent<Unit>().isSelected = false;
+        }
     }
-}
 
-private void DeselectAllUnits()
-{
-    foreach (GameObject unit in unitList)
+    private void DeselectAllUnits()
     {
-        unit.GetComponent<Unit>().isSelected = false;
+        foreach (GameObject unit in unitList)
+        {
+            unit.GetComponent<Unit>().isSelected = false;
+        }
+        unitList.Clear(); // Clear the unitList to remove deselected units
     }
-    unitList.Clear(); // Clear the unitList to remove deselected units
-}
 }
