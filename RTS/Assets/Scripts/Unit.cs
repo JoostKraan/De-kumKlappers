@@ -4,7 +4,9 @@ using UnityEngine.AI;
 public class Unit : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
-    private bool isSelected = false;
+    public bool isSelected = false;
+    public GameObject Pijltje;
+    public float timeToSpawn;
 
     void Start()
     {
@@ -15,22 +17,31 @@ public class Unit : MonoBehaviour
     {
         if (isSelected)
         {
-            // Implement visual feedback for selected units (e.g., highlighting).
+            Pijltje.SetActive(true);
+            if (Input.GetMouseButtonDown(1))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+
+                if (Physics.Raycast(ray, out hit))
+                {
+                    MoveTo(hit.point);
+                }
+            }
+        }
+        else
+        {
+            Pijltje.SetActive(false);
         }
     }
 
     public void SetSelected(bool selected)
     {
         isSelected = selected;
-        // Implement visual feedback for selected units (e.g., highlighting).
     }
 
     public void MoveTo(Vector3 targetPosition)
     {
-        // Calculate the formation position based on the target position
-        Vector3 formationPosition = targetPosition;
-
-        // Set the destination for the NavMeshAgent
-        navMeshAgent.SetDestination(formationPosition);
+        navMeshAgent.SetDestination(targetPosition);
     }
 }

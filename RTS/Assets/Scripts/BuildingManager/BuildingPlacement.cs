@@ -1,13 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class BuildingPlacement : MonoBehaviour
 {
     public GameObject[] buildingPrefabs;
+    public List<GameObject> ActiveBuildings = new List<GameObject>();
+
     public GameObject pendingPrefab;
+    [SerializeField] private NavMeshSurface navMesh;
     [SerializeField] private Material[] materials;
 
     private Vector3 pos;
@@ -50,6 +55,11 @@ public class BuildingPlacement : MonoBehaviour
             }
             UpdateMaterials();
         }
+
+        if (navMesh)
+        {
+            navMesh.BuildNavMesh();
+        }
     }
 
     private void FixedUpdate()
@@ -63,6 +73,7 @@ public class BuildingPlacement : MonoBehaviour
 
     public void SelectObject(int index)
     {
+        print(index.ToString());
         pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
         pendingPrefab.tag = "PlaceObject";
 
@@ -94,6 +105,7 @@ public class BuildingPlacement : MonoBehaviour
     public void PlaceObject()
     {
         pendingPrefab.GetComponent<MeshRenderer>().material = materials[2];
+        ActiveBuildings.Add(pendingPrefab);
         pendingPrefab = null;
     }
 
