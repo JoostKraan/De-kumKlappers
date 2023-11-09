@@ -9,6 +9,8 @@ public class ResourceSpawner : MonoBehaviour
     public GameObject orePrefab;
     public float spawnChance;
     public float oreSpawnChance;
+    public GameObject treePrefab;
+    public float treeSpawnChance;
 
     [Header("Raycast Settings")]
     public float distanceBetweenChecks;
@@ -52,6 +54,21 @@ public class ResourceSpawner : MonoBehaviour
                     {
                         Quaternion rotation = Quaternion.Euler(new Vector3(-90, 0, 0)); // Fixed rotation of 90 degrees on the Y-axis
                         Instantiate(orePrefab, hit.point, rotation, transform);
+                    }
+                }
+            }
+        }
+        for (float x = negativePosition.x; x < positivePosition.x; x += oreDistanceBetweenChecks)
+        {
+            for (float z = negativePosition.y; z < positivePosition.y; z += oreDistanceBetweenChecks)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(new Vector3(x, heightCheck, z), Vector3.down, out hit, rangecheck, layerMask))
+                {
+                    if (treeSpawnChance > Random.Range(0, 101))
+                    {
+                        Quaternion rotation = Quaternion.Euler(new Vector3(-90, 0, 0)); // Fixed rotation of 90 degrees on the Y-axis
+                        Instantiate(treePrefab, hit.point, rotation, transform);
                     }
                 }
             }
