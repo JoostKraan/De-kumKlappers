@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class BuildingPlacement : MonoBehaviour
@@ -10,6 +12,7 @@ public class BuildingPlacement : MonoBehaviour
     public List<GameObject> ActiveBuildings = new List<GameObject>();
 
     public GameObject pendingPrefab;
+    [SerializeField] private NavMeshSurface navMesh;
     [SerializeField] private Material[] materials;
 
     private Vector3 pos;
@@ -51,6 +54,11 @@ public class BuildingPlacement : MonoBehaviour
                 RotateObject();    
             }
             UpdateMaterials();
+        }
+
+        if (navMesh)
+        {
+            navMesh.BuildNavMesh();
         }
     }
 
