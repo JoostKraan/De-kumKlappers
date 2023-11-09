@@ -5,11 +5,14 @@ using UnityEngine;
 public class ResourceSpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    public GameObject[] resourcePrefabs; // Array of different resource prefabs
+    public GameObject[] resourcePrefabs;
+    public GameObject orePrefab;
     public float spawnChance;
+    public float oreSpawnChance;
 
     [Header("Raycast Settings")]
     public float distanceBetweenChecks;
+    public float oreDistanceBetweenChecks;
     public float heightCheck = 10f, rangecheck = 30f;
     public LayerMask layerMask;
     public Vector2 positivePosition, negativePosition;
@@ -34,6 +37,21 @@ public class ResourceSpawner : MonoBehaviour
                         GameObject randomPrefab = resourcePrefabs[Random.Range(0, resourcePrefabs.Length)];
 
                         Instantiate(randomPrefab, hit.point, Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0)), transform);
+                    }
+                }
+            }
+        }
+        for (float x = negativePosition.x; x < positivePosition.x; x += oreDistanceBetweenChecks)
+        {
+            for (float z = negativePosition.y; z < positivePosition.y; z += oreDistanceBetweenChecks)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(new Vector3(x, heightCheck, z), Vector3.down, out hit, rangecheck, layerMask))
+                {
+                    if (oreSpawnChance > Random.Range(0, 101))
+                    {
+                        Quaternion rotation = Quaternion.Euler(new Vector3(-90, 0, 0)); // Fixed rotation of 90 degrees on the Y-axis
+                        Instantiate(orePrefab, hit.point, rotation, transform);
                     }
                 }
             }

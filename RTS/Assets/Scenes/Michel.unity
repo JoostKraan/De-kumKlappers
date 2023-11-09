@@ -658,8 +658,12 @@ MonoBehaviour:
   - {fileID: 9053947485531519227, guid: 100d52600d58a8845891694a7ef419bc, type: 3}
   - {fileID: 7601105565779803534, guid: b466aab79b7e2574aad843dd71025fd2, type: 3}
   - {fileID: 3352007943087568667, guid: fac3b056efe5aa34da91293742b866c7, type: 3}
+  orePrefab: {fileID: 8687716767305649380, guid: 2b6b40cb8710f1944bffd10b5ebf571a,
+    type: 3}
   spawnChance: 8
+  oreSpawnChance: 1
   distanceBetweenChecks: 3
+  oreDistanceBetweenChecks: 20
   heightCheck: 30
   rangecheck: 30
   layerMask:
