@@ -560,11 +560,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 147278175530985130, guid: f5995072a8d8bf44594361771b4ad87b,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 147278175530985130, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetPrefabToSpawn
       objectReference: {fileID: 0}

@@ -257,7 +257,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8440021438595868832}
         m_TargetAssemblyTypeName: TrainingCamp, Assembly-CSharp
-        m_MethodName: SpawnPrefab
+        m_MethodName: SetPrefabToSpawn
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -453,7 +453,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8440021438595868832}
         m_TargetAssemblyTypeName: TrainingCamp, Assembly-CSharp
-        m_MethodName: SpawnPrefab
+        m_MethodName: SetPrefabToSpawn
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
