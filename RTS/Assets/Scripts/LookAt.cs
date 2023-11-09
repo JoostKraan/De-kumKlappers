@@ -10,13 +10,12 @@ public class LookAt : MonoBehaviour
     void Start()
     {
         cam= Camera.main;
-        // Assuming the camera is tagged as "MainCamera"
+
         target = cam.transform;
     }
 
     void Update()
     {
-        // Make the plane face the camera
         transform.LookAt(target);
     }
 }

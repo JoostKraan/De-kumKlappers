@@ -7,22 +7,22 @@ using Unity.Burst.CompilerServices;
 
 public class TrainingCamp : MonoBehaviour
 {
-    public GameObject[] prefabsToSpawn; // Array of prefabs for different unit types
+    public GameObject[] prefabsToSpawn;
     public Transform spawnPoint;
     public GameObject Shop;
-    public TMP_Text countdownText; // Reference to the TextMeshPro Text component
+    public TMP_Text countdownText;
     private float countdownTimer = 30f;
     private bool isCountingDown = false;
-    private int prefabIndex = 0; // Index to select the prefab to spawn
+    private int prefabIndex = 0;
 
-    // Start is called before the first frame update
+   
     void Start()
     {
-        // Make sure you've assigned the spawnPoint and countdownText in the Inspector.
+        
         UpdateCountdownText();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.anyKeyDown && !(Input.GetMouseButtonDown(0)
@@ -37,17 +37,17 @@ public class TrainingCamp : MonoBehaviour
 
             if (countdownTimer == 0)
             {
-                isCountingDown = false; // Stop the countdown
-                countdownTimer = 30f; // Reset the timer to 30 seconds
+                isCountingDown = false;
+                countdownTimer = 30f;
                 UpdateCountdownText();
-                SpawnPrefab(prefabIndex); // Use the selected index to spawn the corresponding prefab
+                SpawnPrefab(prefabIndex); 
             }
         }
     }
 
     public void ToggleCountdown()
     {
-        isCountingDown = !isCountingDown; // Toggle countdown on and off
+        isCountingDown = !isCountingDown;
 
         if (isCountingDown)
         {
@@ -57,7 +57,7 @@ public class TrainingCamp : MonoBehaviour
 
     public void SetPrefabToSpawn(int index)
     {
-        prefabIndex = index; // Set the index of the prefab to spawn
+        prefabIndex = index; 
         countdownTimer = prefabsToSpawn[index].GetComponent<Unit>().timeToSpawn;
         ToggleCountdown();
     }
