@@ -238,8 +238,9 @@ MonoBehaviour:
     type: 3}
   spawnChance: 8
   oreSpawnChance: 1
-  treePrefab: {fileID: 0}
-  treeSpawnChance: 0
+  treePrefab: {fileID: 1980554193394763316, guid: 4117369738c00d4428fb11b5062ba1ed,
+    type: 3}
+  treeSpawnChance: 1
   distanceBetweenChecks: 3
   oreDistanceBetweenChecks: 20
   heightCheck: 30

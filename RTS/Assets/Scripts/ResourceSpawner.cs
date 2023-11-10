@@ -67,7 +67,7 @@ public class ResourceSpawner : MonoBehaviour
                 {
                     if (treeSpawnChance > Random.Range(0, 101))
                     {
-                        Quaternion rotation = Quaternion.Euler(new Vector3(-90, 0, 0)); // Fixed rotation of 90 degrees on the Y-axis
+                        Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, 0)); // Fixed rotation of 90 degrees on the Y-axis
                         Instantiate(treePrefab, hit.point, rotation, transform);
                     }
                 }
