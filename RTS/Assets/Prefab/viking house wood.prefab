@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 5934885829194345052, guid: 4c49cc0b826355b489041ff2573b8162,
         type: 3}
       propertyPath: m_TagString
-      value: deliveryTransform
+      value: treeDeliveryPoint
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -90,6 +90,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3209878020267046225}
   m_SourcePrefab: {fileID: 100100000, guid: 4c49cc0b826355b489041ff2573b8162, type: 3}
+--- !u!4 &5676179043837621505 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2668809350613960563, guid: 4c49cc0b826355b489041ff2573b8162,
+    type: 3}
+  m_PrefabInstance: {fileID: 7767677133260010098}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7425658307432288035 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4c49cc0b826355b489041ff2573b8162,
@@ -130,9 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c180e4e4565ec0b48a207b5047903c18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selection: {fileID: 0}
+  buildingPlacement: {fileID: 0}
   worker: {fileID: 8233215173231626317, guid: d46367cd03ab55c418620e4ccb88e223, type: 3}
-  spawnLocation: {fileID: 0}
+  spawnLocation: {fileID: 5676179043837621505}
   timesSpawned: 0
   timer: 0
 --- !u!23 &3209878020267046225

@@ -8,4 +8,19 @@ public class Gamemanager : MonoBehaviour
     public int wood = 0;
     public int stone = 0;
     public int iron = 0;
+
+    
+
+    void Start()
+    {
+        
+    }
+
+    void Update()
+    {
+
+    }
+
+    
+    
 }
