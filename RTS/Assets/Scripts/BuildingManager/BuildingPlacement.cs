@@ -73,7 +73,6 @@ public class BuildingPlacement : MonoBehaviour
 
     public void SelectObject(int index)
     {
-        print(index.ToString());
         pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
         pendingPrefab.tag = "PlaceObject";
 
@@ -104,7 +103,7 @@ public class BuildingPlacement : MonoBehaviour
 
     public void PlaceObject()
     {
-        pendingPrefab.GetComponent<MeshRenderer>().material = materials[2];
+        // pendingPrefab.GetComponent<MeshRenderer>().material = materials[2];
         ActiveBuildings.Add(pendingPrefab);
         pendingPrefab = null;
     }
