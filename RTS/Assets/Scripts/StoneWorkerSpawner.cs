@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WoodWorkerSpawner : MonoBehaviour
+public class StoneWorkerSpawner : MonoBehaviour
 {
     public BuildingPlacement buildingPlacement;
     public GameObject worker;
@@ -13,12 +13,12 @@ public class WoodWorkerSpawner : MonoBehaviour
 
     private void Start()
     {
-            buildingPlacement = GameObject.Find("BuildingManager").GetComponent<BuildingPlacement>();
+        buildingPlacement = GameObject.Find("BuildingManager").GetComponent<BuildingPlacement>();
         timer = 3f;
     }
     void Update()
     {
-        if(buildingPlacement.pendingPrefab == null)
+        if (buildingPlacement.pendingPrefab == null)
         {
             timer -= Time.deltaTime;
             if (timesSpawned == 0)
@@ -33,11 +33,11 @@ public class WoodWorkerSpawner : MonoBehaviour
             {
                 SpawnWorker();
             }
-        }        
+        }
     }
     public void SpawnWorker()
     {
-        if(timer <= 0 && buildingPlacement.pendingPrefab == null)
+        if (timer <= 0 && buildingPlacement.pendingPrefab == null)
         {
             timesSpawned++;
             Instantiate(worker, spawnLocation.position, Quaternion.identity);

@@ -18,14 +18,54 @@ public class WorkerNavMesh : MonoBehaviour
     [SerializeField] private GameObject skinnedMeshRender;
     [SerializeField] private int woodCollected = 0;
     [SerializeField] private Animator animator;
+    private Gamemanager gamemanager;
     private MeshRenderer workerMesh;
     private NavMeshAgent navMeshAgent;
-    private Transform treeTransform;
-    private Transform deliveryTransform;
+    public Transform treeHarvestingPoint;
+    public Transform treeDeliveryPoint;
     private Transform minerHarvestingPoint;
     private Transform miningDeliveryPoint;
+
+    public List<GameObject> treeToHarvest; // List of objects to check for proximity
+    public List<GameObject> stoneToHarvest;
+    public Transform referencePoint; // Reference point for distance calculation
+    public GameObject closestTree;
+    public GameObject closestStone;
+
+    private void Awake()
+    {
+        //gamemanager = GameObject.FindWithTag("Gamemanager").GetComponent<Gamemanager>();
+    }
+    private void Start()
+    {
+        workerMesh = GetComponent<MeshRenderer>();
+        animator = GetComponent<Animator>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        referencePoint = GetComponent<Transform>();
+
+        GameObject[] treesWithTag = GameObject.FindGameObjectsWithTag("treeHarvestingPoint");
+        treeToHarvest.AddRange(treesWithTag);
+        GameObject[] stonesWithTag = GameObject.FindGameObjectsWithTag("minerHarvestingPoint");
+        stoneToHarvest.AddRange(stonesWithTag);
+
+        StartCoroutine(MoveBetweenPoints());
+    }
     private void Update()
     {
+        if(TreeHarvesters)
+        {
+            closestTree = FindClosestTree();
+            treeHarvestingPoint = closestTree.transform;
+            navMeshAgent.destination = treeHarvestingPoint.position;
+            treeDeliveryPoint = GameObject.FindWithTag("treeDeliveryPoint").transform;
+        }
+        if(Miners)
+        {
+            closestStone = FindClosestStone();
+            minerHarvestingPoint = closestStone.transform;
+            navMeshAgent.destination = minerHarvestingPoint.position;
+            miningDeliveryPoint = GameObject.FindWithTag("miningDeliveryPoint").transform;
+        }
         if (isCollectingWood)
         {
             woodCollectTimer += Time.deltaTime;
@@ -36,30 +76,47 @@ public class WorkerNavMesh : MonoBehaviour
             }
         }
     }
-
-
-    private void Awake()
+    GameObject FindClosestTree()
     {
-        workerMesh = GetComponent<MeshRenderer>();
-        animator = GetComponent<Animator>();
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        GameObject closestTree = null;
+        float closestDistance = Mathf.Infinity;
 
-        if (TreeHarvesters)
+        foreach (GameObject tree in treeToHarvest)
         {
-            treeTransform = GameObject.FindWithTag("treeTransform").GetComponent<Transform>();
-            deliveryTransform = GameObject.FindWithTag("deliveryTransform").GetComponent<Transform>();
-            navMeshAgent.destination = treeTransform.position;
+            if (tree != null)
+            {
+                float distance = Vector3.Distance(referencePoint.position, tree.transform.position);
+
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestTree = tree;
+                }
+            }
         }
-        else if (Miners)
-        {
-            navMeshAgent.destination = minerHarvestingPoint.position;
-            minerHarvestingPoint = GameObject.FindWithTag("minerHarvestingPoint").GetComponent<Transform>();
-            miningDeliveryPoint = GameObject.FindWithTag("miningDeliveryPoint").GetComponent<Transform>();
-        }
+
+        return closestTree;
     }
-    private void Start()
+    GameObject FindClosestStone()
     {
-        StartCoroutine(MoveBetweenPoints());
+        GameObject closestStone = null;
+        float closestDistance = Mathf.Infinity;
+
+        foreach (GameObject stone in stoneToHarvest)
+        {
+            if (stone != null)
+            {
+                float distance = Vector3.Distance(referencePoint.position, stone.transform.position);
+
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestStone = stone;
+                }
+            }
+        }
+
+        return closestStone;
     }
     private IEnumerator MoveBetweenPoints()
     {
@@ -71,8 +128,8 @@ public class WorkerNavMesh : MonoBehaviour
                 if (timer <= 0)
                 {
                     if (TreeHarvesters)
-                    {
-                        navMeshAgent.destination = deliveryTransform.position;
+                    {     
+                        navMeshAgent.destination = treeDeliveryPoint.position;
                     }
                     else if (Miners)
                     {
@@ -87,7 +144,7 @@ public class WorkerNavMesh : MonoBehaviour
                 {
                     if (TreeHarvesters)
                     {
-                        navMeshAgent.destination = treeTransform.position;
+                        navMeshAgent.destination = treeHarvestingPoint.position;
                     }
                     else if (Miners)
                     {
@@ -114,14 +171,14 @@ public class WorkerNavMesh : MonoBehaviour
             isAtDeliveryPoint = true;
         }
 
-        if (TreeHarvesters && other.CompareTag("treeTransform"))
+        if (TreeHarvesters && other.CompareTag("treeHarvestingPoint"))
         {
             timer = 5f;
             isCollectingWood = true;
             isAtHarvesterSpot = true;
             skinnedMeshRender.SetActive(false);
         }
-        if (TreeHarvesters && other.CompareTag("deliveryTransform"))
+        if (TreeHarvesters && other.CompareTag("treeDeliveryPoint"))
         {
             timer = 5f;
             isAtHarvesterSpot = false;
@@ -130,15 +187,26 @@ public class WorkerNavMesh : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if ((Miners && (other.CompareTag("minerHarvestingPoint") || other.CompareTag("miningDeliveryPoint"))) ||
-            (TreeHarvesters && (other.CompareTag("treeTransform") || other.CompareTag("deliveryTransform"))))
+        //if ((Miners && (other.CompareTag("minerHarvestingPoint") || other.CompareTag("miningDeliveryPoint"))) ||
+        //    (TreeHarvesters && (other.CompareTag("treeHarvestingPoint") || other.CompareTag("treeDeliveryPoint"))))
+        //{
+        //    woodCollectTimer = 0f;
+        //    isCollectingWood = false;
+        //    isAtHarvesterSpot = false;
+        //    isAtDeliveryPoint = false;
+        //    skinnedMeshRender.SetActive(false);
+        //}
+        if (TreeHarvesters && other.CompareTag("treeHarvestingPoint"))
         {
-            woodCollectTimer = 0f;
             isCollectingWood = false;
             isAtHarvesterSpot = false;
-            isAtDeliveryPoint = false;
-            skinnedMeshRender.SetActive(false);
+            skinnedMeshRender.SetActive(true);
         }
-        
+        if (Miners && other.CompareTag("stoneHarvestingPoint"))
+        {
+            isCollectingWood = false;
+            isAtHarvesterSpot = false;
+            skinnedMeshRender.SetActive(true);
+        }
     }
 }
