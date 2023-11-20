@@ -17,6 +17,7 @@ public class ResourceSpawner : MonoBehaviour
     public float oreDistanceBetweenChecks;
     public float heightCheck = 10f, rangecheck = 30f;
     public LayerMask layerMask;
+    public LayerMask forrestSpawningLayerMask;
     public Vector2 positivePosition, negativePosition;
 
     private void Awake()
@@ -63,7 +64,7 @@ public class ResourceSpawner : MonoBehaviour
             for (float z = negativePosition.y; z < positivePosition.y; z += oreDistanceBetweenChecks)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(new Vector3(x, heightCheck, z), Vector3.down, out hit, rangecheck, layerMask))
+                if (Physics.Raycast(new Vector3(x, heightCheck, z), Vector3.down, out hit, rangecheck, forrestSpawningLayerMask))
                 {
                     if (treeSpawnChance > Random.Range(0, 101))
                     {
