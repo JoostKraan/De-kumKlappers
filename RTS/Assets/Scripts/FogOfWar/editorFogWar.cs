@@ -1,14 +1,3 @@
-/*
- * Created :    Winter 2022
- * Author :     SeungGeon Kim (keithrek@hanmail.net)
- * Project :    FogWar
- * Filename :   editorFogWar.cs (custom editor module)
- * 
- * All Content (C) 2022 Unlimited Fischl Works, all rights reserved.
- */
-
-
-
 using UnityEngine;  // GUILayout
 using UnityEditor;  // Editor
 
@@ -16,9 +5,6 @@ using UnityEditor;  // Editor
 
 namespace FischlWorks_FogWar
 {
-
-
-
     [CustomPropertyDrawer(typeof(ShowIfAttribute))]
     // This attribute is intended to be used with a property field to show / hide it following a bool variable
     public class ShowIfAttributeDrawer : PropertyDrawer
@@ -50,6 +36,7 @@ namespace FischlWorks_FogWar
     {
         public override void OnGUI(Rect position)
         {
+            return;
             BigHeaderAttribute attributeHandle = (BigHeaderAttribute)attribute;
 
             position.yMin += EditorGUIUtility.singleLineHeight * 0.5f;
