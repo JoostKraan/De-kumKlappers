@@ -110,6 +110,7 @@ public class WorkerNavMesh : MonoBehaviour
         {
             if (collision.collider.CompareTag("treeHarvestingPoint"))
             {
+                print("colidded with forrest");
                 timer = 5f;
                 isCountingDown = true;
                 Mesh.SetActive(false);
