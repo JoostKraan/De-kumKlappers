@@ -14,8 +14,9 @@ public class TrainingCamp : MonoBehaviour
     private float countdownTimer = 30f;
     private bool isCountingDown = false;
     private int prefabIndex = 0;
+    public float timeToSpawn;
 
-   
+
     void Start()
     {
         
