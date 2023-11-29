@@ -1,15 +1,21 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
+    private Vector3 targetPosition;
+    private LineRenderer lineRenderer;
     public bool isSelected = false;
-    public GameObject Pijltje;
+    public GameObject Arrow;
     public float timeToSpawn;
-
+    public bool isMoving;
     void Start()
     {
+        lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = 2;
+        lineRenderer.enabled = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -17,7 +23,7 @@ public class Unit : MonoBehaviour
     {
         if (isSelected)
         {
-            Pijltje.SetActive(true);
+            Arrow.SetActive(true);
             if (Input.GetMouseButtonDown(1))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -25,13 +31,25 @@ public class Unit : MonoBehaviour
 
                 if (Physics.Raycast(ray, out hit))
                 {
+                    targetPosition = hit.point;
+                    isMoving = true;
                     MoveTo(hit.point);
+                    ShowLine();
+                }
+            }
+            if (isMoving)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, targetPosition, Time.deltaTime * 5.0f);
+                if (transform.position == targetPosition)
+                {
+                    isMoving = false;
+                    lineRenderer.enabled = false;
                 }
             }
         }
         else
         {
-            Pijltje.SetActive(false);
+            Arrow.SetActive(false);
         }
     }
 
@@ -43,5 +61,14 @@ public class Unit : MonoBehaviour
     public void MoveTo(Vector3 targetPosition)
     {
         navMeshAgent.SetDestination(targetPosition);
+    }
+
+    public void ShowLine()
+    {
+        lineRenderer.SetPosition(0, transform.position);
+        lineRenderer.SetPosition(1, targetPosition);
+
+
+        lineRenderer.enabled = true;
     }
 }
