@@ -29,8 +29,9 @@ public class UnitSelection : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
 
-                if (hit.transform.gameObject.CompareTag("Train"))
+                if (hit.transform.gameObject.CompareTag("TrainingCamp"))
                 {
+                    Debug.Log("Cool");
                     hit.transform.gameObject.GetComponent<TrainingCamp>().Shop.GetComponentInChildren<Canvas>().enabled = true;
                 }
 
