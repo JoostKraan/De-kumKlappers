@@ -886,6 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 584526563}
   - component: {fileID: 584526562}
+  - component: {fileID: 584526564}
   - component: {fileID: 584526561}
   m_Layer: 0
   m_Name: Gamemanager
@@ -947,7 +948,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73147956d32227f41b3c5e2d440755a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 0
+  startingWood: 100
+  startingStone: 50
+  startingIron: 20
   wood: 100
   stone: 10
   iron: 0
@@ -966,6 +969,30 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &584526564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584526560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c156877bfae3ee442a66cb4bcd6bd3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAffordforester: 0
+  canAffordMiner: 0
+  canAffordTrainer: 0
+  foresterWoodCost: 75
+  foresterStoneCost: 0
+  foresterIronCost: 0
+  minerWoodCost: 150
+  minerStoneCost: 50
+  minerIronCost: 0
+  trainerWoodCost: 0
+  trainerStoneCost: 0
+  trainerIronCost: 0
 --- !u!4 &586283554 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1507636620937791777, guid: 7097ba7ba649e1f41bba232312bdcbd8,
