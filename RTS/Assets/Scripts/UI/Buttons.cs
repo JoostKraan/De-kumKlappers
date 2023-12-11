@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,7 @@ public class Buttons : MonoBehaviour
         wood.text = gamemanager.wood.ToString();
         stone.text = gamemanager.stone.ToString();
         iron.text = gamemanager.iron.ToString();
+
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(pauseScreenIsActive == false)
