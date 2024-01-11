@@ -8,13 +8,15 @@ TagManager:
   - PlaceObject
   - Terrain
   - Unit
+  - Train
   - minerHarvestingPoint
   - miningDeliveryPoint
   - Tree
   - treeHarvestingPoint
   - treeDeliveryPoint
   - NavMeshSurface
-  - TrainingCamp
+  - ironMinerHarvestingPoint
+  - ironMiningDeliveryPoint
   layers:
   - Default
   - TransparentFX

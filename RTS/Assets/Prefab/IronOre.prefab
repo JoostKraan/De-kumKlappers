@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 84d05e028da066849b1a423e6758b157,
         type: 3}
       propertyPath: m_TagString
-      value: minerHarvestingPoint
+      value: ironMinerHarvestingPoint
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5754084199372789682, guid: 84d05e028da066849b1a423e6758b157, type: 3}

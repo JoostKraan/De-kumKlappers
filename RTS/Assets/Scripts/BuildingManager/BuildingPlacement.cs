@@ -105,6 +105,13 @@ public class BuildingPlacement : MonoBehaviour
             gamemanager.stone -= economymanager.trainerStoneCost;
             gamemanager.iron -= economymanager.trainerIronCost;
         }
+        if (index == 3 && economymanager.canAffordTrainer)
+        {
+            pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
+            gamemanager.wood -= economymanager.trainerWoodCost;
+            gamemanager.stone -= economymanager.trainerStoneCost;
+            gamemanager.iron -= economymanager.trainerIronCost;
+        }
 
         // Instantiate the building            
         pendingPrefab.tag = "PlaceObject";
