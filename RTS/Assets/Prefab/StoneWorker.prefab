@@ -150,17 +150,19 @@ MonoBehaviour:
   isGoingToDeliveryPoint: 0
   Miners: 1
   TreeHarvesters: 0
+  ironMiner: 0
   timer: 5
   Mesh: {fileID: 2802146548060070833}
-  woodCollected: 0
   animator: {fileID: 0}
   treeHarvestingPoint: {fileID: 0}
   treeDeliveryPoint: {fileID: 0}
   treeToHarvest: []
   stoneToHarvest: []
+  ironToHarvest: []
   referencePoint: {fileID: 0}
   closestTree: {fileID: 0}
   closestStone: {fileID: 0}
+  closetIron: {fileID: 0}
 --- !u!95 &7106395750325815311
 Animator:
   serializedVersion: 5
