@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class Gamemanager : MonoBehaviour
 {
-    public int money = 0;
-    public int wood = 0;
-    public int stone = 0;
-    public int iron = 0;
+    public static Gamemanager Instance;
 
-    
+    public int startingWood = 100;
+    public int startingStone = 50;
+    public int startingIron = 20;
 
-    void Start()
+    [HideInInspector]
+    public int wood;
+    [HideInInspector]
+    public int stone;
+    [HideInInspector]
+    public int iron;
+
+    private void Start()
     {
-        
+        wood = startingWood;
+        stone = startingStone;
+        iron = startingIron;
     }
 
-    void Update()
-    {
 
-    }
-
-    
-    
+    //public void SpendResources(int woodAmount, int stoneAmount, int ironAmount)
+    //{
+    //    if (HasEnoughResources(woodAmount, stoneAmount, ironAmount))
+    //    {
+    //        wood -= woodAmount;
+    //        stone -= stoneAmount;
+    //        iron -= ironAmount;
+    //    }
+    //    // You may want to add additional handling if resources are insufficient
+    //}
 }
