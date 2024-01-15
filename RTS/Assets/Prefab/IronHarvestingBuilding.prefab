@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 4011886154542721325}
   - component: {fileID: 8301404560797635311}
   - component: {fileID: 2463623714414672472}
+  - component: {fileID: 8286339860580691006}
   m_Layer: 0
   m_Name: IronHarvestingBuilding
   m_TagString: Untagged
@@ -134,6 +135,19 @@ MonoBehaviour:
   spawnLocation: {fileID: 6320046115834836394}
   timesSpawned: 0
   timer: 0
+--- !u!114 &8286339860580691006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3715342120030344120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e618bf5821c4ae24a9aea5401f518aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeshRenderer: {fileID: 2225425684605246517}
 --- !u!1001 &1590057431942844098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -205,6 +219,12 @@ PrefabInstance:
 --- !u!4 &1268816293005437225 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bedf62cff9a0a2c4a91733947e260764,
+    type: 3}
+  m_PrefabInstance: {fileID: 1590057431942844098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2225425684605246517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8578433623609224457, guid: bedf62cff9a0a2c4a91733947e260764,
     type: 3}
   m_PrefabInstance: {fileID: 1590057431942844098}
   m_PrefabAsset: {fileID: 0}

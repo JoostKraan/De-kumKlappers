@@ -71,7 +71,17 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 9115236750105973021}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 57f7be21556e5f14e97de987279a5e85,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -6026223449829192283}
   m_SourcePrefab: {fileID: 100100000, guid: 57f7be21556e5f14e97de987279a5e85, type: 3}
+--- !u!1 &1318827421253344291 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -6258181035773486596, guid: 57f7be21556e5f14e97de987279a5e85,
+    type: 3}
+  m_PrefabInstance: {fileID: 4281536813232489951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4011153511650048142 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 57f7be21556e5f14e97de987279a5e85,
@@ -94,3 +104,17 @@ MonoBehaviour:
   spawnPoint: {fileID: 0}
   Shop: {fileID: 0}
   countdownText: {fileID: 0}
+  timeToSpawn: 0
+--- !u!114 &-6026223449829192283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4011153511650048142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e618bf5821c4ae24a9aea5401f518aef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MeshRenderer: {fileID: 1318827421253344291}

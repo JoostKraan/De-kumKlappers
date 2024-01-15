@@ -137,10 +137,12 @@ public class BuildingPlacement : MonoBehaviour
         if (pendingPrefab == null) return;
         if (canPlace)
         {
-            pendingPrefab.GetComponent<MeshRenderer>().material = materials[0];
+            pendingPrefab.GetComponent<MeshRendererHandler>().MeshRenderer.GetComponent<MeshRenderer>().material =
+                materials[0];
         } else
         {
-            pendingPrefab.GetComponent<MeshRenderer>().material = materials[1];
+            pendingPrefab.GetComponent<MeshRendererHandler>().MeshRenderer.GetComponent<MeshRenderer>().material =
+                materials[1];
         }
     }
 
