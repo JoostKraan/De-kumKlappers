@@ -152,9 +152,9 @@ MonoBehaviour:
   ironMiner: 1
   timer: 5
   Mesh: {fileID: 3666306505791672723}
+  myDeliveryPoint: {fileID: 0}
+  myHarvestingSpot: {fileID: 0}
   animator: {fileID: 0}
-  treeHarvestingPoint: {fileID: 0}
-  treeDeliveryPoint: {fileID: 0}
   treeToHarvest: []
   stoneToHarvest: []
   ironToHarvest: []
@@ -162,7 +162,7 @@ MonoBehaviour:
   closestTree: {fileID: 0}
   closestStone: {fileID: 0}
   closetIron: {fileID: 0}
-  myHarvestingSpot: {fileID: 0}
+  distanceThreshold: 5
 --- !u!1 &8469199967320614224
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 710a993f5313a2b448363cb3b150c333,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 710a993f5313a2b448363cb3b150c333,
         type: 3}
