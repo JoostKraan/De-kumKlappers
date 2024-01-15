@@ -111,17 +111,20 @@ public class WorkerNavMesh : MonoBehaviour
         {            
             isGoingToDeliveryPoint = false;
             isGoingToHavestingPoint = true;
-            if (TreeHarvesters)
+            if(isGoingToDeliveryPoint)
             {
-                gamemanager.wood += 5;
-            }
-            if (Miners)
-            {
-                gamemanager.stone += 5;
-            }
-            if (ironMiner)
-            {
-                gamemanager.iron += 5;
+                if (TreeHarvesters)
+                {
+                    gamemanager.wood += 5;
+                }
+                if (Miners)
+                {
+                    gamemanager.stone += 5;
+                }
+                if (ironMiner)
+                {
+                    gamemanager.iron += 5;
+                }
             }
         }
     }

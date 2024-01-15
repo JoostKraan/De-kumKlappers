@@ -10,11 +10,14 @@ public class WoodWorkerSpawner : MonoBehaviour
 
     public int timesSpawned;
     public float timer;
+    Gamemanager gamemanager;
 
     private void Start()
     {
-            buildingPlacement = GameObject.Find("BuildingManager").GetComponent<BuildingPlacement>();
+        gamemanager = GameObject.FindAnyObjectByType<Gamemanager>();
+        buildingPlacement = GameObject.Find("BuildingManager").GetComponent<BuildingPlacement>();
         timer = 3f;
+        gamemanager.wood -= 75;
     }
     void Update()
     {
