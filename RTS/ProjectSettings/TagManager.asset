@@ -15,6 +15,7 @@ TagManager:
   - treeHarvestingPoint
   - treeDeliveryPoint
   - NavMeshSurface
+  - Destination
   layers:
   - Default
   - TransparentFX

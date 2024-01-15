@@ -6,6 +6,7 @@ public class UnitSelection : MonoBehaviour
 {
     public Camera mainCamera;
     public List<GameObject> unitList = new List<GameObject>();
+    public GameObject[] group1;
     public Image boxSelectionImage; // Reference to the UI Image for box selection visuals
 
     private Vector3 boxStartWorldPosition;
@@ -51,7 +52,7 @@ public class UnitSelection : MonoBehaviour
                 {
                     DeselectAllUnits();
                 }
-               
+
             }
         }
 
@@ -147,5 +148,13 @@ public class UnitSelection : MonoBehaviour
             unit.GetComponent<Unit>().isSelected = false;
         }
         unitList.Clear(); // Clear the unitList to remove deselected units
+    }
+
+    private void AddtoGroup1()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKeyDown(KeyCode.Alpha1))
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,21 +7,36 @@ public class Unit : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
     private Vector3 targetPosition;
-    private LineRenderer lineRenderer;
     public bool isSelected = false;
     public GameObject Arrow;
     public float timeToSpawn;
     public bool isMoving;
+    [SerializeField] GameObject destinationPoint;
+
+
     void Start()
     {
-        lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.positionCount = 2;
-        lineRenderer.enabled = false;
         navMeshAgent = GetComponent<NavMeshAgent>();
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Destination"))
+        {
+            Debug.Log("Collided");
+            Destroy(other.gameObject);
+            
+        }
+    }
+    void RemoveObject()
+    {
+        Destroy(destinationPoint,10f);
     }
 
     void Update()
     {
+
+       
+        
         if (isSelected)
         {
             Arrow.SetActive(true);
@@ -34,7 +50,8 @@ public class Unit : MonoBehaviour
                     targetPosition = hit.point;
                     isMoving = true;
                     MoveTo(hit.point);
-                    ShowLine();
+                    ShowDestination();
+                    RemoveObject();
                 }
             }
             if (isMoving)
@@ -43,7 +60,6 @@ public class Unit : MonoBehaviour
                 if (transform.position == targetPosition)
                 {
                     isMoving = false;
-                    lineRenderer.enabled = false;
                 }
             }
         }
@@ -52,6 +68,7 @@ public class Unit : MonoBehaviour
             Arrow.SetActive(false);
         }
     }
+   
 
     public void SetSelected(bool selected)
     {
@@ -63,12 +80,9 @@ public class Unit : MonoBehaviour
         navMeshAgent.SetDestination(targetPosition);
     }
 
-    public void ShowLine()
+    public void ShowDestination()
     {
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, targetPosition);
+        Instantiate(destinationPoint, targetPosition, Quaternion.identity);
 
-
-        lineRenderer.enabled = true;
     }
 }
