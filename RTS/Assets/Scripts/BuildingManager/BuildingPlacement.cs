@@ -35,7 +35,7 @@ public class BuildingPlacement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.X))
         {
             CancelPlacement();
         }
@@ -114,22 +114,22 @@ public class BuildingPlacement : MonoBehaviour
         }
 
         // Instantiate the building            
-        pendingPrefab.tag = "PlaceObject";
+        pendingPrefab.GetComponent<MeshRendererHandler>().MeshRenderer.tag = "PlaceObject";
 
-            // Add physics components
-            pendingPrefab.AddComponent<Rigidbody>();
-            Rigidbody rigidbody = pendingPrefab.GetComponent<Rigidbody>();
-            rigidbody.isKinematic = true;
-            rigidbody.useGravity = false;
+        // Add physics components
+        pendingPrefab.AddComponent<Rigidbody>();
+        Rigidbody rigidbody = pendingPrefab.GetComponent<Rigidbody>();
+        rigidbody.isKinematic = true;
+        rigidbody.useGravity = false;
 
-            // Add a box collider
-            pendingPrefab.AddComponent<BoxCollider>();
-            BoxCollider boxCollider = pendingPrefab.GetComponent<BoxCollider>();
-            boxCollider.size = new Vector3(.99f, .99f, .99f);
-            boxCollider.isTrigger = true;
+        // Add a box collider
+        pendingPrefab.AddComponent<BoxCollider>();
+        BoxCollider boxCollider = pendingPrefab.GetComponent<BoxCollider>();
+        boxCollider.size = new Vector3(.99f, .99f, .99f);
+        boxCollider.isTrigger = true;
 
-            // Add the CheckPlacement script
-            pendingPrefab.AddComponent<CheckPlacement>();
+        // Add the CheckPlacement script
+        pendingPrefab.GetComponent<MeshRendererHandler>().MeshRenderer.AddComponent<CheckPlacement>();
     }
 
     void UpdateMaterials()
