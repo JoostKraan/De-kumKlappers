@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8301404560797635311}
   - component: {fileID: 2463623714414672472}
   m_Layer: 0
-  m_Name: StoneHarvestingBuilding
+  m_Name: IronHarvestingBuilding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingPlacement: {fileID: 0}
-  worker: {fileID: 8233215173231626317, guid: 87269ef7cd7c5704e9d74817c8ec32aa, type: 3}
+  worker: {fileID: 8233215173231626317, guid: ccfbe3eaec9dc12429401da3974f8068, type: 3}
   spawnLocation: {fileID: 6320046115834836394}
   timesSpawned: 0
   timer: 0

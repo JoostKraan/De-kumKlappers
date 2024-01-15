@@ -7,14 +7,18 @@ public class ResourceSpawner : MonoBehaviour
     [Header("Spawn Settings")]
     public GameObject[] resourcePrefabs;
     public GameObject orePrefab;
+    public GameObject treePrefab;
+    public GameObject ironPrefab;
     public float spawnChance;
     public float oreSpawnChance;
-    public GameObject treePrefab;
+
     public float treeSpawnChance;
+    public float ironSpawnChance;
 
     [Header("Raycast Settings")]
     public float distanceBetweenChecks;
     public float oreDistanceBetweenChecks;
+    public float ironoreDistanceBetweenChecks;
     public float heightCheck = 10f, rangecheck = 30f;
     public Vector2 positivePosition, negativePosition;
 
@@ -22,6 +26,7 @@ public class ResourceSpawner : MonoBehaviour
     public LayerMask layerMask;
     public LayerMask forrestSpawningLayerMask;
     public LayerMask stoneSpawningLayerMask;
+    public LayerMask ironSpawningLayerMask;
 
     private void Awake()
     {
@@ -47,6 +52,8 @@ public class ResourceSpawner : MonoBehaviour
                 }
             }
         }
+
+        //stone spawning
         for (float x = negativePosition.x; x < positivePosition.x; x += oreDistanceBetweenChecks)
         {
             for (float z = negativePosition.y; z < positivePosition.y; z += oreDistanceBetweenChecks)
@@ -62,6 +69,8 @@ public class ResourceSpawner : MonoBehaviour
                 }
             }
         }
+
+        //Forest spawning
         for (float x = negativePosition.x; x < positivePosition.x; x += oreDistanceBetweenChecks)
         {
             for (float z = negativePosition.y; z < positivePosition.y; z += oreDistanceBetweenChecks)
@@ -73,6 +82,23 @@ public class ResourceSpawner : MonoBehaviour
                     {
                         Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, 0));
                         Instantiate(treePrefab, hit.point, rotation, transform);
+                    }
+                }
+            }
+        }
+
+        //iron spawning
+        for (float x = negativePosition.x; x < positivePosition.x; x += ironoreDistanceBetweenChecks)
+        {
+            for (float z = negativePosition.y; z < positivePosition.y; z += ironoreDistanceBetweenChecks)
+            {
+                RaycastHit hit;
+                if (Physics.Raycast(new Vector3(x, heightCheck, z), Vector3.down, out hit, rangecheck, ironSpawningLayerMask))
+                {
+                    if (ironSpawnChance > Random.Range(0, 101))
+                    {
+                        Quaternion rotation = Quaternion.Euler(new Vector3(-90, 0, 0));
+                        Instantiate(ironPrefab, hit.point, rotation, transform);
                     }
                 }
             }

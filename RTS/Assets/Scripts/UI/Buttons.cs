@@ -3,14 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
     private Gamemanager gamemanager;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject settingsScreen;
 
     [Header("boloean")]
     bool pauseScreenIsActive = false;
+    bool settingScreenIsActive = false;
     [Header("Text")]
     public Text wood;
     public Text stone;
@@ -27,16 +30,25 @@ public class Buttons : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(pauseScreenIsActive == false)
+            if(!pauseScreenIsActive)
             {
                 pauseScreen.SetActive(true);
                 pauseScreenIsActive = true;
             }
             else if(pauseScreenIsActive)
             {
-                pauseScreen.SetActive(false);
-                pauseScreenIsActive = false;
-            }            
+                if (settingScreenIsActive)
+                {
+                    settingsScreen.SetActive(false);
+                    pauseScreen.SetActive(true);
+                    settingScreenIsActive = false;
+                }
+                else
+                {
+                    pauseScreen.SetActive(false);
+                    pauseScreenIsActive = false;
+                }
+            }
         }
         if(pauseScreenIsActive)
         {
@@ -61,10 +73,12 @@ public class Buttons : MonoBehaviour
     }
     public void OpenOptionsMenu()
     {
-        
+        pauseScreen.SetActive(false);
+        settingsScreen.SetActive(true);
+        settingScreenIsActive = true;
     }
     public void ExitGame()
     {
-
+        SceneManager.LoadScene(0);
     }
 }
