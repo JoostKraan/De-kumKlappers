@@ -16,7 +16,7 @@ public class WorkerNavMesh : MonoBehaviour
     [SerializeField] private float timer = 5f;
     private bool isCountingDown = false;
     [SerializeField] private GameObject Mesh;
-    public Transform myDeliveryPoint;
+    public Vector3 myDeliveryPoint;
     public GameObject myHarvestingSpot;
     [SerializeField] private Animator animator;
     private Gamemanager gamemanager;
@@ -36,7 +36,7 @@ public class WorkerNavMesh : MonoBehaviour
     {
         isGoingToDeliveryPoint = false;
         isGoingToHavestingPoint = true;
-        Transform currentPosition = this.gameObject.transform;
+        Vector3 currentPosition = gameObject.transform.position;
         myDeliveryPoint = currentPosition;
         gamemanager = GameObject.FindWithTag("Gamemanager").GetComponent<Gamemanager>();
         workerMesh = GetComponent<MeshRenderer>();
@@ -73,6 +73,12 @@ public class WorkerNavMesh : MonoBehaviour
         MoveBetweenPoints();
         if (isCountingDown)
         {
+            timer -= Time.deltaTime;
+            if (timer <= 0)
+            {
+                isGoingToHavestingPoint = false;
+                isGoingToDeliveryPoint = true;
+            }
             animator.SetBool("idle", false);
             animator.SetBool("Walking", false);
             if (Miners || ironMiner)
@@ -92,70 +98,36 @@ public class WorkerNavMesh : MonoBehaviour
         {
             isCountingDown = false;
         }
-
-        //harvesting point distance check
-        float distanceFromH = Vector3.Distance(gameObject.transform.position, myHarvestingSpot.transform.position);
-        if (distanceFromH < distanceThreshold)
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("HarvestingPoint"))
         {
+            print("Harvesting point reached");
+            timer = 5f;
+            isCountingDown = true;
+        }
+        if (other.gameObject.CompareTag("DeliveryPoint"))
+        {            
+            isGoingToDeliveryPoint = false;
+            isGoingToHavestingPoint = true;
             if (TreeHarvesters)
             {
-                //timer = 5f;
-                timer-= Time.deltaTime;
-                if(timer <=0)
-                {
-                    isGoingToHavestingPoint = false;
-                    isGoingToDeliveryPoint = true;
-                }
-            }
-            if (Miners)
-            {
-                //timer = 5f;
-                timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    isGoingToHavestingPoint = false;
-                    isGoingToDeliveryPoint = true;
-                }
-            }
-            if (ironMiner)
-            {
-                //timer = 5f;
-                timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    isGoingToHavestingPoint = false;
-                    isGoingToDeliveryPoint = true;
-                }
-            }
-        }
-
-        //delivery point distance check
-        float distanceFromD = Vector3.Distance(gameObject.transform.position, myDeliveryPoint.transform.position);
-        if (distanceFromD < distanceThreshold)
-        {
-            if (ironMiner)
-            {
-                gamemanager.iron += 5;
-                isGoingToDeliveryPoint = false;
-                isGoingToHavestingPoint = true;
+                gamemanager.wood += 5;
             }
             if (Miners)
             {
                 gamemanager.stone += 5;
-                isGoingToDeliveryPoint = false;
-                isGoingToHavestingPoint = true;              
             }
-            if (TreeHarvesters)
+            if (ironMiner)
             {
-                gamemanager.wood += 5;
-                isGoingToDeliveryPoint = false;
-                isGoingToHavestingPoint = true;
+                gamemanager.iron += 5;
             }
         }
     }
 
-        //walking function
-        private void MoveBetweenPoints()
+    //walking function
+    private void MoveBetweenPoints()
         {
             if (isGoingToHavestingPoint)
             {
@@ -182,15 +154,15 @@ public class WorkerNavMesh : MonoBehaviour
                 animator.SetBool("Walking", true);
                 if (TreeHarvesters)
                 {
-                    navMeshAgent.destination = myDeliveryPoint.transform.position;
+                    navMeshAgent.destination = myDeliveryPoint;
                 }
                 if (Miners)
                 {
-                    navMeshAgent.destination = myDeliveryPoint.transform.position;
+                    navMeshAgent.destination = myDeliveryPoint;
                 }
                 if (ironMiner)
                 {
-                    navMeshAgent.destination = myDeliveryPoint.transform.position;
+                    navMeshAgent.destination = myDeliveryPoint;
                 }
             }
         }
