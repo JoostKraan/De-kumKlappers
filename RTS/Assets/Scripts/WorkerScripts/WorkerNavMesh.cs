@@ -55,38 +55,6 @@ public class WorkerNavMesh : MonoBehaviour
     }
     private void Update()
     {
-        //find harvesting and delivery points
-        if (TreeHarvesters)
-        {
-            closestTree = FindClosestTree();
-<<<<<<< HEAD
-            //treeToHarvest.Remove(closestTree);
-            treeDeliveryPoint = spawnPoinr.transform;
-=======
-            myHarvestingSpot = closestTree;
->>>>>>> main
-        }
-        if (Miners)
-        {
-            closestStone = FindClosestStone();
-<<<<<<< HEAD
-            //stoneToHarvest.Remove(closestStone);
-            treeDeliveryPoint = spawnPoinr.transform;
-=======
-            myHarvestingSpot = closestStone;
->>>>>>> main
-        }
-        if (ironMiner)
-        {
-            closetIron = FindClosestIron();
-            myHarvestingSpot = closetIron;
-<<<<<<< HEAD
-            //ironToHarvest.Remove(closetIron);
-            treeDeliveryPoint = spawnPoinr.transform;
-=======
->>>>>>> main
-        }
-
         MoveBetweenPoints();
         if (isCountingDown)
         {
