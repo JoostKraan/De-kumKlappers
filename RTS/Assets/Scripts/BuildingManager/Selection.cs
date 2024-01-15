@@ -51,6 +51,8 @@ public class Selection : MonoBehaviour
         objNameText.text = obj.name;
         selectedObject = obj;
         objUI.SetActive(true);
+
+        print("Select");
     }
 
     private void Deselect()
