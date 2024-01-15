@@ -146,9 +146,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UnitList: []
-  wanderRadius: 10
+  wanderRadius: 100
   wanderTimer: 5
   fleeDistance: 5
+  startPostion: {x: 0, y: 0, z: 0}
 --- !u!135 &582390121616460243
 SphereCollider:
   m_ObjectHideFlags: 0

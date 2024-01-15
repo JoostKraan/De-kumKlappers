@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7106395750325815311}
   m_Layer: 0
   m_Name: StoneWorker
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
   closestTree: {fileID: 0}
   closestStone: {fileID: 0}
   closetIron: {fileID: 0}
+  myHarvestingSpot: {fileID: 0}
 --- !u!95 &7106395750325815311
 Animator:
   serializedVersion: 5

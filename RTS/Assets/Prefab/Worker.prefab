@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7106395750325815311}
   m_Layer: 0
   m_Name: Worker
-  m_TagString: Untagged
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -150,17 +150,20 @@ MonoBehaviour:
   isGoingToDeliveryPoint: 0
   Miners: 0
   TreeHarvesters: 1
+  ironMiner: 0
   timer: 5
   Mesh: {fileID: 383020241810486846}
-  woodCollected: 0
   animator: {fileID: 0}
   treeHarvestingPoint: {fileID: 0}
   treeDeliveryPoint: {fileID: 0}
   treeToHarvest: []
   stoneToHarvest: []
+  ironToHarvest: []
   referencePoint: {fileID: 0}
   closestTree: {fileID: 0}
   closestStone: {fileID: 0}
+  closetIron: {fileID: 0}
+  myHarvestingSpot: {fileID: 0}
 --- !u!95 &7106395750325815311
 Animator:
   serializedVersion: 5
