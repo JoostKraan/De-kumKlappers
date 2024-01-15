@@ -15,7 +15,8 @@ TagManager:
   - treeHarvestingPoint
   - treeDeliveryPoint
   - NavMeshSurface
-  - Destination
+  - ironMinerHarvestingPoint
+  - ironMiningDeliveryPoint
   layers:
   - Default
   - TransparentFX
@@ -27,7 +28,7 @@ TagManager:
   - TreeSpawning
   - StoneSpawning
   - DecoSpawning
-  - 
+  - IronSpawning
   - 
   - 
   - 
