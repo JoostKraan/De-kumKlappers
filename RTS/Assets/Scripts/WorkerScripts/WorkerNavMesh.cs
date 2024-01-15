@@ -34,10 +34,12 @@ public class WorkerNavMesh : MonoBehaviour
     public GameObject closestTree;
     public GameObject closestStone;
     public GameObject closetIron;
+    private Transform spawnPoinr;
 
     public GameObject myHarvestingSpot;
     private void Start()
     {
+        spawnPoinr = gameObject.transform;
         isGoingToDeliveryPoint = false;
         isGoingToHavestingPoint = true;
         gamemanager = GameObject.FindWithTag("Gamemanager").GetComponent<Gamemanager>();
@@ -59,20 +61,20 @@ public class WorkerNavMesh : MonoBehaviour
         {
             closestTree = FindClosestTree();
             //treeToHarvest.Remove(closestTree);
-            treeDeliveryPoint = GameObject.FindWithTag("treeDeliveryPoint").transform;
+            treeDeliveryPoint = spawnPoinr.transform;
         }
         if (Miners)
         {
             closestStone = FindClosestStone();
             //stoneToHarvest.Remove(closestStone);
-            miningDeliveryPoint = GameObject.FindWithTag("miningDeliveryPoint").transform;
+            treeDeliveryPoint = spawnPoinr.transform;
         }
         if (ironMiner)
         {
             closetIron = FindClosestIron();
             myHarvestingSpot = closetIron;
             //ironToHarvest.Remove(closetIron);
-            ironMiningDeliveryPoint = GameObject.FindWithTag("ironMiningDeliveryPoint").transform;
+            treeDeliveryPoint = spawnPoinr.transform;
         }
 
         MoveBetweenPoints();
