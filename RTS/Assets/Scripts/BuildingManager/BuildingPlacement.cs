@@ -30,7 +30,7 @@ public class BuildingPlacement : MonoBehaviour
     private void Start()
     {
         economymanager = GameObject.FindObjectOfType<EconomyManager>();
-        gamemanager = GameObject.FindObjectOfType<Gamemanager>();
+        gamemanager= GameObject.FindObjectOfType<Gamemanager>();
     }
 
     void Update()
