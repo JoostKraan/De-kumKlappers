@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.05
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 6027faed1b60ac84ca8b26228ac1fed1, type: 2}
   m_BuildHeightMesh: 0
@@ -563,58 +563,47 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SetPrefabToSpawn
       objectReference: {fileID: 0}
-    - target: {fileID: 8315146898726431850, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 100000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_Name
-      value: viking training house
+      value: rpgpp_lt_building_03
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.08701897
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.38
+      value: 0.54
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.6982541
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8660007155693778640, guid: f5995072a8d8bf44594361771b4ad87b,
-        type: 3}
+    - target: {fileID: 400000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
@@ -627,7 +616,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f5995072a8d8bf44594361771b4ad87b, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 52eeab1f0ce4d934591972b6df5d179b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
