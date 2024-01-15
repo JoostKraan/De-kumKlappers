@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7204057426908455077}
   - component: {fileID: 3170712947403221518}
   - component: {fileID: 5640393337776259902}
-  - component: {fileID: 7106395750325815311}
   m_Layer: 0
   m_Name: Worker
   m_TagString: Untagged
@@ -150,38 +149,20 @@ MonoBehaviour:
   isGoingToDeliveryPoint: 0
   Miners: 0
   TreeHarvesters: 1
+  ironMiner: 0
   timer: 5
   Mesh: {fileID: 383020241810486846}
-  woodCollected: 0
+  myDeliveryPoint: {fileID: 0}
+  myHarvestingSpot: {fileID: 0}
   animator: {fileID: 0}
-  treeHarvestingPoint: {fileID: 0}
-  treeDeliveryPoint: {fileID: 0}
   treeToHarvest: []
   stoneToHarvest: []
+  ironToHarvest: []
   referencePoint: {fileID: 0}
   closestTree: {fileID: 0}
   closestStone: {fileID: 0}
---- !u!95 &7106395750325815311
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8233215173231626317}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 63d5b924d4625024eabf4098ae7c0da7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  closetIron: {fileID: 0}
+  distanceThreshold: 5
 --- !u!1 &8469199967320614224
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,7 +264,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 710a993f5313a2b448363cb3b150c333,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2576743559568408084}
+      addedObject: {fileID: 2953631424061132131}
   m_SourcePrefab: {fileID: 100100000, guid: 710a993f5313a2b448363cb3b150c333, type: 3}
 --- !u!1 &383020241810486846 stripped
 GameObject:
@@ -291,21 +272,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 689520442941688687}
   m_PrefabAsset: {fileID: 0}
---- !u!111 &2576743559568408084
-Animation:
+--- !u!95 &2953631424061132131
+Animator:
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 383020241810486846}
   m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 06eef77b1810f4c409c07c794849ef9e, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 63d5b924d4625024eabf4098ae7c0da7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &1016426266923216004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 710a993f5313a2b448363cb3b150c333,

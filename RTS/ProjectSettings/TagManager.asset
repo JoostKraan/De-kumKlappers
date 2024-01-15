@@ -17,6 +17,8 @@ TagManager:
   - NavMeshSurface
   - ironMinerHarvestingPoint
   - ironMiningDeliveryPoint
+  - HarvestingPoint
+  - DeliveryPoint
   layers:
   - Default
   - TransparentFX
