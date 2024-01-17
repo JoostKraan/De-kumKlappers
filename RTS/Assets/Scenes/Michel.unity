@@ -916,6 +916,34 @@ MonoBehaviour:
   - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
   - {fileID: 3125019525012259300, guid: c8b350551fbedc84c8025d7d29f3a018, type: 3}
   - {fileID: 4026988788687868377, guid: c0c32672766a81647b04690fc9ed3595, type: 3}
+  DebrisPrefabs:
+  - DebrisObject: {fileID: 6917843208631529568, guid: ae3df12def0d4de4db7a10276fe3e51f,
+      type: 3}
+    Weight: 15
+  - DebrisObject: {fileID: 3562780578981102508, guid: 29b14a8ba835781408371ae6bb1fd8e0,
+      type: 3}
+    Weight: 100
+  - DebrisObject: {fileID: 4026988788687868377, guid: c0c32672766a81647b04690fc9ed3595,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 3010216212467657930, guid: 244ce2af788c0c346b86cbc0473811b0,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 6444807355431749394, guid: f593bc20677ebf14abd27a4853408c68,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 5153741093904279990, guid: ef8374d642969b14baa54045236c5fb0,
+      type: 3}
+    Weight: 30
+  - DebrisObject: {fileID: 2804321427668277467, guid: 0f3d14a9a6b2ceb469c15d151552a614,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2,
+      type: 3}
+    Weight: 25
   orePrefab: {fileID: 8687716767305649380, guid: 2b6b40cb8710f1944bffd10b5ebf571a,
     type: 3}
   treePrefab: {fileID: 6063694362977683523, guid: c471903e4d924b445856d44a06bc3489,
@@ -926,7 +954,7 @@ MonoBehaviour:
   oreSpawnChance: 5
   treeSpawnChance: 5
   ironSpawnChance: 5
-  distanceBetweenChecks: 1
+  distanceBetweenChecks: 2
   oreDistanceBetweenChecks: 20
   ironoreDistanceBetweenChecks: 20
   heightCheck: 30
