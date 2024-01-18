@@ -946,13 +946,13 @@ MonoBehaviour:
     Weight: 25
   orePrefab: {fileID: 8687716767305649380, guid: 2b6b40cb8710f1944bffd10b5ebf571a,
     type: 3}
-  treePrefab: {fileID: 6063694362977683523, guid: c471903e4d924b445856d44a06bc3489,
+  treePrefab: {fileID: 1294928056766839765, guid: 883ca3ef9e74dcf4cac27789a689c0bc,
     type: 3}
   ironPrefab: {fileID: 8687716767305649380, guid: 2bcef9c23b5bd274694822260832cf89,
     type: 3}
   spawnChance: 8
   oreSpawnChance: 5
-  treeSpawnChance: 5
+  treeSpawnChance: 15
   ironSpawnChance: 5
   distanceBetweenChecks: 2
   oreDistanceBetweenChecks: 20
@@ -985,9 +985,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73147956d32227f41b3c5e2d440755a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingWood: 100
-  startingStone: 50
-  startingIron: 20
+  startingWood: 9999
+  startingStone: 9999
+  startingIron: 9999
   wood: 100
   stone: 10
   iron: 0
