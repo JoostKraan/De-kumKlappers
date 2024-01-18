@@ -16,6 +16,7 @@ public class BuildingPlacement : MonoBehaviour
     public GameObject pendingPrefab;
     [SerializeField] private NavMeshSurface navMesh;
     [SerializeField] private Material[] materials;
+    [SerializeField] private Material BaseMaterial;
 
     private Vector3 pos;
 
@@ -79,26 +80,22 @@ public class BuildingPlacement : MonoBehaviour
     }
 
     public void SelectObject(int index)
-    {
-        if(index == 0 && gamemanager.wood >= 75)
-        {
+    {   
+        if(index == 0 && gamemanager.wood >= 75) {
             pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
         }
-        if (index == 1 && gamemanager.wood >= 150)
-        {
+        if (index == 1 && gamemanager.wood >= 150) {
             pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
         }
-        if (index == 2 && gamemanager.wood >= 50 && gamemanager.stone >= 25)
-        {
+        if (index == 2 && gamemanager.wood >= 50 && gamemanager.stone >= 25) {
             pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
         }
-        if (index == 3 && gamemanager.wood >= 75 && gamemanager.stone >= 50)
-        {
+        if (index == 3 && gamemanager.wood >= 75 && gamemanager.stone >= 50) {
             pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
         }
 
         // Instantiate the building            
-        pendingPrefab.GetComponent<MeshRendererHandler>().MeshRenderer.tag = "PlaceObject";
+        pendingPrefab.tag = "PlaceObject";
 
         // Add physics components
         pendingPrefab.AddComponent<Rigidbody>();
@@ -106,34 +103,26 @@ public class BuildingPlacement : MonoBehaviour
         rigidbody.isKinematic = true;
         rigidbody.useGravity = false;
 
-        // Add a box collider
-        pendingPrefab.AddComponent<BoxCollider>();
-        BoxCollider boxCollider = pendingPrefab.GetComponent<BoxCollider>();
-        boxCollider.size = new Vector3(.99f, .99f, .99f);
-        boxCollider.isTrigger = true;
-
         // Add the CheckPlacement script
-        pendingPrefab.GetComponent<MeshRendererHandler>().MeshRenderer.AddComponent<CheckPlacement>();
+        pendingPrefab.AddComponent<CheckPlacement>();
     }
 
     void UpdateMaterials()
     {
         if (pendingPrefab == null) return;
-        if (canPlace)
-        {
-            pendingPrefab.GetComponent<MeshRendererHandler>().MeshRenderer.GetComponent<MeshRenderer>().material =
-                materials[0];
-        } else
-        {
-            pendingPrefab.GetComponent<MeshRendererHandler>().MeshRenderer.GetComponent<MeshRenderer>().material =
-                materials[1];
+        if (canPlace) {
+            pendingPrefab.GetComponent<MeshRenderer>().material = materials[0];
+        } else {
+            pendingPrefab.GetComponent<MeshRenderer>().material = materials[1];
         }
     }
 
     public void PlaceObject()
     {
-        // pendingPrefab.GetComponent<MeshRenderer>().material = materials[2];
         ActiveBuildings.Add(pendingPrefab);
+        pendingPrefab.GetComponent<MeshRenderer>().material = BaseMaterial;
+        pendingPrefab.GetComponent<CheckPlacement>().PlaceBuilding();
+
         pendingPrefab = null;
     }
 
