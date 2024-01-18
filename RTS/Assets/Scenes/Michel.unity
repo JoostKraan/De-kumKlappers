@@ -2308,6 +2308,11 @@ PrefabInstance:
       objectReference: {fileID: 380428448}
     - target: {fileID: 7723221707679244876, guid: d9dc1f44d0b8cdc428b4e7fb8dee5460,
         type: 3}
+      propertyPath: BaseMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b00c58d9b757994478947af8c35855e9, type: 2}
+    - target: {fileID: 7723221707679244876, guid: d9dc1f44d0b8cdc428b4e7fb8dee5460,
+        type: 3}
       propertyPath: buildingPrefabs.Array.size
       value: 4
       objectReference: {fileID: 0}
