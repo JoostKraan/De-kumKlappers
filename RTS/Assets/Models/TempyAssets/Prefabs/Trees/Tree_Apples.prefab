@@ -178,9 +178,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3985673207783746741}
   - component: {fileID: 3763292338390927142}
+  - component: {fileID: -5806542405623738740}
   m_Layer: 0
   m_Name: Tree_Apples
-  m_TagString: Untagged
+  m_TagString: Foliage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -195,7 +196,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -13.725389, y: 0, z: 3.3206117}
-  m_LocalScale: {x: 2.471002, y: 2.471002, z: 2.471002}
+  m_LocalScale: {x: 2.2195067, y: 2.2195067, z: 2.2195067}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7459416035914552381}
@@ -230,6 +231,27 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7402953462141666679}
   m_Enabled: 1
+--- !u!65 &-5806542405623738740
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917843208631529568}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7342090836739018520
 GameObject:
   m_ObjectHideFlags: 0

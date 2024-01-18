@@ -71,6 +71,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -7301945276814500565}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ee22b6e6aee64e4d91af197c6044c58,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4661023727109840831}
   m_SourcePrefab: {fileID: 100100000, guid: 7ee22b6e6aee64e4d91af197c6044c58, type: 3}
 --- !u!1 &1433993348679305689 stripped
 GameObject:
@@ -95,3 +99,24 @@ MonoBehaviour:
   Shop: {fileID: 0}
   countdownText: {fileID: 0}
   timeToSpawn: 0
+--- !u!135 &4661023727109840831
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433993348679305689}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 90
+  m_Center: {x: -7.1779737, y: 28.041862, z: 8.81073}
