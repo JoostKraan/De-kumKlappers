@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3285591052856297417}
   m_Layer: 0
   m_Name: Collect
-  m_TagString: treeHarvestingPoint
+  m_TagString: HarvestingPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 4093721048102138378}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_dead_LOD1
-  m_TagString: Untagged
+  m_TagString: treeHarvestingPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 6593551903030229429}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_dead_LOD0
-  m_TagString: Untagged
+  m_TagString: treeHarvestingPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 8687305150286601650}
   m_Layer: 0
   m_Name: PT_Fruit_Tree_01_dead_LOD2
-  m_TagString: Untagged
+  m_TagString: treeHarvestingPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
