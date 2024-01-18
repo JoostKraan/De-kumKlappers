@@ -17,6 +17,7 @@ TagManager:
   - NavMeshSurface
   - ironMinerHarvestingPoint
   - ironMiningDeliveryPoint
+  - Destination
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - StoneSpawning
   - DecoSpawning
   - IronSpawning
-  - 
+  - Clickable
   - 
   - 
   - 
