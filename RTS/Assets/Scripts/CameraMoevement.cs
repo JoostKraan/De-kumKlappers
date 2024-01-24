@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraMoevement : MonoBehaviour
 {
-    [SerializeField] Camera cam;
+    public Camera camera;
     
     public float zoomSpeed = 5.0f;
     public float minZoomDistance = 1.0f;
@@ -12,7 +12,7 @@ public class CameraMoevement : MonoBehaviour
 
     public float moveSpeed = 10f;
     public float minFOV = 20.0f;
-    public float maxFOV = 60.0f;
+    public float maxFOV = 50.0f;
     public float smoothTime = 0.2f;
     public float zoomSensitivity = 1.0f;
 
@@ -21,7 +21,7 @@ public class CameraMoevement : MonoBehaviour
 
     void Start()
     {
-        targetFOV = cam.fieldOfView;
+        targetFOV = camera.fieldOfView;
     }
 
     void Update()
@@ -33,7 +33,7 @@ public class CameraMoevement : MonoBehaviour
         targetFOV = Mathf.Clamp(targetFOV, minFOV, maxFOV);
 
         // Smoothly interpolate the current FOV to the target FOV
-        Camera.main.fieldOfView = Mathf.SmoothDamp(cam.fieldOfView, targetFOV, ref zoomVelocity, smoothTime);
+        Camera.main.fieldOfView = Mathf.SmoothDamp(camera.fieldOfView, targetFOV, ref zoomVelocity, smoothTime);
 
         // Moving
         float horizontalInput = Input.GetAxis("Horizontal");
