@@ -10,11 +10,8 @@ public class Gamemanager : MonoBehaviour
     public int startingStone = 50;
     public int startingIron = 20;
 
-    [HideInInspector]
     public int wood;
-    [HideInInspector]
     public int stone;
-    [HideInInspector]
     public int iron;
 
     private void Start()

@@ -10,11 +10,14 @@ public class StoneWorkerSpawner : MonoBehaviour
 
     public int timesSpawned;
     public float timer;
+    Gamemanager gamemanager;
 
     private void Start()
     {
+        gamemanager = GameObject.FindAnyObjectByType<Gamemanager>();
         buildingPlacement = GameObject.Find("BuildingManager").GetComponent<BuildingPlacement>();
         timer = 3f;
+        gamemanager.wood -= 150;
     }
     void Update()
     {

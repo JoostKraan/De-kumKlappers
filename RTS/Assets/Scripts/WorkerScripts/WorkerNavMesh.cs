@@ -16,16 +16,12 @@ public class WorkerNavMesh : MonoBehaviour
     [SerializeField] private float timer = 5f;
     private bool isCountingDown = false;
     [SerializeField] private GameObject Mesh;
+    public Vector3 myDeliveryPoint;
+    public GameObject myHarvestingSpot;
     [SerializeField] private Animator animator;
     private Gamemanager gamemanager;
     private MeshRenderer workerMesh;
     private NavMeshAgent navMeshAgent;
-    public Transform treeHarvestingPoint;
-    public Transform treeDeliveryPoint;
-    private Transform minerHarvestingPoint;
-    private Transform miningDeliveryPoint;
-    private Transform ironMiningHarvestingPoint;
-    private Transform ironMiningDeliveryPoint;
 
     public List<GameObject> treeToHarvest; // List of objects to check for proximity
     public List<GameObject> stoneToHarvest;
@@ -35,11 +31,13 @@ public class WorkerNavMesh : MonoBehaviour
     public GameObject closestStone;
     public GameObject closetIron;
 
-    public GameObject myHarvestingSpot;
+    public float distanceThreshold = 5.0f;
     private void Start()
     {
         isGoingToDeliveryPoint = false;
         isGoingToHavestingPoint = true;
+        Vector3 currentPosition = gameObject.transform.position;
+        myDeliveryPoint = currentPosition;
         gamemanager = GameObject.FindWithTag("Gamemanager").GetComponent<Gamemanager>();
         workerMesh = GetComponent<MeshRenderer>();
         animator = Mesh.GetComponent<Animator>();
@@ -51,36 +49,32 @@ public class WorkerNavMesh : MonoBehaviour
         GameObject[] stonesWithTag = GameObject.FindGameObjectsWithTag("minerHarvestingPoint");
         stoneToHarvest.AddRange(stonesWithTag);
         GameObject[] ironWithTag = GameObject.FindGameObjectsWithTag("ironMinerHarvestingPoint");
-        ironToHarvest.AddRange(ironWithTag);       
+        ironToHarvest.AddRange(ironWithTag);
     }
     private void Update()
     {
+        //find harvesting and delivery points
         if (TreeHarvesters)
         {
             closestTree = FindClosestTree();
-            //treeToHarvest.Remove(closestTree);
-            treeDeliveryPoint = GameObject.FindWithTag("treeDeliveryPoint").transform;
+            myHarvestingSpot = closestTree;
         }
         if (Miners)
         {
             closestStone = FindClosestStone();
-            //stoneToHarvest.Remove(closestStone);
-            miningDeliveryPoint = GameObject.FindWithTag("miningDeliveryPoint").transform;
+            myHarvestingSpot = closestStone;
         }
         if (ironMiner)
         {
             closetIron = FindClosestIron();
             myHarvestingSpot = closetIron;
-            //ironToHarvest.Remove(closetIron);
-            ironMiningDeliveryPoint = GameObject.FindWithTag("ironMiningDeliveryPoint").transform;
         }
-
         MoveBetweenPoints();
-        if(isCountingDown)
+        if (isCountingDown)
         {
             animator.SetBool("idle", false);
             animator.SetBool("Walking", false);
-            if(Miners || ironMiner)
+            if (Miners || ironMiner)
             {
                 animator.SetBool("Mining", true);
             }
@@ -88,171 +82,164 @@ public class WorkerNavMesh : MonoBehaviour
             {
                 animator.SetBool("Chopping", true);
             }
-            if (isGoingToHavestingPoint)
+            timer -= Time.deltaTime;
+            if (timer <= 0)
             {
-                timer -= Time.deltaTime;
-                if (timer <= 0)
-                {
-                    isGoingToHavestingPoint = false;
-                    isGoingToDeliveryPoint = true;
-                    Mesh.SetActive(true);
-                }
+                isGoingToHavestingPoint = false;
+                isGoingToDeliveryPoint = true;
             }
         }
-        if(isGoingToDeliveryPoint)
+        else if(!isCountingDown)
+        {
+            if (Miners || ironMiner)
+            {
+                animator.SetBool("Mining", false);
+            }
+            else if (TreeHarvesters)
+            {
+                animator.SetBool("Chopping", false);
+            }
+            animator.SetBool("idle", false);
+            animator.SetBool("Walking", true);
+        }
+
+        if (isGoingToDeliveryPoint)
         {
             isCountingDown = false;
         }
-    }    
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("HarvestingPoint"))
+        {
+            print("Harvesting point reached");
+            timer = 5f;
+            isCountingDown = true;
+        }
+        if (other.gameObject.CompareTag("DeliveryPoint"))
+        {            
+            isGoingToDeliveryPoint = false;
+            isGoingToHavestingPoint = true;
+            if(isGoingToDeliveryPoint)
+            {
+                if (TreeHarvesters)
+                {
+                    gamemanager.wood += 5;
+                }
+                if (Miners)
+                {
+                    gamemanager.stone += 5;
+                }
+                if (ironMiner)
+                {
+                    gamemanager.iron += 5;
+                }
+            }
+        }
+    }
+
+    //walking function
     private void MoveBetweenPoints()
-    {
-        if(isGoingToHavestingPoint)
         {
-            animator.SetBool("Idle", false);
-            animator.SetBool("Walking", true);
-            if (TreeHarvesters)
+            if (isGoingToHavestingPoint)
             {
-                navMeshAgent.destination = closestTree.transform.position;
-            }
-            if(Miners)
-            {
-                navMeshAgent.destination = closestStone.transform.position;
-            }
-            if (ironMiner)
-            {
-                navMeshAgent.destination = myHarvestingSpot.transform.position;
-
-                //ironToHarvest.Remove(closetIron);
-            }
-        }
-        if(isGoingToDeliveryPoint)
-        {
-            animator.SetBool("Idle", false);
-            animator.SetBool("Walking", true);
-            if (TreeHarvesters)
-            {
-                navMeshAgent.destination = treeDeliveryPoint.transform.position;
-            }
-            if (Miners)
-            {
-                navMeshAgent.destination = miningDeliveryPoint.transform.position;
-            }
-            if (ironMiner)
-            {
-                navMeshAgent.destination = ironMiningDeliveryPoint.transform.position;
-            }
-        }
-    }
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (TreeHarvesters)
-        {
-            if (collision.collider.CompareTag("treeHarvestingPoint"))
-            {
-                print("colidded with forrest");
-                timer = 5f;
-                isCountingDown = true;
-                Mesh.SetActive(false);
-            }
-            if (collision.collider.CompareTag("treeDeliveryPoint"))
-            {
-                gamemanager.wood += 5;
-                isGoingToDeliveryPoint = false;
-                isGoingToHavestingPoint = true;
-            }
-        }
-        if (Miners)
-        {
-            if (collision.collider.CompareTag("minerHarvestingPoint"))
-            {
-                timer = 5f;
-                isCountingDown = true;
-                Mesh.SetActive(false);
-            }
-            if (collision.collider.CompareTag("miningDeliveryPoint"))
-            {
-                gamemanager.stone += 5;
-                isGoingToDeliveryPoint = false;
-                isGoingToHavestingPoint = true;
-            }
-        }
-        if (ironMiner)
-        {
-            if (collision.collider.CompareTag("ironMinerHarvestingPoint"))
-            {
-                timer = 5f;
-                isCountingDown = true;
-                Mesh.SetActive(false);
-            }
-            if (collision.collider.CompareTag("ironMiningDeliveryPoint"))
-            {
-                gamemanager.iron += 5;
-                isGoingToDeliveryPoint = false;
-                isGoingToHavestingPoint = true;
-            }
-        }
-    }
-    GameObject FindClosestTree()
-    {
-        GameObject closestTree = null;
-        float closestDistance = Mathf.Infinity;
-
-        foreach (GameObject tree in treeToHarvest)
-        {
-            if (tree != null)
-            {
-                float distance = Vector3.Distance(referencePoint.position, tree.transform.position);
-
-                if (distance < closestDistance)
+                //animator.SetBool("Idle", false);
+                //animator.SetBool("Walking", true);
+                if (TreeHarvesters)
                 {
-                    closestDistance = distance;
-                    closestTree = tree;
+                    navMeshAgent.destination = myHarvestingSpot.transform.position;
+                }
+                if (Miners)
+                {
+                    navMeshAgent.destination = myHarvestingSpot.transform.position;
+                }
+                if (ironMiner)
+                {
+                    navMeshAgent.destination = myHarvestingSpot.transform.position;
+
+                    //ironToHarvest.Remove(closetIron);
+                }
+            }
+            if (isGoingToDeliveryPoint)
+            {
+                //animator.SetBool("Idle", false);
+                //animator.SetBool("Walking", true);
+                if (TreeHarvesters)
+                {
+                    navMeshAgent.destination = myDeliveryPoint;
+                }
+                if (Miners)
+                {
+                    navMeshAgent.destination = myDeliveryPoint;
+                }
+                if (ironMiner)
+                {
+                    navMeshAgent.destination = myDeliveryPoint;
                 }
             }
         }
 
-        return closestTree;
-    }
-    GameObject FindClosestStone()
-    {
-        GameObject closestStone = null;
-        float closestDistance = Mathf.Infinity;
-
-        foreach (GameObject stone in stoneToHarvest)
+        GameObject FindClosestTree()
         {
-            if (stone != null)
-            {
-                float distance = Vector3.Distance(referencePoint.position, stone.transform.position);
+            GameObject closestTree = null;
+            float closestDistance = Mathf.Infinity;
 
-                if (distance < closestDistance)
+            foreach (GameObject tree in treeToHarvest)
+            {
+                if (tree != null)
                 {
-                    closestDistance = distance;
-                    closestStone = stone;
+                    float distance = Vector3.Distance(referencePoint.position, tree.transform.position);
+
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestTree = tree;
+                    }
                 }
             }
+
+            return closestTree;
         }
-
-        return closestStone;
-    }
-    GameObject FindClosestIron()
-    {
-        GameObject closestiron = null;
-        float closestDistance = Mathf.Infinity;
-
-        foreach (GameObject iron in ironToHarvest)
+        GameObject FindClosestStone()
         {
-            if (iron != null)
-            {
-                float distance = Vector3.Distance(referencePoint.position, iron.transform.position);
+            GameObject closestStone = null;
+            float closestDistance = Mathf.Infinity;
 
-                if (distance < closestDistance)
+            foreach (GameObject stone in stoneToHarvest)
+            {
+                if (stone != null)
                 {
-                    closestDistance = distance;
-                    closestiron = iron;
+                    float distance = Vector3.Distance(referencePoint.position, stone.transform.position);
+
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestStone = stone;
+                    }
                 }
             }
-        }
 
-        return closestiron;
+            return closestStone;
+        }
+        GameObject FindClosestIron()
+        {
+            GameObject closestiron = null;
+            float closestDistance = Mathf.Infinity;
+
+            foreach (GameObject iron in ironToHarvest)
+            {
+                if (iron != null)
+                {
+                    float distance = Vector3.Distance(referencePoint.position, iron.transform.position);
+
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestiron = iron;
+                    }
+                }
+            }
+
+            return closestiron;
+        }
     }
-}

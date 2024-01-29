@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class BuildingPlacement : MonoBehaviour
 {
-    EconomyManager economymanager;
     Gamemanager gamemanager;
 
     public GameObject[] buildingPrefabs;
@@ -17,6 +16,7 @@ public class BuildingPlacement : MonoBehaviour
     public GameObject pendingPrefab;
     [SerializeField] private NavMeshSurface navMesh;
     [SerializeField] private Material[] materials;
+    [SerializeField] private Material BaseMaterial;
 
     private Vector3 pos;
 
@@ -29,13 +29,12 @@ public class BuildingPlacement : MonoBehaviour
 
     private void Start()
     {
-        economymanager = GameObject.FindObjectOfType<EconomyManager>();
-        gamemanager= GameObject.FindObjectOfType<Gamemanager>();
+        gamemanager = GameObject.FindObjectOfType<Gamemanager>();
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.X))
         {
             CancelPlacement();
         }
@@ -81,73 +80,49 @@ public class BuildingPlacement : MonoBehaviour
     }
 
     public void SelectObject(int index)
-    {
-        // Assuming EconomyManager and GameManager are assigned in the Inspector or initialized elsewhere
-            // Deduct the cost of the building from the player's resources
-        if(index == 0 && economymanager.canAffordforester)
-        {
+    {   
+        if(index == 0 && gamemanager.wood >= 75) {
             pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
-            gamemanager.wood -= economymanager.foresterWoodCost;
-            gamemanager.stone -= economymanager.foresterStoneCost;
-            gamemanager.iron -= economymanager.foresterIronCost;
         }
-        if (index == 1 && economymanager.canAffordMiner)
-        {
+        if (index == 1 && gamemanager.wood >= 150) {
             pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
-            gamemanager.wood -= economymanager.minerWoodCost;
-            gamemanager.stone -= economymanager.minerStoneCost;
-            gamemanager.iron -= economymanager.minerIronCost;
         }
-        if (index == 2 && economymanager.canAffordTrainer)
-        {
+        if (index == 2 && gamemanager.wood >= 50 && gamemanager.stone >= 25) {
             pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
-            gamemanager.wood -= economymanager.trainerWoodCost;
-            gamemanager.stone -= economymanager.trainerStoneCost;
-            gamemanager.iron -= economymanager.trainerIronCost;
         }
-        if (index == 3 && economymanager.canAffordTrainer)
-        {
+        if (index == 3 && gamemanager.wood >= 75 && gamemanager.stone >= 50) {
             pendingPrefab = Instantiate(buildingPrefabs[index], pos, transform.rotation);
-            gamemanager.wood -= economymanager.trainerWoodCost;
-            gamemanager.stone -= economymanager.trainerStoneCost;
-            gamemanager.iron -= economymanager.trainerIronCost;
         }
 
         // Instantiate the building            
         pendingPrefab.tag = "PlaceObject";
 
-            // Add physics components
-            pendingPrefab.AddComponent<Rigidbody>();
-            Rigidbody rigidbody = pendingPrefab.GetComponent<Rigidbody>();
-            rigidbody.isKinematic = true;
-            rigidbody.useGravity = false;
+        // Add physics components
+        pendingPrefab.AddComponent<Rigidbody>();
+        Rigidbody rigidbody = pendingPrefab.GetComponent<Rigidbody>();
+        rigidbody.isKinematic = true;
+        rigidbody.useGravity = false;
 
-            // Add a box collider
-            pendingPrefab.AddComponent<BoxCollider>();
-            BoxCollider boxCollider = pendingPrefab.GetComponent<BoxCollider>();
-            boxCollider.size = new Vector3(.99f, .99f, .99f);
-            boxCollider.isTrigger = true;
-
-            // Add the CheckPlacement script
-            pendingPrefab.AddComponent<CheckPlacement>();
+        // Add the CheckPlacement script
+        pendingPrefab.AddComponent<CheckPlacement>();
     }
 
     void UpdateMaterials()
     {
         if (pendingPrefab == null) return;
-        if (canPlace)
-        {
+        if (canPlace) {
             pendingPrefab.GetComponent<MeshRenderer>().material = materials[0];
-        } else
-        {
+        } else {
             pendingPrefab.GetComponent<MeshRenderer>().material = materials[1];
         }
     }
 
     public void PlaceObject()
     {
-        // pendingPrefab.GetComponent<MeshRenderer>().material = materials[2];
         ActiveBuildings.Add(pendingPrefab);
+        pendingPrefab.GetComponent<MeshRenderer>().material = BaseMaterial;
+        pendingPrefab.GetComponent<CheckPlacement>().PlaceBuilding();
+
         pendingPrefab = null;
     }
 
