@@ -20,6 +20,7 @@ TagManager:
   - HarvestingPoint
   - DeliveryPoint
   - Foliage
+  - Destination
   layers:
   - Default
   - TransparentFX
@@ -32,7 +33,7 @@ TagManager:
   - StoneSpawning
   - DecoSpawning
   - IronSpawning
-  - 
+  - Clickable
   - 
   - 
   - 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -365,7 +365,7 @@ PrefabInstance:
     - target: {fileID: 2686329940618969528, guid: 4859da805e76c4c48833fb5edf45a2f9,
         type: 3}
       propertyPath: m_Name
-      value: Unit (3)
+      value: Unit 4
       objectReference: {fileID: 0}
     - target: {fileID: 2686329940618969528, guid: 4859da805e76c4c48833fb5edf45a2f9,
         type: 3}
@@ -626,7 +626,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 789628279}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 282b57bbfbfae3c49b11a69857cc9579, type: 3}
   m_Name: 
@@ -707,7 +707,7 @@ PrefabInstance:
     - target: {fileID: 2686329940618969528, guid: 4859da805e76c4c48833fb5edf45a2f9,
         type: 3}
       propertyPath: m_Name
-      value: Unit (1)
+      value: Unit 2
       objectReference: {fileID: 0}
     - target: {fileID: 2686329940618969528, guid: 4859da805e76c4c48833fb5edf45a2f9,
         type: 3}
@@ -1485,7 +1485,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392386668}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 282b57bbfbfae3c49b11a69857cc9579, type: 3}
   m_Name: 
@@ -1582,7 +1582,7 @@ PrefabInstance:
     - target: {fileID: 2686329940618969528, guid: 4859da805e76c4c48833fb5edf45a2f9,
         type: 3}
       propertyPath: m_Name
-      value: Unit
+      value: Unit 1
       objectReference: {fileID: 0}
     - target: {fileID: 2686329940618969528, guid: 4859da805e76c4c48833fb5edf45a2f9,
         type: 3}
@@ -1843,7 +1843,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1459200566}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 282b57bbfbfae3c49b11a69857cc9579, type: 3}
   m_Name: 
@@ -2030,7 +2030,7 @@ PrefabInstance:
     - target: {fileID: 2686329940618969528, guid: 4859da805e76c4c48833fb5edf45a2f9,
         type: 3}
       propertyPath: m_Name
-      value: Unit (2)
+      value: Unit 3
       objectReference: {fileID: 0}
     - target: {fileID: 2686329940618969528, guid: 4859da805e76c4c48833fb5edf45a2f9,
         type: 3}
@@ -2291,7 +2291,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1936718853}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 282b57bbfbfae3c49b11a69857cc9579, type: 3}
   m_Name: 
