@@ -36,7 +36,7 @@ public class UnitClick : MonoBehaviour
             }
             else
             {
-                if (Input.GetKey(KeyCode.LeftShift))
+                if (!Input.GetKey(KeyCode.LeftShift))
                 {
                     UnitSelections.instance.DeselectAll();
                 }

@@ -50,6 +50,7 @@ public class UnitSelections : MonoBehaviour
         {
             unitsSelected.Add(unitToAdd);
             unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
+            unitToAdd.GetComponent<UnitMovement>().enabled = true;
         }
 
         
