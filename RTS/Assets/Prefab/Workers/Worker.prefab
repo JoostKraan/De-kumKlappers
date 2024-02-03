@@ -127,7 +127,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
@@ -152,7 +152,7 @@ MonoBehaviour:
   ironMiner: 0
   timer: 5
   Mesh: {fileID: 383020241810486846}
-  myDeliveryPoint: {fileID: 0}
+  myDeliveryPoint: {x: 0, y: 0, z: 0}
   myHarvestingSpot: {fileID: 0}
   animator: {fileID: 0}
   treeToHarvest: []

@@ -128,7 +128,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
@@ -153,9 +153,9 @@ MonoBehaviour:
   ironMiner: 0
   timer: 5
   Mesh: {fileID: 5890863921465436820}
+  myDeliveryPoint: {x: 0, y: 0, z: 0}
+  myHarvestingSpot: {fileID: 0}
   animator: {fileID: 0}
-  treeHarvestingPoint: {fileID: 0}
-  treeDeliveryPoint: {fileID: 0}
   treeToHarvest: []
   stoneToHarvest: []
   ironToHarvest: []
@@ -163,7 +163,7 @@ MonoBehaviour:
   closestTree: {fileID: 0}
   closestStone: {fileID: 0}
   closetIron: {fileID: 0}
-  myHarvestingSpot: {fileID: 0}
+  distanceThreshold: 5
 --- !u!95 &7106395750325815311
 Animator:
   serializedVersion: 5
