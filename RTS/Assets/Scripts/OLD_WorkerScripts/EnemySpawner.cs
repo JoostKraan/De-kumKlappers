@@ -7,13 +7,17 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject workerPrefab;
     public Transform spawnLocation;
-
+    private EnemyEconomy econemyManager;
+    private BuildCost buildCost;
     public int timesSpawned;
     public float timer;
 
     private void Start()
     {
+        buildCost = GetComponent<BuildCost>();
         timer = 3f;
+        econemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<EnemyEconomy>();
+
     }
 
     void Update()

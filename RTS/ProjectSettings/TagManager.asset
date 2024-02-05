@@ -19,6 +19,7 @@ TagManager:
   - ironMiningDeliveryPoint
   - HarvestingPoint
   - DeliveryPoint
+  - EnemyManager
   layers:
   - Default
   - TransparentFX
