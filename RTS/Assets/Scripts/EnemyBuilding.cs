@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyBuilding : MonoBehaviour
@@ -10,6 +11,7 @@ public class EnemyBuilding : MonoBehaviour
     private EnemySpawner spawner;
 
     private bool isBuilding = false;
+    private List<int> availableBuildingIndices = new List<int>();
 
     // Update is called once per frame
     void Update()
@@ -27,9 +29,16 @@ public class EnemyBuilding : MonoBehaviour
 
     void StartBuilding()
     {
-        // Randomly choose a building type to construct
-        int randomIndex = Random.Range(0, buildingPrefabs.Length);
-        GameObject selectedBuildingPrefab = buildingPrefabs[randomIndex];
+        if (availableBuildingIndices.Count == 0)
+        {
+            // All buildings have been built at least once, reset the available indices
+            ResetAvailableBuildingIndices();
+        }
+
+        // Randomly choose a building type to construct from the available indices
+        int randomIndex = Random.Range(0, availableBuildingIndices.Count);
+        int selectedBuildingIndex = availableBuildingIndices[randomIndex];
+        GameObject selectedBuildingPrefab = buildingPrefabs[selectedBuildingIndex];
 
         // Get the BuildingCosts script from the selected building prefab
         BuildCost buildingCosts = selectedBuildingPrefab.GetComponent<BuildCost>();
@@ -53,6 +62,9 @@ public class EnemyBuilding : MonoBehaviour
                 buildingRange += 5;
                 spawner = spawnedBuilding.gameObject.GetComponent<EnemySpawner>();
 
+                // Remove the selected index from availableBuildingIndices
+                availableBuildingIndices.RemoveAt(randomIndex);
+
                 // Set a cooldown or delay before the next building construction
                 StartCoroutine(BuildCooldown());
             }
@@ -63,6 +75,17 @@ public class EnemyBuilding : MonoBehaviour
             Debug.Log("BuildingCosts script not found on the selected building prefab.");
         }
     }
+
+    private void ResetAvailableBuildingIndices()
+    {
+        // Reset availableBuildingIndices to include all building indices
+        availableBuildingIndices.Clear();
+        for (int i = 0; i < buildingPrefabs.Length; i++)
+        {
+            availableBuildingIndices.Add(i);
+        }
+    }
+
     public bool CanAffordBuilding(BuildCost Bc)
     {
         float remainingWood = enemyEconomy.Wood - Bc.woodCost;
@@ -76,13 +99,8 @@ public class EnemyBuilding : MonoBehaviour
         else
         {
             return false;
-
         }
-
     }
-
-
-
 
     void TryBuild()
     {

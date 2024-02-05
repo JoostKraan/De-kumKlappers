@@ -120,8 +120,6 @@ public class WorkerNavMesh : MonoBehaviour
         }
         if (other.gameObject.CompareTag("DeliveryPoint"))
         {            
-            isGoingToDeliveryPoint = false;
-            isGoingToHavestingPoint = true;
             if(isGoingToDeliveryPoint)
             {
                 if (TreeHarvesters)
@@ -137,6 +135,8 @@ public class WorkerNavMesh : MonoBehaviour
                     gamemanager.iron += 5;
                 }
             }
+            isGoingToDeliveryPoint = false;
+            isGoingToHavestingPoint = true;
         }
     }
 
