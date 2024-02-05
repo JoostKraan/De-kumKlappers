@@ -10,7 +10,7 @@ public class ZoneChecker : MonoBehaviour
     {
         if (other.CompareTag(targetTag))
         {
-            Destroy(other);
+            Destroy(other.gameObject);
         }
     }
 }
