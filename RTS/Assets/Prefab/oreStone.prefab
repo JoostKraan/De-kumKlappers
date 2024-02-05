@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1355938923302786684}
   - component: {fileID: 4563987826554947973}
   - component: {fileID: 2671121088948582877}
-  - component: {fileID: 4777178343829223009}
+  - component: {fileID: 7252254795289014231}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: HarvestingPoint
+  m_TagString: minerHarvestingPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,20 +100,90 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: 84d05e028da066849b1a423e6758b157, type: 3}
---- !u!54 &4777178343829223009
-Rigidbody:
+--- !u!208 &7252254795289014231
+NavMeshObstacle:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3839208400683649981}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.030000001, y: 0.017, z: 0.020000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.004, y: 0, z: 0.020000001}
+  m_TimeToStationary: 0.5
+--- !u!1 &5053315196543099169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7213697838343589010}
+  - component: {fileID: 1469314617471949454}
+  - component: {fileID: 8368806810564288285}
+  m_Layer: 0
+  m_Name: HarvestingPoint
+  m_TagString: HarvestingPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7213697838343589010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053315196543099169}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0047, y: 0.0001, z: 0.0141}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8348311355362973278}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1469314617471949454
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053315196543099169}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.07476828, y: 0.046275668, z: 0.039367046}
+  m_Center: {x: 0, y: 0, z: 0.005564989}
+--- !u!54 &8368806810564288285
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5053315196543099169}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -134,37 +204,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!1 &8560132708238021872
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 998094838141764446}
-  m_Layer: 0
-  m_Name: MiningLocation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &998094838141764446
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8560132708238021872}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.04600001, y: 0, z: 0.008600002}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8348311355362973278}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8381640425759863221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,7 +285,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 84d05e028da066849b1a423e6758b157,
         type: 3}
       propertyPath: m_TagString
-      value: minerHarvestingPoint
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -5754084199372789682, guid: 84d05e028da066849b1a423e6758b157, type: 3}
@@ -256,20 +295,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84d05e028da066849b1a423e6758b157,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 998094838141764446}
+      addedObject: {fileID: 5396164396136730873}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 84d05e028da066849b1a423e6758b157,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5396164396136730873}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84d05e028da066849b1a423e6758b157,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5873727337435356800}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 84d05e028da066849b1a423e6758b157,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3176438626572527391}
+      addedObject: {fileID: 7213697838343589010}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84d05e028da066849b1a423e6758b157, type: 3}
 --- !u!4 &8348311355362973278 stripped
 Transform:
@@ -277,57 +308,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8381640425759863221}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &8687716767305649380 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 84d05e028da066849b1a423e6758b157,
-    type: 3}
-  m_PrefabInstance: {fileID: 8381640425759863221}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &5873727337435356800
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8687716767305649380}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.060928162, y: 0.034572627, z: 0.039516397}
-  m_Center: {x: -0.0040380876, y: -0.00009291341, z: 0.019770075}
---- !u!54 &3176438626572527391
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8687716767305649380}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 126
-  m_CollisionDetection: 0

@@ -74,25 +74,35 @@ public class WorkerNavMesh : MonoBehaviour
         MoveBetweenPoints();
         if (isCountingDown)
         {
+            animator.SetBool("idle", false);
+            animator.SetBool("Walking", false);
+            if (Miners || ironMiner)
+            {
+                animator.SetBool("Mining", true);
+            }
+            else if (TreeHarvesters)
+            {
+                animator.SetBool("Chopping", true);
+            }
             timer -= Time.deltaTime;
             if (timer <= 0)
             {
                 isGoingToHavestingPoint = false;
                 isGoingToDeliveryPoint = true;
             }
-            animator.SetBool("idle", false);
-            animator.SetBool("Walking", false);
+        }
+        else if(!isCountingDown)
+        {
             if (Miners || ironMiner)
             {
-                animator.SetBool("Mining", true);
-
-                Transform childTransform = myHarvestingSpot.transform.Find("MiningLocation");
-                gameObject.transform.position = childTransform.position;
+                animator.SetBool("Mining", false);
             }
             else if (TreeHarvesters)
             {
-                animator.SetBool("Chopping", true);
+                animator.SetBool("Chopping", false);
             }
+            animator.SetBool("idle", false);
+            animator.SetBool("Walking", true);
         }
 
         if (isGoingToDeliveryPoint)
@@ -112,17 +122,20 @@ public class WorkerNavMesh : MonoBehaviour
         {            
             isGoingToDeliveryPoint = false;
             isGoingToHavestingPoint = true;
-            if (TreeHarvesters)
+            if(isGoingToDeliveryPoint)
             {
-                gamemanager.wood += 5;
-            }
-            if (Miners)
-            {
-                gamemanager.stone += 5;
-            }
-            if (ironMiner)
-            {
-                gamemanager.iron += 5;
+                if (TreeHarvesters)
+                {
+                    gamemanager.wood += 5;
+                }
+                if (Miners)
+                {
+                    gamemanager.stone += 5;
+                }
+                if (ironMiner)
+                {
+                    gamemanager.iron += 5;
+                }
             }
         }
     }
@@ -132,8 +145,8 @@ public class WorkerNavMesh : MonoBehaviour
         {
             if (isGoingToHavestingPoint)
             {
-                animator.SetBool("Idle", false);
-                animator.SetBool("Walking", true);
+                //animator.SetBool("Idle", false);
+                //animator.SetBool("Walking", true);
                 if (TreeHarvesters)
                 {
                     navMeshAgent.destination = myHarvestingSpot.transform.position;
@@ -151,8 +164,8 @@ public class WorkerNavMesh : MonoBehaviour
             }
             if (isGoingToDeliveryPoint)
             {
-                animator.SetBool("Idle", false);
-                animator.SetBool("Walking", true);
+                //animator.SetBool("Idle", false);
+                //animator.SetBool("Walking", true);
                 if (TreeHarvesters)
                 {
                     navMeshAgent.destination = myDeliveryPoint;
