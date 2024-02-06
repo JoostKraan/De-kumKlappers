@@ -5,7 +5,7 @@ using UnityEngine;
 public class Gamemanager : MonoBehaviour
 {
     public static Gamemanager Instance;
-
+    public Transform[] Units;
     public int startingWood = 100;
     public int startingStone = 50;
     public int startingIron = 20;
@@ -22,14 +22,5 @@ public class Gamemanager : MonoBehaviour
     }
 
 
-    //public void SpendResources(int woodAmount, int stoneAmount, int ironAmount)
-    //{
-    //    if (HasEnoughResources(woodAmount, stoneAmount, ironAmount))
-    //    {
-    //        wood -= woodAmount;
-    //        stone -= stoneAmount;
-    //        iron -= ironAmount;
-    //    }
-    //    // You may want to add additional handling if resources are insufficient
-    //}
+    
 }

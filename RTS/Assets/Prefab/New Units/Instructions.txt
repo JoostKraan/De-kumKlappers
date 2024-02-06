@@ -1,0 +1,1 @@
+Keep "Unit Movement" script disabled when placing unit prefab in world
