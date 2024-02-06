@@ -27,7 +27,7 @@ public class UnitClick : MonoBehaviour
             {
                 if (Input.GetKey(KeyCode.LeftShift))
                 {
-                    UnitSelections.instance.ShiftCLickSelect(hit.collider.gameObject);
+                    UnitSelections.instance.ShiftClickSelect(hit.collider.gameObject);
                 }
                 else
                 {

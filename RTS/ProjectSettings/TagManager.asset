@@ -21,6 +21,8 @@ TagManager:
   - DeliveryPoint
   - Foliage
   - Destination
+  - PlayerUnit
+  - EnemyUnit
   layers:
   - Default
   - TransparentFX

@@ -11,6 +11,7 @@ public class UnitDrag : MonoBehaviour
     Rect selectionBox;
     Vector2 startPosition;
     Vector2 endPosition;
+    private UnitMovement movement;
     void Start()
     {
         myCam = Camera.main;
@@ -22,6 +23,7 @@ public class UnitDrag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         if (Input.GetMouseButtonDown(0))
         {
             startPosition = Input.mousePosition;
