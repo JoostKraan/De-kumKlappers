@@ -29,7 +29,7 @@ public class Selection : MonoBehaviour
 
                     Select(hit.collider.gameObject);
                 }
-                if (hit.collider.gameObject.name == "trainingHouse")
+                if (hit.collider.gameObject.name == "Camp")
                 {
                     TrainingCamp tr = hit.collider.gameObject.GetComponent<TrainingCamp>();
                     tr.ShopActive();
