@@ -27,8 +27,7 @@ public class Buttons : MonoBehaviour
         stone.GetComponent<TMP_Text>().SetText(gamemanager.stone.ToString("N0"));
         iron.GetComponent<TMP_Text>().SetText(gamemanager.iron.ToString("N0"));
 
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
+        if(Input.GetKeyDown(KeyCode.Escape)) {
             if(!pauseScreenIsActive)
             {
                 pauseScreen.SetActive(true);

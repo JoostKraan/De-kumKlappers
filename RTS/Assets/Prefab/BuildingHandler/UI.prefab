@@ -1952,11 +1952,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de1fb39a8560a284cb46ab9684e6611a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gamemanager: {fileID: 0}
   pauseScreen: {fileID: 5163780193534694069}
   settingsScreen: {fileID: 0}
-  wood: {fileID: 3364371807818049467}
-  stone: {fileID: 3811014307500566713}
-  iron: {fileID: 7587380704434712853}
+  wood: {fileID: 0}
+  stone: {fileID: 0}
+  iron: {fileID: 0}
 --- !u!114 &2034859324625239101
 MonoBehaviour:
   m_ObjectHideFlags: 0
