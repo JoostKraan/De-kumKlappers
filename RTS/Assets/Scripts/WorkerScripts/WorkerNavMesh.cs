@@ -22,6 +22,7 @@ public class WorkerNavMesh : MonoBehaviour
     private Gamemanager gamemanager;
     private MeshRenderer workerMesh;
     private NavMeshAgent navMeshAgent;
+    [SerializeField] private GameObject tool;
 
     public List<GameObject> treeToHarvest; // List of objects to check for proximity
     public List<GameObject> stoneToHarvest;
