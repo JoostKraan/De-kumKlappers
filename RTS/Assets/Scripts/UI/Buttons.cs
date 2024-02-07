@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-    private Gamemanager gamemanager;
+    public Gamemanager gamemanager;
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject settingsScreen;
 
@@ -14,18 +15,18 @@ public class Buttons : MonoBehaviour
     bool pauseScreenIsActive = false;
     bool settingScreenIsActive = false;
     [Header("Text")]
-    public Text wood;
-    public Text stone;
-    public Text iron;
-    private void Start()
-    {
+    public GameObject wood;
+    public GameObject stone;
+    public GameObject iron;
+    private void Start() {
         gamemanager = GameObject.FindObjectOfType<Gamemanager>();
     }
-    private void Update()
-    {
-        wood.text = gamemanager.wood.ToString();
-        stone.text = gamemanager.stone.ToString();
-        iron.text = gamemanager.iron.ToString();
+
+    private void Update() {
+        wood.GetComponent<TMP_Text>().SetText(gamemanager.wood.ToString("N0"));
+        stone.GetComponent<TMP_Text>().SetText(gamemanager.stone.ToString("N0"));
+        iron.GetComponent<TMP_Text>().SetText(gamemanager.iron.ToString("N0"));
+
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(!pauseScreenIsActive)
@@ -57,6 +58,7 @@ public class Buttons : MonoBehaviour
             Time.timeScale = 1.0f;
         }
     }
+
     public void PauseGame()
     {
         pauseScreenIsActive = true;
