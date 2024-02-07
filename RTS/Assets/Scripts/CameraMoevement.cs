@@ -26,6 +26,14 @@ public class CameraMoevement : MonoBehaviour
 
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveSpeed = 55;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveSpeed = 25;
+        }
         float scrollWheelInput = Input.GetAxis("Mouse ScrollWheel");
         targetFOV -= scrollWheelInput * zoomSpeed * zoomSensitivity;
 

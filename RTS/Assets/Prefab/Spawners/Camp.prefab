@@ -908,7 +908,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7ee22b6e6aee64e4d91af197c6044c58,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Train
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemyTrainingCamp : MonoBehaviour
 {
-
-    public GameObject workerPrefab;
+    public List<GameObject> workerPrefabs = new List<GameObject>();
     public Transform spawnLocation;
     public EnemyEconomy closestEnemyEconomy;
     private BuildCost buildCost;
@@ -16,7 +15,6 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         buildCost = GetComponent<BuildCost>();
-        timer = 3f;
         FindClosestEnemyEconomy();
 
     }
@@ -53,7 +51,7 @@ public class EnemySpawner : MonoBehaviour
     {
         timer -= Time.deltaTime;
 
-        if (timesSpawned < 3 && timer <= 0)
+        if (timer <= 0)
         {
             SpawnWorker();
         }
@@ -61,11 +59,32 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnWorker()
     {
-        timesSpawned++;
-        GameObject A =Instantiate(workerPrefab, spawnLocation.position, Quaternion.identity);
-        WorkerList.Add(A);
-        timer = 3f;
+        if(closestEnemyEconomy.Iron > 0)
+        {
+
+            if (workerPrefabs.Count > 0)
+            {
+                int random_number = new System.Random().Next(0, workerPrefabs.Count);
+                Debug.Log(random_number);
+                timesSpawned++;
+                GameObject A = Instantiate(workerPrefabs[random_number], spawnLocation.position, Quaternion.identity);
+                WorkerList.Add(A);
+                closestEnemyEconomy.Iron -= 5;
+                timer = 30f;
+            }
+            else
+            {
+                Debug.LogError("No worker prefabs available to spawn.");
+            }
+        }
+        else
+        {
+            Debug.Log("Not enougf iron");
+        }
     }
+
 }
+
+
 
 
