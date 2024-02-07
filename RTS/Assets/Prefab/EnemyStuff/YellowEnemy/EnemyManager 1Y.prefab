@@ -69,6 +69,7 @@ MonoBehaviour:
   - {fileID: 4782084131908023736, guid: 848b7c6fa9f5aeb45a1aaaeea7518af4, type: 3}
   - {fileID: 3427181896078166332, guid: 62a1face27c4c2d4fa0a4c91d1d203b1, type: 3}
   - {fileID: 9005317720915939030, guid: 0115918418c1b11458cc5ac1925abc70, type: 3}
+  - {fileID: 1085632448969866378, guid: e7e34b734ec5b71418c750019b18409a, type: 3}
   buildArea: {fileID: 3773248051847443221}
   buildingRange: 30
 --- !u!135 &2735222652801917400
