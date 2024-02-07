@@ -62,7 +62,7 @@ public class TrainingCamp : MonoBehaviour
     public void SetPrefabToSpawn(int index)
     {
         prefabIndex = index; 
-        countdownTimer = prefabsToSpawn[index].GetComponent<Unit>().timeToSpawn;
+        countdownTimer = prefabsToSpawn[index].GetComponent<UnitN>().timeToSpawn;
         ToggleCountdown();
     }
 

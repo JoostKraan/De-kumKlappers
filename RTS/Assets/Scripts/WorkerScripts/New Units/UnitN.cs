@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class UnitN : MonoBehaviour
 {
-    
+    public int timeToSpawn = 30;
+
+
     void Start()
     {
         UnitSelections.instance.unitList.Add(this.gameObject);
