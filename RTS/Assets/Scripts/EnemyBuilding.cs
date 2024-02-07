@@ -7,7 +7,7 @@ public class EnemyBuilding : MonoBehaviour
     public GameObject[] buildingPrefabs; // Array of building prefabs
     public Transform buildArea; // Area where the enemy can build
     public float buildingRange = 5f; // Maximum distance from the center of the build area
-    private EnemyEconomy enemyEconomy;
+    private EnemyEconomy closestEnemyEconomy;
     private EnemySpawner spawner;
 
     private bool isBuilding = false;
@@ -16,7 +16,7 @@ public class EnemyBuilding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemyEconomy = GameObject.FindWithTag("EnemyManager").GetComponent<EnemyEconomy>();
+        FindClosestEnemyEconomy();
         if (!isBuilding)
         {
             StartBuilding();
@@ -26,7 +26,35 @@ public class EnemyBuilding : MonoBehaviour
             TryBuild();
         }
     }
+    void FindClosestEnemyEconomy()
+    {
+        GameObject[] enemyManagers = GameObject.FindGameObjectsWithTag("EnemyManager");
+        float shortestDistance = Mathf.Infinity;
 
+        foreach (GameObject enemyManagerObj in enemyManagers)
+        {
+            EnemyEconomy enemyEconomy = enemyManagerObj.GetComponent<EnemyEconomy>();
+            if (enemyEconomy != null)
+            {
+                float distanceToEnemyEconomy = Vector3.Distance(transform.position, enemyManagerObj.transform.position);
+                if (distanceToEnemyEconomy < shortestDistance)
+                {
+                    shortestDistance = distanceToEnemyEconomy;
+                    closestEnemyEconomy = enemyEconomy;
+                }
+            }
+        }
+
+        if (closestEnemyEconomy != null)
+        {
+            // You have found the closest EnemyEconomy, do something with it
+            Debug.Log("Closest EnemyEconomy found: " + closestEnemyEconomy.gameObject.name);
+        }
+        else
+        {
+            Debug.LogWarning("No EnemyEconomy found in the scene with the 'EnemyManager' tag.");
+        }
+    }
     void StartBuilding()
     {
         if (availableBuildingIndices.Count == 0)
@@ -56,9 +84,9 @@ public class EnemyBuilding : MonoBehaviour
                 GameObject spawnedBuilding = Instantiate(selectedBuildingPrefab, randomPosition, randomRotation);
 
                 // Deduct the building costs from the economy
-                enemyEconomy.RemoveWood(buildingCosts.woodCost);
-                enemyEconomy.RemoveStone(buildingCosts.stoneCost);
-                enemyEconomy.RemoveIron(buildingCosts.ironCost);
+                closestEnemyEconomy.RemoveWood(buildingCosts.woodCost);
+                closestEnemyEconomy.RemoveStone(buildingCosts.stoneCost);
+                closestEnemyEconomy.RemoveIron(buildingCosts.ironCost);
                 buildingRange += 5;
                 spawner = spawnedBuilding.gameObject.GetComponent<EnemySpawner>();
 
@@ -88,9 +116,9 @@ public class EnemyBuilding : MonoBehaviour
 
     public bool CanAffordBuilding(BuildCost Bc)
     {
-        float remainingWood = enemyEconomy.Wood - Bc.woodCost;
-        float remainingStone = enemyEconomy.Stone - Bc.stoneCost;
-        float remainingIron = enemyEconomy.Iron - Bc.ironCost;
+        float remainingWood = closestEnemyEconomy.Wood - Bc.woodCost;
+        float remainingStone = closestEnemyEconomy.Stone - Bc.stoneCost;
+        float remainingIron = closestEnemyEconomy.Iron - Bc.ironCost;
 
         if (remainingWood >= 0 && remainingStone >= 0 && remainingIron >= 0)
         {

@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 
     public GameObject workerPrefab;
     public Transform spawnLocation;
-    private EnemyEconomy econemyManager;
+    public EnemyEconomy closestEnemyEconomy;
     private BuildCost buildCost;
     public List<GameObject> WorkerList = new List<GameObject>();
     public int timesSpawned;
@@ -17,10 +17,38 @@ public class EnemySpawner : MonoBehaviour
     {
         buildCost = GetComponent<BuildCost>();
         timer = 3f;
-        econemyManager = GameObject.FindWithTag("EnemyManager").GetComponent<EnemyEconomy>();
+        FindClosestEnemyEconomy();
 
     }
+    void FindClosestEnemyEconomy()
+    {
+        GameObject[] enemyManagers = GameObject.FindGameObjectsWithTag("EnemyManager");
+        float shortestDistance = Mathf.Infinity;
 
+        foreach (GameObject enemyManagerObj in enemyManagers)
+        {
+            EnemyEconomy enemyEconomy = enemyManagerObj.GetComponent<EnemyEconomy>();
+            if (enemyEconomy != null)
+            {
+                float distanceToEnemyEconomy = Vector3.Distance(transform.position, enemyManagerObj.transform.position);
+                if (distanceToEnemyEconomy < shortestDistance)
+                {
+                    shortestDistance = distanceToEnemyEconomy;
+                    closestEnemyEconomy = enemyEconomy;
+                }
+            }
+        }
+
+        if (closestEnemyEconomy != null)
+        {
+            // You have found the closest EnemyEconomy, do something with it
+            Debug.Log("Closest EnemyEconomy found: " + closestEnemyEconomy.gameObject.name);
+        }
+        else
+        {
+            Debug.LogWarning("No EnemyEconomy found in the scene with the 'EnemyManager' tag.");
+        }
+    }
     void Update()
     {
         timer -= Time.deltaTime;
