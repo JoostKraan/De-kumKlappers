@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3773248051847443221}
   - component: {fileID: 2847322145909901818}
   - component: {fileID: 3655731859105778712}
+  - component: {fileID: 2735222652801917400}
+  - component: {fileID: 216720208190225741}
   m_Layer: 0
   m_Name: EnemyManager 1Y
   m_TagString: EnemyManager
@@ -69,6 +71,40 @@ MonoBehaviour:
   - {fileID: 9005317720915939030, guid: 0115918418c1b11458cc5ac1925abc70, type: 3}
   buildArea: {fileID: 3773248051847443221}
   buildingRange: 30
+--- !u!135 &2735222652801917400
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458884037472480640}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 23
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &216720208190225741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458884037472480640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce79ebcdc5eb074ab846489f9ab0d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Foliage
 --- !u!1 &7382060431071782263
 GameObject:
   m_ObjectHideFlags: 0
