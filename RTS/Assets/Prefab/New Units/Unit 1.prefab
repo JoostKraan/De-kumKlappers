@@ -142,6 +142,7 @@ MonoBehaviour:
   enemyBuilding:
     serializedVersion: 2
     m_Bits: 0
+  attackRange: 10
   damagePerTick: 10
   tickInterval: 5
   isAttackingBuilding: 0

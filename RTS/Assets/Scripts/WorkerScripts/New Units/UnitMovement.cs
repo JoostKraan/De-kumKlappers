@@ -8,6 +8,7 @@ public class UnitMovement : MonoBehaviour
     NavMeshAgent myAgent;
     public LayerMask ground;
     public LayerMask enemyBuilding;
+    public float attackRange = 10f; // Attack range for the unit
 
     // Store the RaycastHit for enemy building here
     RaycastHit enemyHit;
@@ -17,7 +18,7 @@ public class UnitMovement : MonoBehaviour
     public float tickInterval = 5f;
 
     // Flag to indicate if the building is being attacked
-    bool isAttackingBuilding = false;
+    public bool isAttackingBuilding = false;
 
     void Start()
     {
@@ -38,9 +39,18 @@ public class UnitMovement : MonoBehaviour
             }
             if (!isAttackingBuilding && Physics.Raycast(ray, out hit, Mathf.Infinity, enemyBuilding))
             {
-                // Store the RaycastHit for enemy building
-                enemyHit = hit;
-                StartCoroutine(AttackEnemyBuilding());
+                // Check if enemy building is within attack range
+                if (Vector3.Distance(transform.position, hit.point) <= attackRange)
+                {
+                    // Store the RaycastHit for enemy building
+                    enemyHit = hit;
+                    StartCoroutine(AttackEnemyBuilding());
+                }
+                else
+                {
+                    // Move towards the enemy building if it's out of range
+                    myAgent.SetDestination(hit.point);
+                }
             }
         }
     }
