@@ -17,7 +17,7 @@ public class UnitMovement : MonoBehaviour
     public float tickInterval = 5f;
 
     // Flag to indicate if the building is being attacked
-    public bool isAttackingBuilding = false;
+    bool isAttackingBuilding = false;
 
     void Start()
     {
