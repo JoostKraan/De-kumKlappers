@@ -155,6 +155,7 @@ MonoBehaviour:
   myDeliveryPoint: {x: 0, y: 0, z: 0}
   myHarvestingSpot: {fileID: 0}
   animator: {fileID: 0}
+  tool: {fileID: 0}
   treeToHarvest: []
   stoneToHarvest: []
   ironToHarvest: []
