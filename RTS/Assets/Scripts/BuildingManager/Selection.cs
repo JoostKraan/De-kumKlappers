@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 public class Selection : MonoBehaviour
 {
@@ -25,7 +26,13 @@ public class Selection : MonoBehaviour
            RaycastHit hit;
            if (Physics.Raycast(ray, out hit, 1000)) {
                 if (hit.collider.gameObject.CompareTag("PlaceObject")) {
+
                     Select(hit.collider.gameObject);
+                }
+                if (hit.collider.gameObject.name == "trainingHouse")
+                {
+                    TrainingCamp tr = hit.collider.gameObject.GetComponent<TrainingCamp>();
+                    tr.ShopActive();
                 }
                 else Deselect();
             }
