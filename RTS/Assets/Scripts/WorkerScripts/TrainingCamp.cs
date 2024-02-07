@@ -11,7 +11,7 @@ public class TrainingCamp : MonoBehaviour
     public Transform spawnPoint;
     public GameObject Shop;
     public TMP_Text countdownText;
-    private float countdownTimer = 30f;
+    public float countdownTimer = 30f;
     private bool isCountingDown = false;
     private int prefabIndex = 0;
     public float timeToSpawn;
@@ -45,7 +45,10 @@ public class TrainingCamp : MonoBehaviour
             }
         }
     }
-
+    public void ShopActive()
+    {
+        Shop.GetComponentInChildren<Canvas>().enabled = true;
+    }
     public void ToggleCountdown()
     {
         isCountingDown = !isCountingDown;
@@ -59,7 +62,7 @@ public class TrainingCamp : MonoBehaviour
     public void SetPrefabToSpawn(int index)
     {
         prefabIndex = index; 
-        countdownTimer = prefabsToSpawn[index].GetComponent<Unit>().timeToSpawn;
+        countdownTimer = prefabsToSpawn[index].GetComponent<UnitN>().timeToSpawn;
         ToggleCountdown();
     }
 
