@@ -20,6 +20,9 @@ TagManager:
   - HarvestingPoint
   - DeliveryPoint
   - EnemyManager
+  - EnemyUnit
+  - PlayerUnit
+  - Foliage
   layers:
   - Default
   - TransparentFX
@@ -32,7 +35,7 @@ TagManager:
   - StoneSpawning
   - DecoSpawning
   - IronSpawning
-  - 
+  - EnemyBuilding
   - 
   - 
   - 
