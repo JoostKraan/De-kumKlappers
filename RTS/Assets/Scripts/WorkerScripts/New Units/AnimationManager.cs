@@ -5,12 +5,20 @@ using UnityEngine;
 public class AnimationManager : MonoBehaviour
 {
     public UnitMovement unitMovement;
-    void Start()
-    {
-        
-    }
+    public Animator animator;
     void Update()
     {
-        //if(unitMovement)
+        if (!unitMovement.isAttackingBuilding)
+        {
+            animator.SetBool("Fighting", false);
+            animator.SetBool("Idle", false);
+            animator.SetBool("Walking",true);
+        }
+        if (unitMovement.isAttackingBuilding)
+        {
+            animator.SetBool("Walking", false);
+            animator.SetBool("Idle", false);
+            animator.SetBool("Fighting", true);
+        }
     }
 }
