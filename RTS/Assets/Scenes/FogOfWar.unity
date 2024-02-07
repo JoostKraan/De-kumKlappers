@@ -636,7 +636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d5bd0b48705d2a4094b1aa4610bf8d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 605850592}
 --- !u!1 &605850591
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,7 +2151,7 @@ MonoBehaviour:
     updateOnlyOnMove: 1
     lastSeenAt: {x: 0, y: 0}
   levelMidPoint: {fileID: 2085248336}
-  FogRefreshRate: 10
+  FogRefreshRate: 9.7
   fogPlaneHeight: 0
   fogPlaneMaterial: {fileID: 2100000, guid: 36b93ac6fcf129c449491654e397fe4a, type: 2}
   fogColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
@@ -2163,8 +2162,8 @@ MonoBehaviour:
   LevelDataToLoad: {fileID: 0}
   saveDataOnScan: 0
   levelNameToSave: RTS_Main
-  levelDimensionX: 20
-  levelDimensionY: 20
+  levelDimensionX: 100
+  levelDimensionY: 100
   unitScale: 0.5
   scanSpacingPerUnit: 0.25
   rayStartHeight: 5
