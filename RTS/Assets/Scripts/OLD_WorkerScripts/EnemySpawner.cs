@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform spawnLocation;
     private EnemyEconomy econemyManager;
     private BuildCost buildCost;
+    public List<GameObject> WorkerList = new List<GameObject>();
     public int timesSpawned;
     public float timer;
 
@@ -33,7 +34,8 @@ public class EnemySpawner : MonoBehaviour
     public void SpawnWorker()
     {
         timesSpawned++;
-        Instantiate(workerPrefab, spawnLocation.position, Quaternion.identity);
+        GameObject A =Instantiate(workerPrefab, spawnLocation.position, Quaternion.identity);
+        WorkerList.Add(A);
         timer = 3f;
     }
 }

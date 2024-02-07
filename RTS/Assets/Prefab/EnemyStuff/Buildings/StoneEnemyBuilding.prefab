@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6909705951633283820}
   - component: {fileID: 5676691442911039743}
   - component: {fileID: 3583106946972509633}
+  - component: {fileID: -5446090479831594149}
   m_Layer: 0
   m_Name: StoneEnemyBuilding
   m_TagString: Untagged
@@ -105,6 +106,7 @@ MonoBehaviour:
   workerPrefab: {fileID: 6042972140592107319, guid: b68dfe14fd2b8cc40a3dc88f7f5a5252,
     type: 3}
   spawnLocation: {fileID: 7846768742172137051}
+  WorkerList: []
   timesSpawned: 0
   timer: 0
 --- !u!114 &6445801450134332887
@@ -183,6 +185,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-5446090479831594149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4782084131908023736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97d39c6b21a1f44ba78134b68f10987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &5655693631902435541
 GameObject:
   m_ObjectHideFlags: 0
