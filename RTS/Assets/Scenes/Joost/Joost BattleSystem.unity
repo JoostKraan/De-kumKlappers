@@ -398,6 +398,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlayerUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 4115894561497302847, guid: 49d6658db21585648874de99c34e5f0d,
+        type: 3}
+      propertyPath: enemyBuilding.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 5742562398335876780, guid: 49d6658db21585648874de99c34e5f0d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -847,6 +852,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: PlayerUnit
       objectReference: {fileID: 0}
+    - target: {fileID: 4115894561497302847, guid: 49d6658db21585648874de99c34e5f0d,
+        type: 3}
+      propertyPath: enemyBuilding.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 5742562398335876780, guid: 49d6658db21585648874de99c34e5f0d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1260,6 +1270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: PlayerUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115894561497302847, guid: 49d6658db21585648874de99c34e5f0d,
+        type: 3}
+      propertyPath: enemyBuilding.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 5742562398335876780, guid: 49d6658db21585648874de99c34e5f0d,
         type: 3}
