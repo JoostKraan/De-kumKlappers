@@ -48,9 +48,9 @@ public class Selection : MonoBehaviour
         if (obj == buildingPlacement.pendingPrefab) return;
         if (obj == selectedObject) { Deselect(); return; };
         if (selectedObject != null) Deselect();
-        Outline outline = obj.GetComponent<Outline>();
-        if (outline == null) obj.AddComponent<Outline>();
-        else outline.enabled = true;
+        // Outline outline = obj.GetComponent<Outline>();
+        // if (outline == null) obj.AddComponent<Outline>();
+        // else outline.enabled = true;
         objNameText.text = obj.name;
         selectedObject = obj;
         objUI.SetActive(true);
@@ -61,7 +61,7 @@ public class Selection : MonoBehaviour
     private void Deselect()
     {
         if (selectedObject == null) { print("Trying to delect when no object is active"); return; };
-        selectedObject.GetComponent<Outline>().enabled = false;
+        // selectedObject.GetComponent<Outline>().enabled = false;
         selectedObject = null;
         objNameText.text = "Select Building";
         objUI.SetActive(false);
