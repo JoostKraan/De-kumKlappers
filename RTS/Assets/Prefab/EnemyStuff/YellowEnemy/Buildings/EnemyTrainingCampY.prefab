@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 357668185317424472}
   - component: {fileID: 190731156853824875}
   - component: {fileID: 3608043524199912479}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpawnLocation
   m_TagString: DeliveryPoint
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7442127312609114823}
   - component: {fileID: 2954941647944048657}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NavMeshObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,6 +196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyTrainingCampY
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 534b67b3c10689f49881da40805c1c28,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

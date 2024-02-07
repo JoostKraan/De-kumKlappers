@@ -196,7 +196,11 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
+<<<<<<< Updated upstream
   m_LocalScale: {x: 1.0802628, y: 1.0802628, z: 1.0802628}
+=======
+  m_LocalScale: {x: 1.427645, y: 1.427645, z: 1.427645}
+>>>>>>> Stashed changes
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2028470415565354925}

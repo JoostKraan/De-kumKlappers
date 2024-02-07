@@ -52,7 +52,7 @@ MonoBehaviour:
   maxZoomDistance: 10
   moveSpeed: 30
   minFOV: 10
-  maxFOV: 80
+  maxFOV: 72
   smoothTime: 0.2
   zoomSensitivity: 1
 --- !u!1 &3177319782206746860
