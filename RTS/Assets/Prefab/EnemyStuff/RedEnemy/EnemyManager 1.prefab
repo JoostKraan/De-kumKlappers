@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 3773248051847443221}
   - component: {fileID: 2847322145909901818}
   - component: {fileID: 3655731859105778712}
+  - component: {fileID: -1552567047595261757}
+  - component: {fileID: -4553393196909385637}
+  - component: {fileID: -8916711119591380970}
   m_Layer: 0
   m_Name: EnemyManager 1
   m_TagString: EnemyManager
@@ -67,8 +70,70 @@ MonoBehaviour:
   - {fileID: 4782084131908023736, guid: b5624408df3782645aa4ba93b69e6312, type: 3}
   - {fileID: 3427181896078166332, guid: 2d8b0ecbfad387c4cba3d548b3fef5cc, type: 3}
   - {fileID: 9005317720915939030, guid: 17fa08c1d3dc3c64f92337a75a7c94fb, type: 3}
+  - {fileID: 3646549051310578613, guid: aef8d8e355aaa7043813b49bc2ad4e21, type: 3}
   buildArea: {fileID: 3773248051847443221}
   buildingRange: 30
+--- !u!54 &-1552567047595261757
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458884037472480640}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &-4553393196909385637
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458884037472480640}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 25
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-8916711119591380970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4458884037472480640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce79ebcdc5eb074ab846489f9ab0d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Foliage
 --- !u!1 &7382060431071782263
 GameObject:
   m_ObjectHideFlags: 0
