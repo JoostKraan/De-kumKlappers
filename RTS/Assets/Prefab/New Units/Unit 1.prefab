@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3103453715449247049}
   m_Layer: 0
   m_Name: Unit 1
-  m_TagString: EnemyUnit
+  m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,8 +145,8 @@ MonoBehaviour:
     m_Bits: 2048
   attackRange: 15
   nearestBuilding: {fileID: 0}
-  damagePerAttack: 13
-  attackInterval: 3
+  damagePerAttack: 5
+  attackInterval: 5
   isAttackingBuilding: 0
 --- !u!114 &3103453715449247049
 MonoBehaviour:
@@ -403,6 +403,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1526964690268444965, guid: 710a993f5313a2b448363cb3b150c333,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 764c3cabdcaa916478fbc80bf891871f, type: 2}
     - target: {fileID: 919132149155446097, guid: 710a993f5313a2b448363cb3b150c333,
         type: 3}
       propertyPath: m_Name

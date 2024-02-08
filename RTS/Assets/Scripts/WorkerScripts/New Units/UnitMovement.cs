@@ -27,9 +27,6 @@ public class UnitMovement : MonoBehaviour
 
     void Update()
     {
-        // Track time since last attack
-        timeSinceLastAttack += Time.deltaTime;
-
         if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
@@ -44,6 +41,9 @@ public class UnitMovement : MonoBehaviour
             // Find nearest enemy building and start attacking it
             FindNearestEnemyBuilding();
         }
+
+        // Track time since last attack
+        timeSinceLastAttack += Time.deltaTime;
 
         // Attack enemy building if it's time and within range
         if (nearestBuilding != null && nearestDistance <= attackRange && timeSinceLastAttack >= attackInterval)
