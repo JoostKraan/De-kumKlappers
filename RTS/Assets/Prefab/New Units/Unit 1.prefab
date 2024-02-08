@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 6439297743994548941}
   - component: {fileID: 7961663952128411162}
   - component: {fileID: 4115894561497302847}
+  - component: {fileID: 3103453715449247049}
   m_Layer: 0
   m_Name: Unit 1
-  m_TagString: EnemyUnit
+  m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,15 +143,26 @@ MonoBehaviour:
   enemyBuilding:
     serializedVersion: 2
     m_Bits: 2048
-  playerUnits:
-    serializedVersion: 2
-    m_Bits: 0
   attackRange: 15
   nearestBuilding: {fileID: 0}
-  damagePerAttack: 13
-  attackInterval: 3
-  isEnemy: 0
-  isAttacking: 0
+  damagePerAttack: 5
+  attackInterval: 5
+
+  isAttackingBuilding: 0
+--- !u!114 &3103453715449247049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3353734757946766153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c8152875b9004c46a608b339bfbcc62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 165
+  currentHealth: 165
 --- !u!1 &5600916168785432236
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +404,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1526964690268444965, guid: 710a993f5313a2b448363cb3b150c333,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 764c3cabdcaa916478fbc80bf891871f, type: 2}
     - target: {fileID: 919132149155446097, guid: 710a993f5313a2b448363cb3b150c333,
         type: 3}
       propertyPath: m_Name

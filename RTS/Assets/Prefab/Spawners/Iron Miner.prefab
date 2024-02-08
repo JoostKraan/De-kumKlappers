@@ -142,7 +142,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dce8089757d0203498f5076406c71a4b,
         type: 3}
       propertyPath: m_Name
-      value: IronHouse
+      value: Iron Miner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dce8089757d0203498f5076406c71a4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -164,6 +169,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4801525262007676608}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dce8089757d0203498f5076406c71a4b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1599075142851317616}
   m_SourcePrefab: {fileID: 100100000, guid: dce8089757d0203498f5076406c71a4b, type: 3}
 --- !u!1 &8534904698171159157 stripped
 GameObject:
@@ -225,6 +234,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 15
   m_Center: {x: 7.069172, y: -3.9619842, z: -3.5778003}
+--- !u!114 &-1599075142851317616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534904698171159157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97d39c6b21a1f44ba78134b68f10987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!4 &9023456869842004175 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dce8089757d0203498f5076406c71a4b,
