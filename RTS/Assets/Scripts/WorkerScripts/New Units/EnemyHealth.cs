@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
 
     public bool IsDead { get { return currentHealth <= 0; } }
 
-    // Events for when the object takes damage or dies
+   
     public delegate void OnTakeDamageDelegate(int damage);
     public event OnTakeDamageDelegate OnTakeDamage;
 
@@ -38,6 +38,7 @@ public class EnemyHealth : MonoBehaviour
     void Die()
     {
         OnDeath?.Invoke();
+        Destroy(gameObject);
     }
 
     public void Heal(int amount)

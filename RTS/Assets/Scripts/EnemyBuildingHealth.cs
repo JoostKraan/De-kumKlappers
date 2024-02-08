@@ -10,7 +10,7 @@ public class EnemyBuildingHealth : MonoBehaviour
     {
         spawner = GetComponent<EnemySpawner>();
     }
-    // Method to set the spawner reference
+   
     public void SetSpawner(EnemySpawner enemySpawner)
     {
         spawner = enemySpawner;
@@ -26,7 +26,7 @@ public class EnemyBuildingHealth : MonoBehaviour
         {
             Destroy(gameObject);
 
-            // Check if spawner is not null before accessing WorkerList
+           
             if (spawner != null)
             {
                 foreach (GameObject worker in spawner.WorkerList)
