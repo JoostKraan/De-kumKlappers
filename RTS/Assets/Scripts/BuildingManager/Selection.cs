@@ -71,6 +71,9 @@ public class Selection : MonoBehaviour
                 GameObject uiButton = UIHandler.trainingButtons.transform.GetChild(i).gameObject;
                 uiButton.GetComponent<Button>().interactable = !tr.isCountingDown;
             }
+        } else {
+            UIHandler.MoveButton.GetComponent<Button>().interactable = true;
+            UIHandler.DestroyButton.GetComponent<Button>().interactable = true;
         }
     }
 

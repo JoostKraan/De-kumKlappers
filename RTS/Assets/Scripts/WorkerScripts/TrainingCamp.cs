@@ -22,6 +22,7 @@ public class TrainingCamp : MonoBehaviour
 
     void Start() {
         UpdateCountdownText();
+        gamemanager = GameObject.FindObjectOfType<Gamemanager>();
     }
 
 
