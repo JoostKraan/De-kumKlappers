@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class Selection : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Selection : MonoBehaviour
     public TextMeshProUGUI objNameText;
     private BuildingPlacement buildingPlacement;
     public GameObject objUI;
+    public EventSystem EventSystem;
     internal static Terrain activeObject;
 
     // Start is called before the first frame update
@@ -20,10 +22,12 @@ public class Selection : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-       if (Input.GetMouseButtonDown(0)) {
+       if (Input.GetMouseButtonDown(0))
+       {
            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
            RaycastHit hit;
            if (Physics.Raycast(ray, out hit, 1000)) {
+                if (EventSystem.current.IsPointerOverGameObject()) return;
                 if (hit.collider.gameObject.CompareTag("PlaceObject")) {
 
                     Select(hit.collider.gameObject);
@@ -33,7 +37,7 @@ public class Selection : MonoBehaviour
                         tr.ShopActive();
                     }
                 }
-                else if (hit.collider.gameObject.layer == LayerMask.GetMask("UI")) {
+                else if (hit.collider.CompareTag("UI")) {
 
                 }
                 else Deselect();
@@ -67,7 +71,6 @@ public class Selection : MonoBehaviour
     }
 
     public void Move() {
-        print("123");
         GameObject objToDestroy = selectedObject;
         buildingPlacement.pendingPrefab = objToDestroy;
 
