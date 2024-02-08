@@ -78,8 +78,7 @@ public class Selection : MonoBehaviour
         }
     }
 
-    public void Delete()
-    {
+    public void Delete() {
         GameObject objToDestroy = selectedObject;
         Deselect();
 
