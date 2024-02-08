@@ -13,6 +13,7 @@ public class TrainingCamp : MonoBehaviour
     public GameObject Shop;
     public TMP_Text countdownText;
     public Buttons ActiveUI;
+    public Gamemanager gamemanager;
     public float countdownTimer = 30f;
     public bool isCountingDown = false;
     private int prefabIndex = 0;
@@ -51,9 +52,14 @@ public class TrainingCamp : MonoBehaviour
 
     public void SetPrefabToSpawn(int index)
     {
-        prefabIndex = index; 
-        countdownTimer = prefabsToSpawn[index].GetComponent<UnitN>().timeToSpawn;
-        ToggleCountdown();
+        if (gamemanager.iron >= 10)
+        {
+            gamemanager.iron -= 10;
+            prefabIndex = index;
+            countdownTimer = prefabsToSpawn[index].GetComponent<UnitN>().timeToSpawn;
+            ToggleCountdown();
+        }
+        else return;
     }
 
     public void SpawnPrefab(int index) {

@@ -1599,6 +1599,11 @@ PrefabInstance:
 
         I''ll teach you how to play the game!'
       objectReference: {fileID: 0}
+    - target: {fileID: 6091664598051062416, guid: 8c6dee3be09ece349896324a14f583ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6159268554907468634, guid: 8c6dee3be09ece349896324a14f583ba,
         type: 3}
       propertyPath: m_AnchorMax.y

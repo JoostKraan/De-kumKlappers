@@ -101,4 +101,9 @@ public class Buttons : MonoBehaviour
     public void ChangeMusicVolume(Slider a) {
         AudioManager.m_AudioSources[0].volume = a.value;
     }
+
+    public void ChangeSFXVolume(Slider a)
+    {
+        AudioManager.m_AudioSources[1].volume = a.value;
+    }
 }
