@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 5849236883504140903}
   - component: {fileID: 6029092466500214452}
   - component: {fileID: -6869520318885676263}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: SwordGuy_Enemy
   m_TagString: EnemyUnit
   m_Icon: {fileID: 0}
@@ -162,6 +162,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   attackRange: 10
+  meleeRange: 3
   nearestBuilding: {fileID: 0}
   inCombat: 0
   damagePerAttack: 10
