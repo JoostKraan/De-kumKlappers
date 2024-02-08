@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
+    [Header("Handlers")]
     public Gamemanager gamemanager;
+    public AudioManager AudioManager;
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject settingsScreen;
 
@@ -26,9 +28,12 @@ public class Buttons : MonoBehaviour
     [Header("DestroyMove")]
     public GameObject DestroyButton;
     public GameObject MoveButton;
+    public GameObject LoadingButtons;
+    public bool IsLoadingScreenUI = false;  
 
     private void Start() {
         gamemanager = GameObject.FindObjectOfType<Gamemanager>();
+        if (IsLoadingScreenUI) LoadingButtons.SetActive(true);
     }
 
     private void Update() {
@@ -77,16 +82,23 @@ public class Buttons : MonoBehaviour
     {
         pauseScreenIsActive = false;
         pauseScreen.SetActive(false);
+        if (IsLoadingScreenUI) LoadingButtons.SetActive(true);
         Time.timeScale = 1.0f;
     }
     public void OpenOptionsMenu()
     {
         pauseScreen.SetActive(false);
         settingsScreen.SetActive(true);
+        if (IsLoadingScreenUI) LoadingButtons.SetActive(false);
         settingScreenIsActive = true;
+
     }
     public void ExitGame()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void ChangeMusicVolume(Slider a) {
+        AudioManager.m_AudioSources[0].volume = a.value;
     }
 }
