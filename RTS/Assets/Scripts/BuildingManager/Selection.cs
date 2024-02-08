@@ -27,7 +27,6 @@ public class Selection : MonoBehaviour
            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
            RaycastHit hit;
            if (Physics.Raycast(ray, out hit, 1000)) {
-                if (EventSystem.current.IsPointerOverGameObject()) return;
                 if (hit.collider.gameObject.CompareTag("PlaceObject")) {
 
                     Select(hit.collider.gameObject);
@@ -37,10 +36,10 @@ public class Selection : MonoBehaviour
                         tr.ShopActive();
                     }
                 }
-                else if (hit.collider.CompareTag("UI")) {
-
+                else {
+                    if (EventSystem.current.IsPointerOverGameObject()) return;
+                    Deselect();
                 }
-                else Deselect();
             }
        }
 
@@ -67,7 +66,7 @@ public class Selection : MonoBehaviour
         //selectedObject.GetComponent<Outline>().enabled = false;
         selectedObject = null;
         objNameText.text = "Select Building";
-        //objUI.SetActive(false);
+        objUI.SetActive(false);
     }
 
     public void Move() {
@@ -88,5 +87,9 @@ public class Selection : MonoBehaviour
         }
 
         Destroy(objToDestroy);
+    }
+
+    public void CloseUI() {
+        Deselect();
     }
 }
