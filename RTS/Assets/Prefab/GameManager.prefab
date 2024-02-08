@@ -1,0 +1,157 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1627961925498259490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1386737033479704720}
+  - component: {fileID: 4478388775768510307}
+  - component: {fileID: 6300630345371940036}
+  - component: {fileID: 3543546761204914192}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Gamemanager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1386737033479704720
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627961925498259490}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -164.72736, y: 90.15085, z: 180.3129}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4478388775768510307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627961925498259490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c156877bfae3ee442a66cb4bcd6bd3f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAffordforester: 0
+  canAffordMiner: 0
+  canAffordTrainer: 0
+  foresterWoodCost: 75
+  foresterStoneCost: 0
+  foresterIronCost: 0
+  minerWoodCost: 0
+  minerStoneCost: 0
+  minerIronCost: 0
+  trainerWoodCost: 0
+  trainerStoneCost: 0
+  trainerIronCost: 0
+--- !u!114 &6300630345371940036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627961925498259490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12c826b68a9878b4981b605e70eca931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourcePrefabs:
+  - {fileID: 5935278547815300987, guid: e05ae677c7b3bc546bd36b488586fb0c, type: 3}
+  - {fileID: 873261478477796481, guid: c0fdfdeafe3a1404a8766f946dd531d0, type: 3}
+  - {fileID: 9053947485531519227, guid: 100d52600d58a8845891694a7ef419bc, type: 3}
+  - {fileID: 7601105565779803534, guid: b466aab79b7e2574aad843dd71025fd2, type: 3}
+  - {fileID: 3352007943087568667, guid: fac3b056efe5aa34da91293742b866c7, type: 3}
+  - {fileID: 7098389285256826050, guid: fb070a2d31206d9499ecc8a77be0ebf0, type: 3}
+  - {fileID: 3125019525012259300, guid: c8b350551fbedc84c8025d7d29f3a018, type: 3}
+  - {fileID: 4026988788687868377, guid: c0c32672766a81647b04690fc9ed3595, type: 3}
+  DebrisPrefabs:
+  - DebrisObject: {fileID: 6917843208631529568, guid: ae3df12def0d4de4db7a10276fe3e51f,
+      type: 3}
+    Weight: 15
+  - DebrisObject: {fileID: 3562780578981102508, guid: 29b14a8ba835781408371ae6bb1fd8e0,
+      type: 3}
+    Weight: 100
+  - DebrisObject: {fileID: 4026988788687868377, guid: c0c32672766a81647b04690fc9ed3595,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 3010216212467657930, guid: 244ce2af788c0c346b86cbc0473811b0,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 6444807355431749394, guid: f593bc20677ebf14abd27a4853408c68,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 5153741093904279990, guid: ef8374d642969b14baa54045236c5fb0,
+      type: 3}
+    Weight: 30
+  - DebrisObject: {fileID: 2804321427668277467, guid: 0f3d14a9a6b2ceb469c15d151552a614,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 2549054593802932585, guid: bee651b89d6b3ef48b19cfe8a4c9fa42,
+      type: 3}
+    Weight: 5
+  - DebrisObject: {fileID: 6117071349010126079, guid: d250af4848f51154f9a2bf6a85b60ac2,
+      type: 3}
+    Weight: 25
+  orePrefab: {fileID: 8687716767305649380, guid: 2b6b40cb8710f1944bffd10b5ebf571a,
+    type: 3}
+  treePrefab: {fileID: 1294928056766839765, guid: 883ca3ef9e74dcf4cac27789a689c0bc,
+    type: 3}
+  ironPrefab: {fileID: 8687716767305649380, guid: 2bcef9c23b5bd274694822260832cf89,
+    type: 3}
+  spawnChance: 8
+  oreSpawnChance: 5
+  treeSpawnChance: 15
+  ironSpawnChance: 5
+  distanceBetweenChecks: 2
+  oreDistanceBetweenChecks: 20
+  ironoreDistanceBetweenChecks: 20
+  heightCheck: 30
+  rangecheck: 30
+  positivePosition: {x: 1000, y: 1000}
+  negativePosition: {x: -1000, y: -1000}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  forrestSpawningLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  stoneSpawningLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  ironSpawningLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!114 &3543546761204914192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627961925498259490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73147956d32227f41b3c5e2d440755a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Units: []
+  startingWood: 9999
+  startingStone: 9999
+  startingIron: 9999
+  wood: 100
+  stone: 10
+  iron: 0

@@ -29,7 +29,8 @@ public class Selection : MonoBehaviour
        {
            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
            RaycastHit hit;
-           if (Physics.Raycast(ray, out hit, 1000)) {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
+            if (Physics.Raycast(ray, out hit, 1000)) {
                 if (hit.collider.gameObject.CompareTag("PlaceObject")) {
                     if (hit.collider.gameObject.name.Contains("Camp")) {
                         tr = null;
@@ -39,7 +40,6 @@ public class Selection : MonoBehaviour
                     Select(hit.collider.gameObject);
                 }
                 else {
-                    if (EventSystem.current.IsPointerOverGameObject()) return;
                     Deselect();
                 }
             }
