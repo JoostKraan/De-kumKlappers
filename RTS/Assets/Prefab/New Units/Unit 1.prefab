@@ -147,6 +147,7 @@ MonoBehaviour:
   nearestBuilding: {fileID: 0}
   damagePerAttack: 5
   attackInterval: 5
+
   isAttackingBuilding: 0
 --- !u!114 &3103453715449247049
 MonoBehaviour:

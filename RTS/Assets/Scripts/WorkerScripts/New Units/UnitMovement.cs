@@ -7,7 +7,6 @@ public class UnitMovement : MonoBehaviour
     NavMeshAgent myAgent;
     public LayerMask ground;
     public LayerMask enemyBuilding;
-    public LayerMask playerUnits; // Layer mask for player units
     public float attackRange = 10f; // Attack range for the unit
     public GameObject nearestBuilding = null;
     private float nearestDistance = Mathf.Infinity;
@@ -17,11 +16,8 @@ public class UnitMovement : MonoBehaviour
     public float attackInterval = 5f;
     private float timeSinceLastAttack = 0f;
 
-    // Flag to indicate if the unit is an enemy
-    public bool isEnemy;
-
-    // Flag to indicate if the unit is attacking
-    public bool isAttacking = false;
+    // Flag to indicate if the building is being attacked
+    public bool isAttackingBuilding = false;
 
     void Start()
     {
@@ -34,31 +30,7 @@ public class UnitMovement : MonoBehaviour
         // Track time since last attack
         timeSinceLastAttack += Time.deltaTime;
 
-        // Find nearest player unit and start attacking it if within range
-        if (isEnemy && !isAttacking)
-        {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange, playerUnits);
-            if (hitColliders.Length > 0)
-            {
-                // Attack the nearest player unit
-                AttackPlayerUnit(hitColliders[0].gameObject);
-            }
-            else
-            {
-                // If no player units in range, find the nearest player unit and move towards it
-                FindNearestPlayerUnitAndMove();
-            }
-        }
-
-        // Attack enemy building if it's time and within range
-        if (!isAttacking && nearestBuilding != null && nearestDistance <= attackRange && timeSinceLastAttack >= attackInterval)
-        {
-            AttackEnemyBuilding();
-            timeSinceLastAttack = 0f; // Reset the timer
-        }
-
-        // Check if player is attempting to move
-        if (!isEnemy && Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             RaycastHit hit;
             Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
@@ -68,34 +40,16 @@ public class UnitMovement : MonoBehaviour
                 Vector3 destination = hit.point;
                 myAgent.SetDestination(destination);
             }
-        }
-    }
 
-    void FindNearestPlayerUnitAndMove()
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, Mathf.Infinity, playerUnits);
-
-        // Reset nearestDistance and nearestPlayerUnit
-        float nearestPlayerDistance = Mathf.Infinity;
-        GameObject nearestPlayerUnit = null;
-
-        foreach (Collider col in hitColliders)
-        {
-            // Calculate distance
-            float distance = Vector3.Distance(transform.position, col.transform.position);
-
-            // Check if this player unit is nearer than the previous nearest one
-            if (distance < nearestPlayerDistance)
-            {
-                nearestPlayerDistance = distance;
-                nearestPlayerUnit = col.gameObject;
-            }
+            // Find nearest enemy building and start attacking it
+            FindNearestEnemyBuilding();
         }
 
-        // Move towards the nearest player unit if found
-        if (nearestPlayerUnit != null)
+        // Attack enemy building if it's time and within range
+        if (nearestBuilding != null && nearestDistance <= attackRange && timeSinceLastAttack >= attackInterval)
         {
-            myAgent.SetDestination(nearestPlayerUnit.transform.position);
+            AttackEnemyBuilding();
+            timeSinceLastAttack = 0f; // Reset the timer
         }
     }
 
@@ -123,7 +77,7 @@ public class UnitMovement : MonoBehaviour
 
     void AttackEnemyBuilding()
     {
-        isAttacking = true; // Set flag to true to prevent further attacks
+        isAttackingBuilding = true; // Set flag to true to prevent further attacks
 
         // Pause the NavMeshAgent's movement
         myAgent.isStopped = true;
@@ -139,23 +93,11 @@ public class UnitMovement : MonoBehaviour
             if (enemyHealth.health <= 0)
             {
                 Debug.Log("Enemy building destroyed!");
-                isAttacking = false;
+                isAttackingBuilding = false;
             }
         }
 
         // Resume the NavMeshAgent's movement
         myAgent.isStopped = false;
-    }
-
-    void AttackPlayerUnit(GameObject playerUnit)
-    {
-        // Check if the player unit has health
-        PlayerHealth playerHealth = playerUnit.GetComponent<PlayerHealth>();
-        if (playerHealth != null)
-        {
-            // Deal damage to the player unit
-            playerHealth.TakeDamage(damagePerAttack);
-            Debug.Log("Dealing damage to player unit: " + playerUnit.name);
-        }
     }
 }
