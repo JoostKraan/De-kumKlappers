@@ -23,8 +23,6 @@ public class UnitCombat : MonoBehaviour
 
     private void Start()
     {
-        tool.SetActive(false);
-        backTool.SetActive(true);
         myAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -45,11 +43,11 @@ public class UnitCombat : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Marker"))
         {
-            tool.SetActive(false);
-            backTool.SetActive(true);
             animator.SetBool("Walking", false);
             animator.SetBool("Fighting", false);
             animator.SetBool("Idle", true);
+            tool.SetActive(false);
+            backTool.SetActive(true);
         }
     }
 

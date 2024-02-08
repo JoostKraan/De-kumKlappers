@@ -25,9 +25,11 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] private GameObject backTool;
     void Start()
     {
-        animator.SetBool("Idle", true);
         animator.SetBool("Fighting", false);
         animator.SetBool("Walking", false);
+        animator.SetBool("Idle", true);
+        tool.SetActive(false);
+        backTool.SetActive(true);
         myCam = Camera.main;
         myAgent = GetComponent<NavMeshAgent>();
     }
@@ -45,6 +47,7 @@ public class UnitMovement : MonoBehaviour
             animator.SetBool("Idle", false);
             animator.SetBool("Fighting", false);
             animator.SetBool("Walking", true);
+
             RaycastHit hit;
             Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
 
@@ -57,6 +60,12 @@ public class UnitMovement : MonoBehaviour
             // Find nearest enemy building and start attacking it
 
         }
+        //else
+        //{
+        //    animator.SetBool("Fighting", false);
+        //    animator.SetBool("Walking", false);
+        //    animator.SetBool("Idle", true);
+        //}
 
         // Attack enemy building if it's time and within range
         if (nearestBuilding != null && nearestDistance <= attackRange && timeSinceLastAttack >= attackInterval)
