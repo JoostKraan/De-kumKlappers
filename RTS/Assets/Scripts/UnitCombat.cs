@@ -12,10 +12,12 @@ public class UnitCombat : MonoBehaviour
     public int damagePerAttack = 10;
     public List<GameObject> enemyUnits = new List<GameObject>();
     public GameObject focusUnit;
+    public EnemyHealth enemyHealth;
     public float attackInterval = 5f;
-    private float timeSinceLastAttack = 0f;
+    private bool canAttack = true;
 
     public Animator animator;
+
     private void Start()
     {
         myAgent = GetComponent<NavMeshAgent>();
@@ -25,9 +27,10 @@ public class UnitCombat : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyUnit"))
         {
-            // Add the enemy unit to the list
+            if (enemyUnits.Contains(other.gameObject)) return;
             enemyUnits.Add(other.gameObject);
-
+            focusUnit = other.gameObject;
+            enemyHealth = focusUnit.GetComponent<EnemyHealth>();
             // If not already in combat, start attacking
             if (!inCombat)
             {
@@ -53,7 +56,7 @@ public class UnitCombat : MonoBehaviour
             }
 
             // Wait for a short duration before checking for the next attack
-            yield return new WaitForSeconds(0.1f);
+            yield return null;
         }
     }
 
@@ -61,33 +64,26 @@ public class UnitCombat : MonoBehaviour
     {
         if (focusUnit != null)
         {
-            EnemyHealth enemyHealth = focusUnit.GetComponent<EnemyHealth>();
-
             if (enemyHealth != null && !enemyHealth.isDead)
             {
                 // Attack the focused enemy unit if it's available and within attack range
                 float distanceToEnemyUnit = Vector3.Distance(transform.position, focusUnit.transform.position);
-                if (distanceToEnemyUnit <= meleeRange)
+                if (distanceToEnemyUnit <= meleeRange && canAttack)
                 {
                     animator.SetBool("Idle", false);
                     animator.SetBool("Walking", false);
                     animator.SetBool("Fighting", true);
-                    // Check if it's time to attack based on attack interval
-                    if (timeSinceLastAttack >= attackInterval)
-                    {
-                        // Perform the attack
-                        enemyHealth.TakeDamage(damagePerAttack);
-                        Debug.Log("Dealing damage to enemy unit!");
 
-                        // Reset the attack timer
-                        timeSinceLastAttack = 0f;
-                    }
+                    // Perform the attack
+                    enemyHealth.TakeDamage(damagePerAttack);
+                    Debug.Log("Dealing damage to enemy unit!");
+
+                    // Start the attack cooldown
+                    StartCoroutine(AttackCooldown());
                 }
                 else
                 {
-                    // If the enemy unit is out of range, move towards it
-                    myAgent.isStopped = false;
-                    myAgent.SetDestination(focusUnit.transform.position);
+                    StartCoroutine(AttackCooldown());
                 }
             }
             else
@@ -96,6 +92,13 @@ public class UnitCombat : MonoBehaviour
                 SelectRandomEnemyUnit();
             }
         }
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(attackInterval);
+        canAttack = true;
     }
 
     void SelectRandomEnemyUnit()
