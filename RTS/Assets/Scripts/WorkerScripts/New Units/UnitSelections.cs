@@ -56,7 +56,6 @@ public class UnitSelections : MonoBehaviour
     {
         if (IsPlayerUnit(unitToAdd) && !unitsSelected.Contains(unitToAdd))
         {
-            Debug.Log("awbdiawauidiub");
             unitsSelected.Add(unitToAdd);
             unitToAdd.transform.GetChild(0).gameObject.SetActive(true);
             unitToAdd.GetComponent<UnitMovement>().enabled = true;

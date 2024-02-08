@@ -147,7 +147,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: dce8089757d0203498f5076406c71a4b,
         type: 3}
       propertyPath: m_Name
-      value: IronHouseEnemy
+      value: IronHouseEnemyY
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dce8089757d0203498f5076406c71a4b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: dce8089757d0203498f5076406c71a4b,
         type: 3}
@@ -190,6 +195,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -2408380413855719961}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: dce8089757d0203498f5076406c71a4b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5839164567809648885}
   m_SourcePrefab: {fileID: 100100000, guid: dce8089757d0203498f5076406c71a4b, type: 3}
 --- !u!4 &2649272624270791558 stripped
 Transform:
@@ -255,6 +264,7 @@ MonoBehaviour:
   workerPrefab: {fileID: 6885173933102722066, guid: 1977c4177b46bf44fa96f38d1fe7eacf,
     type: 3}
   spawnLocation: {fileID: 509413230320554006}
+  closestEnemyEconomy: {fileID: 0}
   WorkerList: []
   timesSpawned: 0
   timer: 0
@@ -326,3 +336,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!65 &5839164567809648885
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3427181896078166332}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 121.98188, y: 7.9937944, z: 23.782837}
+  m_Center: {x: 7.069172, y: -3.9619846, z: -3.5778003}

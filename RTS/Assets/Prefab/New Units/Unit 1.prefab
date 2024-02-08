@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6439297743994548941}
   - component: {fileID: 7961663952128411162}
   - component: {fileID: 4115894561497302847}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Unit 1
   m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
@@ -141,9 +141,11 @@ MonoBehaviour:
     m_Bits: 8
   enemyBuilding:
     serializedVersion: 2
-    m_Bits: 0
-  damagePerTick: 10
-  tickInterval: 5
+    m_Bits: 2048
+  attackRange: 15
+  nearestBuilding: {fileID: 0}
+  damagePerAttack: 10
+  attackInterval: 5
   isAttackingBuilding: 0
 --- !u!1 &5600916168785432236
 GameObject:

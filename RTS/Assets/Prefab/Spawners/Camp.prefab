@@ -933,11 +933,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ee22b6e6aee64e4d91af197c6044c58,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5751785345503320819}
+      addedObject: {fileID: 1116356257694189892}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ee22b6e6aee64e4d91af197c6044c58,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1116356257694189892}
+      addedObject: {fileID: 1476929925756805985}
   m_SourcePrefab: {fileID: 100100000, guid: 7ee22b6e6aee64e4d91af197c6044c58, type: 3}
 --- !u!1 &3886955033174865191 stripped
 GameObject:
@@ -986,22 +986,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.12
   m_Center: {x: 0, y: 0, z: 0}
---- !u!208 &5751785345503320819
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3886955033174865191}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 33.64, y: 31.322002, z: 79.1}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -7.1780005, y: 28.042002, z: 8.811001}
-  m_TimeToStationary: 0.5
 --- !u!64 &1116356257694189892
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1024,6 +1008,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 5601086801898887220, guid: 7ee22b6e6aee64e4d91af197c6044c58, type: 3}
+--- !u!208 &1476929925756805985
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3886955033174865191}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.07700001, y: 0.036000002, z: 0.067}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.008, y: 0.035, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &4520186510300786589 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7ee22b6e6aee64e4d91af197c6044c58,
