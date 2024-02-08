@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class EnemyEconomy : MonoBehaviour
 {
+    public int health;
     public float Money;
     public float Wood;
     public float Stone;
     public float Iron;
 
     // Adding functions
-
+    private void Start()
+    {
+        StartCoroutine(DebugEveryFiveSeconds());
+    }
     public void AddMoney(float addedMoney)
     {
         Money += addedMoney; // Use += to add the value
@@ -51,5 +55,16 @@ public class EnemyEconomy : MonoBehaviour
     public void RemoveIron(float removedIron)
     {
         Iron -= removedIron; // Use -= to subtract the value
+    }
+    IEnumerator DebugEveryFiveSeconds()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f);
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

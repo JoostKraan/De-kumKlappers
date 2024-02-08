@@ -19,7 +19,7 @@ public class EnemyWorker : MonoBehaviour
     public Vector3 myDeliveryPoint;
     public GameObject myHarvestingSpot;
     [SerializeField] private Animator animator;
-    private EnemyEconomy gamemanager;
+    private EnemyEconomy closestEnemyEconomy;
     private MeshRenderer workerMesh;
     private NavMeshAgent navMeshAgent;
 
@@ -40,7 +40,7 @@ public class EnemyWorker : MonoBehaviour
         isGoingToHavestingPoint = true;
         Vector3 currentPosition = gameObject.transform.position;
         myDeliveryPoint = currentPosition;
-        gamemanager = GameObject.FindWithTag("EnemyManager").GetComponent<EnemyEconomy>();
+        FindClosestEnemyEconomy();
         workerMesh = GetComponent<MeshRenderer>();
         animator = Mesh.GetComponent<Animator>();
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -52,6 +52,25 @@ public class EnemyWorker : MonoBehaviour
         stoneToHarvest.AddRange(stonesWithTag);
         GameObject[] ironWithTag = GameObject.FindGameObjectsWithTag("ironMinerHarvestingPoint");
         ironToHarvest.AddRange(ironWithTag);
+    }
+    void FindClosestEnemyEconomy()
+    {
+        GameObject[] enemyManagers = GameObject.FindGameObjectsWithTag("EnemyManager");
+        float shortestDistance = Mathf.Infinity;
+
+        foreach (GameObject enemyManagerObj in enemyManagers)
+        {
+            EnemyEconomy enemyEconomy = enemyManagerObj.GetComponent<EnemyEconomy>();
+            if (enemyEconomy != null)
+            {
+                float distanceToEnemyEconomy = Vector3.Distance(transform.position, enemyManagerObj.transform.position);
+                if (distanceToEnemyEconomy < shortestDistance)
+                {
+                    shortestDistance = distanceToEnemyEconomy;
+                    closestEnemyEconomy = enemyEconomy;
+                }
+            }
+        }
     }
     private void Update()
     {
@@ -124,15 +143,15 @@ public class EnemyWorker : MonoBehaviour
             {
                 if (TreeHarvesters)
                 {
-                    gamemanager.AddWood(10);
+                    closestEnemyEconomy.AddWood(10);
                 }
                 if (Miners)
                 {
-                    gamemanager.AddStone(10);
+                    closestEnemyEconomy.AddStone(10);
                 }
                 if (ironMiner)
                 {
-                    gamemanager.AddIron(10);
+                    closestEnemyEconomy.AddIron(10);
                 }
             }
             isGoingToDeliveryPoint = false;

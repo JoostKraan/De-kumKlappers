@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7961663952128411162}
   - component: {fileID: 4115894561497302847}
   - component: {fileID: 3103453715449247049}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: Unit 1
   m_TagString: EnemyUnit
   m_Icon: {fileID: 0}
@@ -143,14 +143,11 @@ MonoBehaviour:
   enemyBuilding:
     serializedVersion: 2
     m_Bits: 2048
-  isEnemy: 1
-  isAttackingBuilding: 0
-  damagePerTick: 10
-  tickInterval: 5
   attackRange: 15
+  nearestBuilding: {fileID: 0}
   damagePerAttack: 13
   attackInterval: 3
-  nearestBuilding: {fileID: 0}
+  isAttackingBuilding: 0
 --- !u!114 &3103453715449247049
 MonoBehaviour:
   m_ObjectHideFlags: 0

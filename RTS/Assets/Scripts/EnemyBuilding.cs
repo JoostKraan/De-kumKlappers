@@ -77,6 +77,7 @@ public class EnemyBuilding : MonoBehaviour
                 closestEnemyEconomy.RemoveWood(buildingCosts.woodCost);
                 closestEnemyEconomy.RemoveStone(buildingCosts.stoneCost);
                 closestEnemyEconomy.RemoveIron(buildingCosts.ironCost);
+                closestEnemyEconomy.health += 100;
                 buildingRange += 5;
                 spawner = spawnedBuilding.gameObject.GetComponent<EnemySpawner>();
 
