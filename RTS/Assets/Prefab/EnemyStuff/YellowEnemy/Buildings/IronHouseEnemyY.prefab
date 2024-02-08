@@ -282,7 +282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   woodCost: 10
   stoneCost: 10
-  ironCost: 10
+  ironCost: 0
 --- !u!114 &609748463248389779
 MonoBehaviour:
   m_ObjectHideFlags: 0
