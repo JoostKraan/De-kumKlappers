@@ -25,6 +25,7 @@ TagManager:
   - Foliage
   - Destination
   - UI
+  - Flag
   layers:
   - Default
   - TransparentFX

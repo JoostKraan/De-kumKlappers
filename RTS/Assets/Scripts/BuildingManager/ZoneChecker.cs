@@ -6,7 +6,15 @@ public class ZoneChecker : MonoBehaviour
 {
     public string targetTag = "Foliage"; // Replace with your specific tag
 
-    private void OnTriggerEnter(Collider other)
+    private void Start() {
+        Invoke("MethodWithDelay", 1);
+    }
+
+    public void MethodWithDelay() {
+        gameObject.GetComponent<SphereCollider>().radius = 5f;
+    }
+
+    private void OnTriggerEnter(Collider other) 
     {
         if (other.CompareTag(targetTag))
         {

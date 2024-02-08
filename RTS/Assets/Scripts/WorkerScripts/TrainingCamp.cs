@@ -26,11 +26,6 @@ public class TrainingCamp : MonoBehaviour
 
     void Update()
     {
-        if (Input.anyKeyDown && !(Input.GetMouseButtonDown(0)
-             || Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(2)))
-        {
-            Shop.GetComponentInChildren<Canvas>().enabled = false;
-        }
         if (isCountingDown) {
             countdownTimer -= Time.deltaTime;
             UpdateCountdownText();
