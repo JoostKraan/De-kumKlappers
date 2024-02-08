@@ -64,6 +64,9 @@ public class Selection : MonoBehaviour
             tr.countdownText = UIHandler.timerText.GetComponent<TMP_Text>();
             tr.ActiveUI = UIHandler;
 
+            UIHandler.MoveButton.GetComponent<Button>().interactable = !tr.isCountingDown;
+            UIHandler.DestroyButton.GetComponent<Button>().interactable = !tr.isCountingDown;
+
             for (int i = 0; i < UIHandler.trainingButtons.transform.childCount; i++) {
                 GameObject uiButton = UIHandler.trainingButtons.transform.GetChild(i).gameObject;
                 uiButton.GetComponent<Button>().interactable = !tr.isCountingDown;
@@ -114,6 +117,9 @@ public class Selection : MonoBehaviour
     public void TrainSoldier(int index) {
         if (tr != null) {
             tr.SetPrefabToSpawn(index);
+
+            UIHandler.MoveButton.GetComponent<Button>().interactable = false;
+            UIHandler.DestroyButton.GetComponent<Button>().interactable = false;
 
             for (int i = 0; i < UIHandler.trainingButtons.transform.childCount; i++) {
                 GameObject uiButton = UIHandler.trainingButtons.transform.GetChild(i).gameObject;
