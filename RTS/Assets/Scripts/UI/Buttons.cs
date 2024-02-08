@@ -23,6 +23,9 @@ public class Buttons : MonoBehaviour
     public GameObject timerText;
     public GameObject trainingCampUI;
     public GameObject trainingButtons;
+    [Header("DestroyMove")]
+    public GameObject DestroyButton;
+    public GameObject MoveButton;
 
     private void Start() {
         gamemanager = GameObject.FindObjectOfType<Gamemanager>();

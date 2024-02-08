@@ -77,6 +77,10 @@ public class TrainingCamp : MonoBehaviour
             if (ActiveUI) {
                 for (int i = 0; i < ActiveUI.trainingButtons.transform.childCount; i++) {
                     GameObject uiButton = ActiveUI.trainingButtons.transform.GetChild(i).gameObject;
+
+                    ActiveUI.MoveButton.GetComponent<Button>().interactable = true;
+                    ActiveUI.DestroyButton.GetComponent<Button>().interactable = true;
+
                     uiButton.GetComponent<Button>().interactable = true;
                 }
             }
