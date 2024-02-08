@@ -371,7 +371,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9005317720915939030, guid: 17fa08c1d3dc3c64f92337a75a7c94fb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1156053070}
   m_SourcePrefab: {fileID: 100100000, guid: 17fa08c1d3dc3c64f92337a75a7c94fb, type: 3}
 --- !u!224 &845086876 stripped
 RectTransform:
@@ -402,6 +406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: PlayerUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115894561497302847, guid: 49d6658db21585648874de99c34e5f0d,
+        type: 3}
+      propertyPath: enemyBuilding.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 5742562398335876780, guid: 49d6658db21585648874de99c34e5f0d,
         type: 3}
@@ -470,6 +479,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1500354491}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1156053059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9005317720915939030, guid: 17fa08c1d3dc3c64f92337a75a7c94fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 333853390}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1156053070
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156053059}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 348.6292, y: 13.740257, z: 20.939342}
+  m_Center: {x: 54.5473, y: 6.799452, z: -0.00000047683716}
 --- !u!1001 &1293460875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,6 +736,11 @@ PrefabInstance:
       propertyPath: Team
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4115894561497302847, guid: 49d6658db21585648874de99c34e5f0d,
+        type: 3}
+      propertyPath: enemyBuilding.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
     - target: {fileID: 5742562398335876780, guid: 49d6658db21585648874de99c34e5f0d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -862,6 +903,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: PlayerUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115894561497302847, guid: 49d6658db21585648874de99c34e5f0d,
+        type: 3}
+      propertyPath: enemyBuilding.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 5742562398335876780, guid: 49d6658db21585648874de99c34e5f0d,
         type: 3}
@@ -1276,6 +1322,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: PlayerUnit
+      objectReference: {fileID: 0}
+    - target: {fileID: 4115894561497302847, guid: 49d6658db21585648874de99c34e5f0d,
+        type: 3}
+      propertyPath: enemyBuilding.m_Bits
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 5742562398335876780, guid: 49d6658db21585648874de99c34e5f0d,
         type: 3}

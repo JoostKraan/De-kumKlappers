@@ -195,7 +195,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 534b67b3c10689f49881da40805c1c28,
         type: 3}
       propertyPath: m_Name
-      value: WoodHouseEnemy
+      value: WoodHouseEnemyY
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 534b67b3c10689f49881da40805c1c28,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -237,6 +242,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 262380757475502312}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 534b67b3c10689f49881da40805c1c28,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6044897014617587396}
   m_SourcePrefab: {fileID: 100100000, guid: 534b67b3c10689f49881da40805c1c28, type: 3}
 --- !u!4 &8625097445732897900 stripped
 Transform:
@@ -302,6 +311,7 @@ MonoBehaviour:
   workerPrefab: {fileID: 2081812629112915837, guid: 35046fda64bf9684abc3cff1486f1a9a,
     type: 3}
   spawnLocation: {fileID: 2392353339137932518}
+  closestEnemyEconomy: {fileID: 0}
   WorkerList: []
   timesSpawned: 0
   timer: 0
@@ -373,3 +383,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+--- !u!65 &6044897014617587396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005317720915939030}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 348.6292, y: 13.740257, z: 20.939342}
+  m_Center: {x: 54.5473, y: 6.799452, z: -0.00000047683716}

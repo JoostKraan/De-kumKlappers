@@ -79,7 +79,7 @@ public class EnemyTrainingCamp : MonoBehaviour
         }
         else
         {
-            Debug.Log("Not enougf iron");
+            //Debug.Log("Not enougf iron");
         }
     }
 
