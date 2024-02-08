@@ -128,7 +128,9 @@ public class BuildingPlacement : MonoBehaviour {
 
     public void CancelPlacement()
     {
+        GameObject objToDestroy = pendingPrefab;
         pendingPrefab = null;
+        Destroy(objToDestroy);
     }
 
     public void RotateObject()

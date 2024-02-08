@@ -18,6 +18,12 @@ public class Buttons : MonoBehaviour
     public GameObject wood;
     public GameObject stone;
     public GameObject iron;
+    [Header("TrainingCamp")]
+    public TrainingCamp TrainingCamp;
+    public GameObject timerText;
+    public GameObject trainingCampUI;
+    public GameObject trainingButtons;
+
     private void Start() {
         gamemanager = GameObject.FindObjectOfType<Gamemanager>();
     }
