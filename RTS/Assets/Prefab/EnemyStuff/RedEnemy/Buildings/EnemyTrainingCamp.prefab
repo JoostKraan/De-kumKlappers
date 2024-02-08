@@ -367,13 +367,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workerPrefabs:
-  - {fileID: 8233215173231626317, guid: ccfbe3eaec9dc12429401da3974f8068, type: 3}
-  - {fileID: 6885173933102722066, guid: 1977c4177b46bf44fa96f38d1fe7eacf, type: 3}
+  - {fileID: 2514380334000404489, guid: 778198d70e5a7ee43bd3c6efdfbb1fd6, type: 3}
+  - {fileID: 2514380334000404489, guid: 778198d70e5a7ee43bd3c6efdfbb1fd6, type: 3}
   spawnLocation: {fileID: 3379896274136610636}
   closestEnemyEconomy: {fileID: 0}
   WorkerList: []
-  timesSpawned: 0
-  timer: 10
+  timer: 30
+  startTime: 30
 --- !u!4 &4166099749198872847 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 534b67b3c10689f49881da40805c1c28,
