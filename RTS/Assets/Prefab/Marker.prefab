@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1644689267612083694}
   - component: {fileID: 6785171522295495736}
   - component: {fileID: 6357016385522463556}
-  - component: {fileID: 5941034201651775595}
+  - component: {fileID: 6652706356024182730}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -139,7 +139,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!95 &5941034201651775595
+--- !u!95 &6652706356024182730
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
