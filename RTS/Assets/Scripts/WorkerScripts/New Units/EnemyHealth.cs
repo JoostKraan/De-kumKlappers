@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -13,17 +14,20 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        if (currentHealth > 0)
+        if (currentHealth >= 0)
         {
             currentHealth -= damage;
         }
         else
         {
             isDead = true;
-            Destroy(gameObject);
+            Invoke("Die", 1);
         }
     }
-
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
     public void SetMaxHealth(int value)
     {
         maxHealth = value;

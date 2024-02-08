@@ -169,6 +169,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8168784449607027843}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 7ee22b6e6aee64e4d91af197c6044c58,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1378548026731276639}
   m_SourcePrefab: {fileID: 100100000, guid: 7ee22b6e6aee64e4d91af197c6044c58, type: 3}
 --- !u!1 &3886955033174865191 stripped
 GameObject:
@@ -258,6 +262,19 @@ NavMeshObstacle:
   m_Center: {x: 0.008, y: 0.035, z: 0}
   m_TimeToStationary: 0.5
 --- !u!114 &8168784449607027843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3886955033174865191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97d39c6b21a1f44ba78134b68f10987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &-1378548026731276639
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

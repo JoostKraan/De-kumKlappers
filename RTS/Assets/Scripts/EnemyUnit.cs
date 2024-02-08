@@ -9,6 +9,7 @@ public class EnemyUnit : MonoBehaviour
     public LayerMask ground;
     public LayerMask enemyBuilding;
     public float attackRange = 10f; // Attack range for the unit
+    public float meleeRange = 3f;
     public GameObject nearestBuilding = null;
     private float nearestDistance = Mathf.Infinity;
     public bool inCombat = false;
@@ -42,6 +43,25 @@ public class EnemyUnit : MonoBehaviour
             timeSinceLastAttack = 0f; // Reset the timer
         }
         FindNearestEnemyBuilding();
+        if (inCombat)
+        {
+            myAgent.isStopped = true;
+            int randomIndex = Random.Range(0, playerUnits.Count);
+            focustUnit = playerUnits[randomIndex].gameObject;
+            playerHealth = focustUnit.GetComponent<EnemyHealth>();
+            if (playerHealth.isDead == false)
+            {
+                myAgent.destination = focustUnit.transform.position;
+                AttackPlayerUnit();
+            }
+            else
+            {
+                inCombat = false;
+                playerUnits.Remove(focustUnit);
+                FindNearestEnemyBuilding();
+            }
+          
+        }
 
     }
 
@@ -49,7 +69,8 @@ public class EnemyUnit : MonoBehaviour
     {
         if (!inCombat)
         {
-            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 500, enemyBuilding);
+            myAgent.isStopped = false;
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1000, enemyBuilding);
             // Reset nearestDistance and nearestBuilding
             nearestDistance = Mathf.Infinity;
             nearestBuilding = null;
@@ -74,21 +95,6 @@ public class EnemyUnit : MonoBehaviour
                 myAgent.destination = gameObject.transform.position;
             }
         }
-        else
-        {
-            if (playerUnits.Count > 0)
-            {
-                int randomIndex = Random.Range(0, playerUnits.Count);
-                 focustUnit = playerUnits[randomIndex].gameObject;
-                myAgent.destination = focustUnit.transform.position;
-                playerHealth = focustUnit.GetComponent<EnemyHealth>();
-                AttackPlayerUnit();
-            }
-            else
-            {
-                Debug.LogError("No player units available.");
-            }
-        }
 
     }
     private void OnTriggerEnter(Collider other)
@@ -101,17 +107,33 @@ public class EnemyUnit : MonoBehaviour
         if (other.CompareTag("PlayerUnit"))
         {
             if (playerUnits.Contains(other.gameObject)) return;
-            playerUnits.Add(other.gameObject);
-            inCombat = true;
+            if(other.gameObject.GetComponent<EnemyHealth>().isDead == false)
+            {
+                playerUnits.Add(other.gameObject);
+                inCombat = true;
+            }
+
         }
     }
-    void AttackPlayerUnit()
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("PlayerUnit"))
+        {
+            if (playerUnits.Contains(other.gameObject)) return;
+            if (other.gameObject.GetComponent<EnemyHealth>().isDead == false)
+            {
+                
+                myAgent.isStopped = false;
+            }
+        }
+    }
+        void AttackPlayerUnit()
     {
         if (playerHealth.isDead == false)
         {
             // Attack the focused player unit if it's available and within attack range
             float distanceToPlayerUnit = Vector3.Distance(transform.position, focustUnit.transform.position);
-            if (distanceToPlayerUnit <= attackRange)
+            if (distanceToPlayerUnit <= meleeRange)
             {
                 // Check if it's time to attack based on attack interval
                 if (timeSinceLastAttack >= attackInterval)
@@ -131,10 +153,11 @@ public class EnemyUnit : MonoBehaviour
             else
             {
                 // If the player unit is out of range, move towards it
+                myAgent.isStopped = false;
                 myAgent.destination = focustUnit.transform.position;
             }
         }
-        else
+        else if(focustUnit != null)
         {
             int randomIndex = Random.Range(0, playerUnits.Count);
             focustUnit = playerUnits[randomIndex].gameObject;
