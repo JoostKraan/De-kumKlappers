@@ -6,8 +6,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class BuildingPlacement : MonoBehaviour
-{
+public class BuildingPlacement : MonoBehaviour {
     Gamemanager gamemanager;
 
     public GameObject[] buildingPrefabs;
@@ -96,6 +95,7 @@ public class BuildingPlacement : MonoBehaviour
 
         // Instantiate the building            
         pendingPrefab.tag = "PlaceObject";
+        pendingPrefab.name = buildingPrefabs[index].name;
 
         // Add physics components
         pendingPrefab.AddComponent<Rigidbody>();

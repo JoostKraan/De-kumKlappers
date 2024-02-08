@@ -38,16 +38,6 @@ public class EnemySpawner : MonoBehaviour
                 }
             }
         }
-
-        if (closestEnemyEconomy != null)
-        {
-            // You have found the closest EnemyEconomy, do something with it
-            Debug.Log("Closest EnemyEconomy found: " + closestEnemyEconomy.gameObject.name);
-        }
-        else
-        {
-            Debug.LogWarning("No EnemyEconomy found in the scene with the 'EnemyManager' tag.");
-        }
     }
     void Update()
     {

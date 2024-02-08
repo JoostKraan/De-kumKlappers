@@ -36,16 +36,6 @@ public class EnemyTrainingCamp : MonoBehaviour
                 }
             }
         }
-
-        if (closestEnemyEconomy != null)
-        {
-            // You have found the closest EnemyEconomy, do something with it
-            Debug.Log("Closest EnemyEconomy found: " + closestEnemyEconomy.gameObject.name);
-        }
-        else
-        {
-            Debug.LogWarning("No EnemyEconomy found in the scene with the 'EnemyManager' tag.");
-        }
     }
     void Update()
     {
@@ -65,7 +55,6 @@ public class EnemyTrainingCamp : MonoBehaviour
             if (workerPrefabs.Count > 0)
             {
                 int random_number = new System.Random().Next(0, workerPrefabs.Count);
-                Debug.Log(random_number);
                 timesSpawned++;
                 GameObject A = Instantiate(workerPrefabs[random_number], spawnLocation.position, Quaternion.identity);
                 WorkerList.Add(A);
