@@ -172,6 +172,7 @@ MonoBehaviour:
   attackInterval: 2
   playerHealth: {fileID: 0}
   isAttackingBuilding: 0
+  animator: {fileID: 3004717333836572083}
 --- !u!114 &6029092466500214452
 MonoBehaviour:
   m_ObjectHideFlags: 0

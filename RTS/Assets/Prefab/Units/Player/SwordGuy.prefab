@@ -255,6 +255,7 @@ MonoBehaviour:
   damagePerAttack: 5
   attackInterval: 2
   isAttackingBuilding: 0
+  animator: {fileID: 4507143778793143816}
 --- !u!114 &293051149730939403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +289,7 @@ MonoBehaviour:
   enemyUnits: []
   focusUnit: {fileID: 0}
   attackInterval: 2
+  animator: {fileID: 4507143778793143816}
 --- !u!1 &3266562375334082137
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,10 +448,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4507143778793143816}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 710a993f5313a2b448363cb3b150c333,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6082442681405916033}
   m_SourcePrefab: {fileID: 100100000, guid: 710a993f5313a2b448363cb3b150c333, type: 3}
 --- !u!4 &1654531343580315347 stripped
 Transform:
@@ -484,17 +482,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6082442681405916033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143084300942894185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e055add91e47b154b84de971b24956f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitMovement: {fileID: 9191986047505086633}
-  animator: {fileID: 4507143778793143816}
