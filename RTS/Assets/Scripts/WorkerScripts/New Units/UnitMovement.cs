@@ -35,15 +35,19 @@ public class UnitMovement : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
             {
-                myAgent.SetDestination(hit.point);
+                Vector3 destination = hit.point;
+                myAgent.SetDestination(destination);
+
+                // Calculate the distance between the unit and the hit point
+                float distanceToDestination = Vector3.Distance(transform.position, destination);
+                Debug.Log("Distance to destination: " + distanceToDestination);
             }
-        }
 
         // Find nearest enemy building and start attacking it
         FindNearestEnemyBuilding();
 
         // Track time since last attack
-        timeSinceLastAttack += Time.deltaTime;
+        timeSinceLastAttack += Time.deltaTime;}
     }
 
     void FindNearestEnemyBuilding()

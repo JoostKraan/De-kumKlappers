@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 509413230320554006}
   - component: {fileID: 1548665904026766638}
   - component: {fileID: 3799880269045100761}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: SpawnLocation
   m_TagString: DeliveryPoint
   m_Icon: {fileID: 0}
