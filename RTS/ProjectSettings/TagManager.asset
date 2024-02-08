@@ -23,6 +23,8 @@ TagManager:
   - EnemyUnit
   - PlayerUnit
   - Foliage
+  - Destination
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -36,7 +38,7 @@ TagManager:
   - DecoSpawning
   - IronSpawning
   - EnemyBuilding
-  - 
+  - playerUnits
   - 
   - 
   - 

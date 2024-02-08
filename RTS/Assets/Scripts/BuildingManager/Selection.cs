@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 
 public class Selection : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Selection : MonoBehaviour
     public TextMeshProUGUI objNameText;
     private BuildingPlacement buildingPlacement;
     public GameObject objUI;
+    public EventSystem EventSystem;
     internal static Terrain activeObject;
 
     // Start is called before the first frame update
@@ -20,7 +22,8 @@ public class Selection : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-       if (Input.GetMouseButtonDown(0)) {
+       if (Input.GetMouseButtonDown(0))
+       {
            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
            RaycastHit hit;
            if (Physics.Raycast(ray, out hit, 1000)) {
@@ -33,8 +36,10 @@ public class Selection : MonoBehaviour
                         tr.ShopActive();
                     }
                 }
-
-                else Deselect();
+                else {
+                    if (EventSystem.current.IsPointerOverGameObject()) return;
+                    Deselect();
+                }
             }
        }
 
@@ -56,10 +61,9 @@ public class Selection : MonoBehaviour
         objUI.SetActive(true);
     }
 
-    private void Deselect()
-    { 
+    private void Deselect() { 
         if (selectedObject == null) return;
-      //  selectedObject.GetComponent<Outline>().enabled = false;
+        //selectedObject.GetComponent<Outline>().enabled = false;
         selectedObject = null;
         objNameText.text = "Select Building";
         objUI.SetActive(false);
@@ -83,5 +87,9 @@ public class Selection : MonoBehaviour
         }
 
         Destroy(objToDestroy);
+    }
+
+    public void CloseUI() {
+        Deselect();
     }
 }

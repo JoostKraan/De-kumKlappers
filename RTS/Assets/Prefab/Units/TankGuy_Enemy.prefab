@@ -143,14 +143,12 @@ MonoBehaviour:
   enemyBuilding:
     serializedVersion: 2
     m_Bits: 2048
-  isEnemy: 1
-  isAttackingBuilding: 0
-  damagePerTick: 10
-  tickInterval: 5
   attackRange: 15
+  nearestBuilding: {fileID: 0}
   damagePerAttack: 10
   attackInterval: 5
-  nearestBuilding: {fileID: 0}
+  isEnemy: 0
+  isAttacking: 0
 --- !u!114 &7935844626959375091
 MonoBehaviour:
   m_ObjectHideFlags: 0
