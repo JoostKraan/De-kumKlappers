@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 
 public class UnitMovement : MonoBehaviour
 {
@@ -37,17 +36,21 @@ public class UnitMovement : MonoBehaviour
             {
                 Vector3 destination = hit.point;
                 myAgent.SetDestination(destination);
-
-                // Calculate the distance between the unit and the hit point
-                float distanceToDestination = Vector3.Distance(transform.position, destination);
-                Debug.Log("Distance to destination: " + distanceToDestination);
             }
 
-        // Find nearest enemy building and start attacking it
-        FindNearestEnemyBuilding();
+            // Find nearest enemy building and start attacking it
+            FindNearestEnemyBuilding();
+        }
 
         // Track time since last attack
-        timeSinceLastAttack += Time.deltaTime;}
+        timeSinceLastAttack += Time.deltaTime;
+
+        // Attack enemy building if it's time and within range
+        if (nearestBuilding != null && nearestDistance <= attackRange && timeSinceLastAttack >= attackInterval)
+        {
+            AttackEnemyBuilding();
+            timeSinceLastAttack = 0f; // Reset the timer
+        }
     }
 
     void FindNearestEnemyBuilding()
@@ -70,17 +73,8 @@ public class UnitMovement : MonoBehaviour
                 nearestBuilding = col.gameObject;
             }
         }
-
-        // Debug the distance to nearest building
-        if (nearestBuilding != null && nearestDistance <= attackRange)
-        {
-            if (timeSinceLastAttack >= attackInterval)
-            {
-                AttackEnemyBuilding();
-                timeSinceLastAttack = 0f; // Reset the timer
-            }
-        }
     }
+
     void AttackEnemyBuilding()
     {
         isAttackingBuilding = true; // Set flag to true to prevent further attacks
@@ -94,7 +88,7 @@ public class UnitMovement : MonoBehaviour
             // Deal damage to the enemy building
             enemyHealth.TakeDamage(damagePerAttack);
             Debug.Log("Dealing damage to enemy building!");
-            
+
             // Check if the building is destroyed
             if (enemyHealth.health <= 0)
             {
