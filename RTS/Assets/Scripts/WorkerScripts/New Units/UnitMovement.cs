@@ -20,6 +20,9 @@ public class UnitMovement : MonoBehaviour
     public bool isAttackingBuilding = false;
 
     public Animator animator;
+
+    [SerializeField] private GameObject tool;
+    [SerializeField] private GameObject backTool;
     void Start()
     {
         myCam = Camera.main;
@@ -34,6 +37,8 @@ public class UnitMovement : MonoBehaviour
         FindNearestEnemyBuilding();
         if (Input.GetMouseButtonDown(1))
         {
+            tool.SetActive(false);
+            backTool.SetActive(true);
             animator.SetBool("Idle", false);
             animator.SetBool("Fighting", false);
             animator.SetBool("Walking", true);
@@ -53,6 +58,8 @@ public class UnitMovement : MonoBehaviour
         // Attack enemy building if it's time and within range
         if (nearestBuilding != null && nearestDistance <= attackRange && timeSinceLastAttack >= attackInterval)
         {
+            tool.SetActive(true);
+            backTool.SetActive(false);
             animator.SetBool("Idle", false);
             animator.SetBool("Walking", false);
             animator.SetBool("Fighting", true);

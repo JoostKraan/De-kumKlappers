@@ -27,8 +27,12 @@ public class EnemyUnit : MonoBehaviour
 
     public Animator animator;
 
+    [SerializeField] private GameObject tool;
+    [SerializeField] private GameObject backTool;
     void Start()
     {
+        tool.SetActive(false);
+        backTool.SetActive(true);
         myAgent = GetComponent<NavMeshAgent>();
         FindNearestEnemyBuilding();
     }
@@ -71,6 +75,8 @@ public class EnemyUnit : MonoBehaviour
     {
         if (!inCombat)
         {
+            tool.SetActive(false);
+            backTool.SetActive(true);
             animator.SetBool("Walking", false);
             animator.SetBool("Fighting", false);
             animator.SetBool("Idle", true);
@@ -93,6 +99,8 @@ public class EnemyUnit : MonoBehaviour
             }
             if (nearestBuilding != null && sqoud.Count >= 5)
             {
+                tool.SetActive(false);
+                backTool.SetActive(true);
                 animator.SetBool("Idle", false);
                 animator.SetBool("Fighting", false);
                 animator.SetBool("Walking", true);
@@ -136,7 +144,9 @@ public class EnemyUnit : MonoBehaviour
     }
         void AttackPlayerUnit()
         {
-            animator.SetBool("Idle", false);
+            tool.SetActive(true);
+            backTool.SetActive(false);
+        animator.SetBool("Idle", false);
             animator.SetBool("Walking", false);
             animator.SetBool("Fighting", true);
         if (playerHealth.isDead == false)
@@ -177,6 +187,8 @@ public class EnemyUnit : MonoBehaviour
 
     public void AttackEnemyBuilding()
     {
+        tool.SetActive(true);
+        backTool.SetActive(false);
         animator.SetBool("Idle", false);
         animator.SetBool("Walking", false);
         animator.SetBool("Fighting", true);

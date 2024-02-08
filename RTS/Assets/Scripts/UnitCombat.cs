@@ -18,8 +18,13 @@ public class UnitCombat : MonoBehaviour
 
     public Animator animator;
 
+    [SerializeField] private GameObject tool;
+    [SerializeField] private GameObject backTool;
+
     private void Start()
     {
+        tool.SetActive(false);
+        backTool.SetActive(true);
         myAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -40,6 +45,8 @@ public class UnitCombat : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Marker"))
         {
+            tool.SetActive(false);
+            backTool.SetActive(true);
             animator.SetBool("Walking", false);
             animator.SetBool("Fighting", false);
             animator.SetBool("Idle", true);
@@ -70,6 +77,8 @@ public class UnitCombat : MonoBehaviour
                 float distanceToEnemyUnit = Vector3.Distance(transform.position, focusUnit.transform.position);
                 if (distanceToEnemyUnit <= meleeRange && canAttack)
                 {
+                    tool.SetActive(true);
+                    backTool.SetActive(false);
                     animator.SetBool("Idle", false);
                     animator.SetBool("Walking", false);
                     animator.SetBool("Fighting", true);
@@ -79,10 +88,6 @@ public class UnitCombat : MonoBehaviour
                     Debug.Log("Dealing damage to enemy unit!");
 
                     // Start the attack cooldown
-                    StartCoroutine(AttackCooldown());
-                }
-                else
-                {
                     StartCoroutine(AttackCooldown());
                 }
             }
@@ -107,7 +112,6 @@ public class UnitCombat : MonoBehaviour
         {
             int randomIndex = Random.Range(0, enemyUnits.Count);
             focusUnit = enemyUnits[randomIndex];
-            myAgent.destination = focusUnit.transform.position;
         }
         else
         {
