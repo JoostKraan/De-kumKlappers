@@ -256,6 +256,7 @@ MonoBehaviour:
   damagePerAttack: 5
   attackInterval: 2
   isAttackingBuilding: 0
+  animator: {fileID: 0}
 --- !u!114 &293051149730939403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,7 +289,9 @@ MonoBehaviour:
   damagePerAttack: 5
   enemyUnits: []
   focusUnit: {fileID: 0}
+  enemyHealth: {fileID: 0}
   attackInterval: 2
+  animator: {fileID: 4507143778793143816}
 --- !u!135 &-739627158052947608
 SphereCollider:
   m_ObjectHideFlags: 0
