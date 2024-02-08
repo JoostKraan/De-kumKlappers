@@ -23,6 +23,8 @@ TagManager:
   - EnemyUnit
   - PlayerUnit
   - Foliage
+  - Destination
+  - UI
   layers:
   - Default
   - TransparentFX

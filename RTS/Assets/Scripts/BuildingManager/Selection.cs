@@ -33,7 +33,9 @@ public class Selection : MonoBehaviour
                         tr.ShopActive();
                     }
                 }
+                else if (hit.collider.gameObject.layer == LayerMask.GetMask("UI")) {
 
+                }
                 else Deselect();
             }
        }
@@ -56,16 +58,16 @@ public class Selection : MonoBehaviour
         objUI.SetActive(true);
     }
 
-    private void Deselect()
-    { 
+    private void Deselect() { 
         if (selectedObject == null) return;
-      //  selectedObject.GetComponent<Outline>().enabled = false;
+        //selectedObject.GetComponent<Outline>().enabled = false;
         selectedObject = null;
         objNameText.text = "Select Building";
-        objUI.SetActive(false);
+        //objUI.SetActive(false);
     }
 
     public void Move() {
+        print("123");
         GameObject objToDestroy = selectedObject;
         buildingPlacement.pendingPrefab = objToDestroy;
 
