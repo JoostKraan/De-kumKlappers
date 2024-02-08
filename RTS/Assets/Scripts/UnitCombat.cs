@@ -23,8 +23,6 @@ public class UnitCombat : MonoBehaviour
 
     private void Start()
     {
-        tool.SetActive(false);
-        backTool.SetActive(true);
         myAgent = GetComponent<NavMeshAgent>();
     }
 
@@ -45,11 +43,11 @@ public class UnitCombat : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Marker"))
         {
-            tool.SetActive(false);
-            backTool.SetActive(true);
             animator.SetBool("Walking", false);
             animator.SetBool("Fighting", false);
             animator.SetBool("Idle", true);
+            tool.SetActive(false);
+            backTool.SetActive(true);
         }
     }
 
@@ -71,21 +69,20 @@ public class UnitCombat : MonoBehaviour
     {
         if (focusUnit != null)
         {
+            tool.SetActive(true);
+            backTool.SetActive(false);
+            animator.SetBool("Idle", false);
+            animator.SetBool("Walking", false);
+            animator.SetBool("Fighting", true);
             if (enemyHealth != null && !enemyHealth.isDead)
             {
                 // Attack the focused enemy unit if it's available and within attack range
                 float distanceToEnemyUnit = Vector3.Distance(transform.position, focusUnit.transform.position);
                 if (distanceToEnemyUnit <= meleeRange && canAttack)
                 {
-                    tool.SetActive(true);
-                    backTool.SetActive(false);
-                    animator.SetBool("Idle", false);
-                    animator.SetBool("Walking", false);
-                    animator.SetBool("Fighting", true);
-
                     // Perform the attack
                     enemyHealth.TakeDamage(damagePerAttack);
-                    Debug.Log("Dealing damage to enemy unit!");
+                    //Debug.Log("Dealing damage to enemy unit!");
 
                     // Start the attack cooldown
                     StartCoroutine(AttackCooldown());
