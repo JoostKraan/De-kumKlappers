@@ -19,6 +19,7 @@ public class UnitMovement : MonoBehaviour
     // Flag to indicate if the building is being attacked
     public bool isAttackingBuilding = false;
 
+    public Animator animator;
     void Start()
     {
         myCam = Camera.main;
@@ -29,9 +30,13 @@ public class UnitMovement : MonoBehaviour
     {
         // Track time since last attack
         timeSinceLastAttack += Time.deltaTime;
+
         FindNearestEnemyBuilding();
         if (Input.GetMouseButtonDown(1))
         {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Fighting", false);
+            animator.SetBool("Walking", true);
             RaycastHit hit;
             Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
 
@@ -48,6 +53,9 @@ public class UnitMovement : MonoBehaviour
         // Attack enemy building if it's time and within range
         if (nearestBuilding != null && nearestDistance <= attackRange && timeSinceLastAttack >= attackInterval)
         {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Walking", false);
+            animator.SetBool("Fighting", true);
             AttackEnemyBuilding();
             timeSinceLastAttack = 0f; // Reset the timer
         }
