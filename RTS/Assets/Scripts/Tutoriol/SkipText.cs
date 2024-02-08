@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SkipText : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class SkipText : MonoBehaviour
 
     private TrainingCamp camp;
     private WoodWorkerSpawner wood;
+    public Selection userInterface;
     void Start()
     {
         //placement = GameObject.FindObjectOfType<BuildingPlacement>();
@@ -26,6 +28,7 @@ public class SkipText : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && wood != null)
             {
+                if (userInterface) userInterface.CloseUI();
                 nextLine.SetActive(true);
                 Destroy(gameObject);
             }
@@ -34,15 +37,16 @@ public class SkipText : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && camp != null)
             {
+                if (userInterface) userInterface.CloseUI();
                 nextLine.SetActive(true);
                 Destroy(gameObject);
             }
         }
-        if (shop.active == true)
-        {
-            print("open");
-            NextText();
-        }
+        //if (shop.active == true)
+        //{
+        //    print("open");
+        //    NextText();
+        //}
     }
     public void WaitForPlacement()
     {
@@ -56,5 +60,9 @@ public class SkipText : MonoBehaviour
     public void RemoveText()
     {
         Destroy(gameObject);
+    }
+    public void LoadGame()
+    {
+        SceneManager.LoadScene("Main Scene");
     }
 }
