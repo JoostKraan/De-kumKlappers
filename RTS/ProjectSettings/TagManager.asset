@@ -26,6 +26,7 @@ TagManager:
   - Destination
   - UI
   - Flag
+  - Marker
   layers:
   - Default
   - TransparentFX
