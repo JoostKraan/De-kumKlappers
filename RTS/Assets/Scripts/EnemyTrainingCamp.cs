@@ -58,7 +58,7 @@ public class EnemyTrainingCamp : MonoBehaviour
                 int random_number = new System.Random().Next(0, workerPrefabs.Count);
                 GameObject A = Instantiate(workerPrefabs[random_number], spawnLocation.position, Quaternion.identity);
                 WorkerList.Add(A);
-                closestEnemyEconomy.Iron -= 1;
+                closestEnemyEconomy.Iron -= 25;
               
             }
             else
