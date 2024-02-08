@@ -177,7 +177,7 @@ public class EnemyUnit : MonoBehaviour
                 myAgent.destination = focustUnit.transform.position;
             }
         }
-        else if(focustUnit != null)
+        else if(focustUnit != null && playerHealth.isDead == false)
         {
             int randomIndex = Random.Range(0, playerUnits.Count);
             focustUnit = playerUnits[randomIndex].gameObject;
