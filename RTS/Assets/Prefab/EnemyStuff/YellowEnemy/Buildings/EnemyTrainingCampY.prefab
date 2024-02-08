@@ -81,54 +81,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!1 &4357682252893056586
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7442127312609114823}
-  - component: {fileID: 2954941647944048657}
-  m_Layer: 0
-  m_Name: NavMeshObstacle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7442127312609114823
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4357682252893056586}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 3.6100004}
-  m_LocalScale: {x: 99.99992, y: 100, z: 100.000015}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 313880166861121072}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!208 &2954941647944048657
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4357682252893056586}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.105, y: 0.04, z: 0.015}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 2.1, y: 0.0019, z: 0.015}
-  m_TimeToStationary: 0.5
 --- !u!1001 &275169433107907035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -140,17 +92,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 534b67b3c10689f49881da40805c1c28,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 539.36523
+      value: 118.009575
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 534b67b3c10689f49881da40805c1c28,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 19.996395
+      value: 9.998212
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 534b67b3c10689f49881da40805c1c28,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 869.90173
+      value: 546.07477
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 534b67b3c10689f49881da40805c1c28,
         type: 3}
@@ -209,10 +161,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 357668185317424472}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 534b67b3c10689f49881da40805c1c28,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7442127312609114823}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 534b67b3c10689f49881da40805c1c28,
         type: 3}
@@ -377,13 +325,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   workerPrefabs:
+  - {fileID: 941013393994591911, guid: ab39a9d9846c9a54bb860679b5f65e14, type: 3}
   - {fileID: 2514380334000404489, guid: 778198d70e5a7ee43bd3c6efdfbb1fd6, type: 3}
-  - {fileID: 2514380334000404489, guid: 778198d70e5a7ee43bd3c6efdfbb1fd6, type: 3}
+  - {fileID: 3017568392475663433, guid: 758d59a8b19048844bf1d217b2b66977, type: 3}
   spawnLocation: {fileID: 357668185317424472}
   closestEnemyEconomy: {fileID: 0}
   WorkerList: []
   timer: 30
-  startTime: 30
+  startTime: 10
 --- !u!65 &3967643583957512739
 BoxCollider:
   m_ObjectHideFlags: 0

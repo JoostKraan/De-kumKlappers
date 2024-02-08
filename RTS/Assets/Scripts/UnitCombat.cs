@@ -22,7 +22,7 @@ public class UnitCombat : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyUnit"))
+        if (other.gameObject.CompareTag("EnemyUnit"))
         {
             // Add the enemy unit to the list
             enemyUnits.Add(other.gameObject);
