@@ -142,7 +142,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d6a6af1f2d724fc41b78a97b05801deb,
         type: 3}
       propertyPath: m_Name
-      value: StoneHouse
+      value: Stone Miner
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d6a6af1f2d724fc41b78a97b05801deb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -164,6 +169,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2575128560353308973}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d6a6af1f2d724fc41b78a97b05801deb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3564222883912275429}
   m_SourcePrefab: {fileID: 100100000, guid: d6a6af1f2d724fc41b78a97b05801deb, type: 3}
 --- !u!1 &7185116444177389560 stripped
 GameObject:
@@ -225,6 +234,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 15
   m_Center: {x: -13.207558, y: 6.799452, z: -0.00000047683716}
+--- !u!114 &-3564222883912275429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7185116444177389560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d97d39c6b21a1f44ba78134b68f10987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!4 &7565337067856760130 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d6a6af1f2d724fc41b78a97b05801deb,
