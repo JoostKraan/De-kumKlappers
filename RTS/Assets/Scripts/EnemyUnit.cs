@@ -128,7 +128,7 @@ public class EnemyUnit : MonoBehaviour
         }
     }
         void AttackPlayerUnit()
-    {
+         {
         if (playerHealth.isDead == false)
         {
             // Attack the focused player unit if it's available and within attack range

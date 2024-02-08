@@ -1,53 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2299538711011622792
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5028135195706129480}
-  - component: {fileID: 3304360586763485054}
-  m_Layer: 0
-  m_Name: NavMeshObstacle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5028135195706129480
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299538711011622792}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 3.6100004}
-  m_LocalScale: {x: 99.99992, y: 100, z: 100.000015}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4166099749198872847}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!208 &3304360586763485054
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2299538711011622792}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.105, y: 0.04, z: 0.015}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 2.1, y: 0.0019, z: 0.015}
-  m_TimeToStationary: 0.5
 --- !u!1 &9154927172158626718
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,10 +161,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3379896274136610636}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 534b67b3c10689f49881da40805c1c28,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5028135195706129480}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 534b67b3c10689f49881da40805c1c28,
         type: 3}
@@ -368,7 +316,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   workerPrefabs:
   - {fileID: 2514380334000404489, guid: 778198d70e5a7ee43bd3c6efdfbb1fd6, type: 3}
-  - {fileID: 2514380334000404489, guid: 778198d70e5a7ee43bd3c6efdfbb1fd6, type: 3}
+  - {fileID: 941013393994591911, guid: ab39a9d9846c9a54bb860679b5f65e14, type: 3}
+  - {fileID: 3017568392475663433, guid: 758d59a8b19048844bf1d217b2b66977, type: 3}
   spawnLocation: {fileID: 3379896274136610636}
   closestEnemyEconomy: {fileID: 0}
   WorkerList: []
