@@ -8,17 +8,17 @@ public class AnimationManager : MonoBehaviour
     public Animator animator;
     void Update()
     {
-        if (!unitMovement.isAttackingBuilding)
-        {
-            animator.SetBool("Fighting", false);
-            animator.SetBool("Idle", false);
-            animator.SetBool("Walking",true);
-        }
-        if (unitMovement.isAttackingBuilding)
-        {
-            animator.SetBool("Walking", false);
-            animator.SetBool("Idle", false);
-            animator.SetBool("Fighting", true);
-        }
+        //if (!unitMovement.isAttackingBuilding)
+        //{
+        //    animator.SetBool("Fighting", false);
+        //    animator.SetBool("Idle", false);
+        //    animator.SetBool("Walking",true);
+        //}
+        //if (unitMovement.isAttackingBuilding)
+        //{
+        //    animator.SetBool("Walking", false);
+        //    animator.SetBool("Idle", false);
+        //    animator.SetBool("Fighting", true);
+        //}
     }
 }
