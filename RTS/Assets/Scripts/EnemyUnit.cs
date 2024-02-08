@@ -18,6 +18,7 @@ public class EnemyUnit : MonoBehaviour
     public List<GameObject> playerUnits = new List<GameObject>();
     public GameObject focustUnit;
     public float attackInterval = 5f;
+    public EnemyHealth playerHealth;
     private float timeSinceLastAttack = 0f;
 
     // Flag to indicate if the building is being attacked
@@ -77,12 +78,10 @@ public class EnemyUnit : MonoBehaviour
         {
             if (playerUnits.Count > 0)
             {
-                // Get a random index within the range of playerUnits list
                 int randomIndex = Random.Range(0, playerUnits.Count);
-
-                // Set the destination of myAgent to the position of the randomly chosen playerUnit
-                myAgent.destination = playerUnits[randomIndex].transform.position;
-                focustUnit = playerUnits[randomIndex].gameObject;
+                 focustUnit = playerUnits[randomIndex].gameObject;
+                myAgent.destination = focustUnit.transform.position;
+                playerHealth = focustUnit.GetComponent<EnemyHealth>();
                 AttackPlayerUnit();
             }
             else
@@ -108,7 +107,7 @@ public class EnemyUnit : MonoBehaviour
     }
     void AttackPlayerUnit()
     {
-        if (focustUnit != null)
+        if (playerHealth.isDead == false)
         {
             // Attack the focused player unit if it's available and within attack range
             float distanceToPlayerUnit = Vector3.Distance(transform.position, focustUnit.transform.position);
@@ -118,7 +117,7 @@ public class EnemyUnit : MonoBehaviour
                 if (timeSinceLastAttack >= attackInterval)
                 {
                     // Perform the attack
-                    EnemyHealth playerHealth = focustUnit.GetComponent<EnemyHealth>();
+                  
                     if (playerHealth != null)
                     {
                         playerHealth.TakeDamage(damagePerAttack);
@@ -137,7 +136,9 @@ public class EnemyUnit : MonoBehaviour
         }
         else
         {
-            Debug.LogError("No player unit focused.");
+            int randomIndex = Random.Range(0, playerUnits.Count);
+            focustUnit = playerUnits[randomIndex].gameObject;
+            myAgent.destination = focustUnit.transform.position;
         }
     }
 

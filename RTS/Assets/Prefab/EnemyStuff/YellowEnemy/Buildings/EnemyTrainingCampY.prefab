@@ -382,8 +382,8 @@ MonoBehaviour:
   spawnLocation: {fileID: 357668185317424472}
   closestEnemyEconomy: {fileID: 0}
   WorkerList: []
-  timesSpawned: 0
-  timer: 10
+  timer: 30
+  startTime: 30
 --- !u!65 &3967643583957512739
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class EnemyTrainingCamp : MonoBehaviour
     private BuildCost buildCost;
     public List<GameObject> WorkerList = new List<GameObject>();
     public float timer;
+    public float startTime;
 
     private void Start()
     {
@@ -48,7 +49,8 @@ public class EnemyTrainingCamp : MonoBehaviour
 
     public void SpawnWorker()
     {
-       if(closestEnemyEconomy.Iron > 0)
+        timer = startTime;
+        if (closestEnemyEconomy.Iron > 0)
         {
 
             if (workerPrefabs.Count > 0)
@@ -57,7 +59,7 @@ public class EnemyTrainingCamp : MonoBehaviour
                 GameObject A = Instantiate(workerPrefabs[random_number], spawnLocation.position, Quaternion.identity);
                 WorkerList.Add(A);
                 closestEnemyEconomy.Iron -= 1;
-                timer = 10f;
+              
             }
             else
             {

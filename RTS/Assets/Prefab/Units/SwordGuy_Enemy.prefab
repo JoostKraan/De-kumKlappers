@@ -166,7 +166,10 @@ MonoBehaviour:
   inCombat: 0
   damagePerAttack: 10
   sqoud: []
-  attackInterval: 5
+  playerUnits: []
+  focustUnit: {fileID: 0}
+  attackInterval: 2
+  playerHealth: {fileID: 0}
   isAttackingBuilding: 0
 --- !u!114 &6029092466500214452
 MonoBehaviour:
@@ -182,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 120
   currentHealth: 120
+  isDead: 0
 --- !u!135 &-6869520318885676263
 SphereCollider:
   m_ObjectHideFlags: 0
