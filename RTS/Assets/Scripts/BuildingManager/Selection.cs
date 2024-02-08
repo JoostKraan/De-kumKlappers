@@ -14,8 +14,7 @@ public class Selection : MonoBehaviour
     internal static Terrain activeObject;
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         buildingPlacement = GameObject.Find("BuildingManager").GetComponent<BuildingPlacement>(); 
     }
 
@@ -55,36 +54,31 @@ public class Selection : MonoBehaviour
         objNameText.text = obj.name;
         selectedObject = obj;
         objUI.SetActive(true);
-
-        print("Select");
     }
 
     private void Deselect()
-    {
-        if (selectedObject == null) { print("Trying to delect when no object is active"); return; };
+    { 
+        if (selectedObject == null) return;
       //  selectedObject.GetComponent<Outline>().enabled = false;
         selectedObject = null;
         objNameText.text = "Select Building";
         objUI.SetActive(false);
     }
 
-    public void Move()
-    {
-        buildingPlacement.pendingPrefab = selectedObject;
+    public void Move() {
+        GameObject objToDestroy = selectedObject;
+        buildingPlacement.pendingPrefab = objToDestroy;
 
-        if (buildingPlacement.ActiveBuildings.Contains(selectedObject))
-        {
-            buildingPlacement.ActiveBuildings.Remove(selectedObject);
+        if (buildingPlacement.ActiveBuildings.Contains(objToDestroy)) {
+            buildingPlacement.ActiveBuildings.Remove(objToDestroy);
         }
     }
 
-    public void Delete()
-    {
+    public void Delete() {
         GameObject objToDestroy = selectedObject;
         Deselect();
 
-        if (buildingPlacement.ActiveBuildings.Contains(objToDestroy))
-        {
+        if (buildingPlacement.ActiveBuildings.Contains(objToDestroy)) {
             buildingPlacement.ActiveBuildings.Remove(objToDestroy);
         }
 
