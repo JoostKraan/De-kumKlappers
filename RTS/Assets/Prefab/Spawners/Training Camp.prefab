@@ -193,8 +193,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabsToSpawn:
-  - {fileID: 3353734757946766153, guid: 49d6658db21585648874de99c34e5f0d, type: 3}
-  - {fileID: 3353734757946766153, guid: 49d6658db21585648874de99c34e5f0d, type: 3}
+  - {fileID: 494505105112700083, guid: 4d0c8716392a0464a8d43b64576afa9b, type: 3}
+  - {fileID: 1900632602218060983, guid: 28fcb34bed908294db733db486d17025, type: 3}
+  - {fileID: 5056001197087855637, guid: e22ef4a38275966478a7b5a791a88dee, type: 3}
   spawnPoint: {fileID: 8971588131853972130}
   Shop: {fileID: 0}
   countdownText: {fileID: 0}
