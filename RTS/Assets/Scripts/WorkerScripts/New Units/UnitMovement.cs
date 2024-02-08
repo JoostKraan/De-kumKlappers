@@ -25,6 +25,9 @@ public class UnitMovement : MonoBehaviour
     [SerializeField] private GameObject backTool;
     void Start()
     {
+        animator.SetBool("Idle", true);
+        animator.SetBool("Fighting", false);
+        animator.SetBool("Walking", false);
         myCam = Camera.main;
         myAgent = GetComponent<NavMeshAgent>();
     }
