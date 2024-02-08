@@ -25,6 +25,8 @@ public class EnemyUnit : MonoBehaviour
     // Flag to indicate if the building is being attacked
     public bool isAttackingBuilding = false;
 
+    public Animator animator;
+
     void Start()
     {
         myAgent = GetComponent<NavMeshAgent>();
@@ -69,6 +71,9 @@ public class EnemyUnit : MonoBehaviour
     {
         if (!inCombat)
         {
+            animator.SetBool("Walking", false);
+            animator.SetBool("Fighting", false);
+            animator.SetBool("Idle", true);
             myAgent.isStopped = false;
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1000, enemyBuilding);
             // Reset nearestDistance and nearestBuilding
@@ -88,6 +93,9 @@ public class EnemyUnit : MonoBehaviour
             }
             if (nearestBuilding != null && sqoud.Count >= 5)
             {
+                animator.SetBool("Idle", false);
+                animator.SetBool("Fighting", false);
+                animator.SetBool("Walking", true);
                 myAgent.destination = nearestBuilding.transform.position;
             }
             else
@@ -95,7 +103,6 @@ public class EnemyUnit : MonoBehaviour
                 myAgent.destination = gameObject.transform.position;
             }
         }
-
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -128,7 +135,10 @@ public class EnemyUnit : MonoBehaviour
         }
     }
         void AttackPlayerUnit()
-         {
+        {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Walking", false);
+            animator.SetBool("Fighting", true);
         if (playerHealth.isDead == false)
         {
             // Attack the focused player unit if it's available and within attack range
@@ -167,6 +177,9 @@ public class EnemyUnit : MonoBehaviour
 
     public void AttackEnemyBuilding()
     {
+        animator.SetBool("Idle", false);
+        animator.SetBool("Walking", false);
+        animator.SetBool("Fighting", true);
         isAttackingBuilding = true; // Set flag to true to prevent further attacks
 
         // Pause the NavMeshAgent's movement

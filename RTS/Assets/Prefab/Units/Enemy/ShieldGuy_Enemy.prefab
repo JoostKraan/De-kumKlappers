@@ -247,6 +247,7 @@ MonoBehaviour:
   attackInterval: 5
   playerHealth: {fileID: 0}
   isAttackingBuilding: 0
+  animator: {fileID: 5374102968631061583}
 --- !u!114 &5578805655723511624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +454,7 @@ Animator:
   m_GameObject: {fileID: 104084903092409355}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c7601247023b58a458b7999ccc4ce961, type: 2}
+  m_Controller: {fileID: 9100000, guid: c064b800660882c4088308d04f7fe099, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

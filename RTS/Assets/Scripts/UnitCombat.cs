@@ -15,6 +15,7 @@ public class UnitCombat : MonoBehaviour
     public float attackInterval = 5f;
     private float timeSinceLastAttack = 0f;
 
+    public Animator animator;
     private void Start()
     {
         myAgent = GetComponent<NavMeshAgent>();
@@ -33,6 +34,12 @@ public class UnitCombat : MonoBehaviour
                 inCombat = true;
                 StartCoroutine(CombatRoutine());
             }
+        }
+        if (other.gameObject.CompareTag("Marker"))
+        {
+            animator.SetBool("Walking", false);
+            animator.SetBool("Fighting", false);
+            animator.SetBool("Idle", true);
         }
     }
 
@@ -62,6 +69,9 @@ public class UnitCombat : MonoBehaviour
                 float distanceToEnemyUnit = Vector3.Distance(transform.position, focusUnit.transform.position);
                 if (distanceToEnemyUnit <= meleeRange)
                 {
+                    animator.SetBool("Idle", false);
+                    animator.SetBool("Walking", false);
+                    animator.SetBool("Fighting", true);
                     // Check if it's time to attack based on attack interval
                     if (timeSinceLastAttack >= attackInterval)
                     {
