@@ -4,10 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
-    public AudioSource[] m_AudioClip;
+    //public AudioSource[] m_AudioClip;
+    public List<AudioSource> m_AudioSources = new List<AudioSource>();
 
-    void Start()
-    {
-        m_AudioClip[0].Play();
+    void Start() {
+        m_AudioSources[0].Play();
     }
 }
