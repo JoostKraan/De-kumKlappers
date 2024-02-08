@@ -25,8 +25,9 @@ public class UnitCombat : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyUnit"))
         {
-            // Add the enemy unit to the list
+            if (enemyUnits.Contains(other.gameObject)) return;
             enemyUnits.Add(other.gameObject);
+           focusUnit = other.gameObject;
 
             // If not already in combat, start attacking
             if (!inCombat)
