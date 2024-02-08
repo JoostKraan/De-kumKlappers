@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5028135195706129480}
   - component: {fileID: 3304360586763485054}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: NavMeshObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 3379896274136610636}
   - component: {fileID: 7219076659860501001}
   - component: {fileID: 6725351632976436508}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: SpawnLocation
   m_TagString: DeliveryPoint
   m_Icon: {fileID: 0}

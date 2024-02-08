@@ -6,29 +6,19 @@ public class UnitMovement : MonoBehaviour
 {
     Camera myCam;
     NavMeshAgent myAgent;
-    [Header("Layers")]
     public LayerMask ground;
     public LayerMask enemyBuilding;
-    [Header("Toggles")]
-    public bool isEnemy;
-    public bool isAttackingBuilding = false;
-    [Header("Stats")]
-    public int damagePerTick = 10;
-    public float tickInterval = 5f;
-    public float attackRange = 10f;
-    public int damagePerAttack = 10;
-    public float attackInterval = 5f;
-    [Header("Miscellaneous")]
+    public float attackRange = 10f; // Attack range for the unit
     public GameObject nearestBuilding = null;
     private float nearestDistance = Mathf.Infinity;
-    
-   
-   
-    
-    
+
+    // Damage per attack and time between attacks
+    public int damagePerAttack = 10;
+    public float attackInterval = 5f;
     private float timeSinceLastAttack = 0f;
-    RaycastHit enemyHit;
-    
+
+    // Flag to indicate if the building is being attacked
+    public bool isAttackingBuilding = false;
 
     void Start()
     {
@@ -43,75 +33,37 @@ public class UnitMovement : MonoBehaviour
             RaycastHit hit;
             Ray ray = myCam.ScreenPointToRay(Input.mousePosition);
 
-            if (!isAttackingBuilding && Physics.Raycast(ray, out hit, Mathf.Infinity, enemyBuilding))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
             {
-               
-                Debug.Log("Clicked on an enemy!");
+                Vector3 destination = hit.point;
+                myAgent.SetDestination(destination);
 
-             
-                if (nearestDistance <= attackRange)
-                {
-                    hit.transform.GetChild(0).gameObject.SetActive(true);
-
-                    enemyHit = hit;
-                    StartCoroutine(AttackEnemy());
-                }
-                else
-                {
-                    Debug.Log("Enemy is out of range!");
-
-               
-                    MoveTowardsEnemyBuilding(hit.point);
-                }
+                // Calculate the distance between the unit and the hit point
+                float distanceToDestination = Vector3.Distance(transform.position, destination);
+                Debug.Log("Distance to destination: " + distanceToDestination);
             }
-            else if (Physics.Raycast(ray, out hit, Mathf.Infinity, ground))
-            {
-                // Clicked on the ground
-                Debug.Log("Clicked on the ground!");
-                if (enemyHit.collider != null)
-                {
-                    enemyHit.collider.transform.GetChild(0).gameObject.SetActive(false);
-                }
-                StopAttack(); 
-                myAgent.SetDestination(hit.point);
-            }
-        }
 
+        // Find nearest enemy building and start attacking it
         FindNearestEnemyBuilding();
 
-        timeSinceLastAttack += Time.deltaTime;
+        // Track time since last attack
+        timeSinceLastAttack += Time.deltaTime;}
     }
-
-    void MoveTowardsEnemyBuilding(Vector3 enemyPosition)
-    {
-       
-        myAgent.SetDestination(enemyPosition);
-    }
-
-
-    void StopAttack()
-    {
-     
-        isAttackingBuilding = false;
-        StopAllCoroutines(); 
-        myAgent.isStopped = false; 
-    }
-
 
     void FindNearestEnemyBuilding()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, enemyBuilding);
 
-       
+        // Reset nearestDistance and nearestBuilding
         nearestDistance = Mathf.Infinity;
         nearestBuilding = null;
 
         foreach (Collider col in hitColliders)
         {
-           
+            // Calculate distance
             float distance = Vector3.Distance(transform.position, col.transform.position);
 
-            
+            // Check if this building is nearer than the previous nearest one
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
@@ -119,31 +71,31 @@ public class UnitMovement : MonoBehaviour
             }
         }
 
-      
+        // Debug the distance to nearest building
         if (nearestBuilding != null && nearestDistance <= attackRange)
         {
             if (timeSinceLastAttack >= attackInterval)
             {
-                AttackEnemyBuildingCoroutine();
-                timeSinceLastAttack = 0f; 
+                AttackEnemyBuilding();
+                timeSinceLastAttack = 0f; // Reset the timer
             }
         }
     }
-
-    IEnumerator AttackEnemyBuildingCoroutine()
+    void AttackEnemyBuilding()
     {
-        isAttackingBuilding = true; 
+        isAttackingBuilding = true; // Set flag to true to prevent further attacks
 
+        // Pause the NavMeshAgent's movement
         myAgent.isStopped = true;
 
         EnemyBuildingHealth enemyHealth = nearestBuilding.GetComponent<EnemyBuildingHealth>();
         if (enemyHealth != null)
         {
-         
+            // Deal damage to the enemy building
             enemyHealth.TakeDamage(damagePerAttack);
             Debug.Log("Dealing damage to enemy building!");
-
             
+            // Check if the building is destroyed
             if (enemyHealth.health <= 0)
             {
                 Debug.Log("Enemy building destroyed!");
@@ -151,31 +103,7 @@ public class UnitMovement : MonoBehaviour
             }
         }
 
-       
+        // Resume the NavMeshAgent's movement
         myAgent.isStopped = false;
-
-        yield return null; 
-    }
-
-    IEnumerator AttackEnemy()
-    {
-        isAttackingBuilding = true;
-        myAgent.isStopped = true;
-        myAgent.SetDestination(enemyHit.point);
-        Debug.Log("Attacking enemy unit!");
-        Debug.Log("Object hit: " + enemyHit.collider.gameObject.name);
-        EnemyHealth enemyHealth = enemyHit.collider.GetComponent<EnemyHealth>();
-        if (enemyHealth != null)
-        {
-            while (enemyHealth.currentHealth > 0)
-            {
-                enemyHealth.TakeDamage(damagePerTick);
-                Debug.Log("Dealing damage to enemy unit!");
-                yield return new WaitForSeconds(tickInterval);
-            }
-            Debug.Log("Enemy unit destroyed!");
-        }
-        myAgent.isStopped = false;
-        isAttackingBuilding = false;
     }
 }
