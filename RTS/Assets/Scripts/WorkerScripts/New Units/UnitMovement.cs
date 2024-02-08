@@ -8,16 +8,16 @@ public class UnitMovement : MonoBehaviour
     NavMeshAgent myAgent;
     public LayerMask ground;
     public LayerMask enemyBuilding;
+    public float attackRange = 10f; // Attack range for the unit
+    public GameObject nearestBuilding = null;
+    private float nearestDistance = Mathf.Infinity;
 
-    public bool isEnemy;
-   
-    RaycastHit enemyHit;
+    // Damage per attack and time between attacks
+    public int damagePerAttack = 10;
+    public float attackInterval = 5f;
+    private float timeSinceLastAttack = 0f;
 
-  
-    public int damagePerTick = 10;
-    public float tickInterval = 5f;
-
-    
+    // Flag to indicate if the building is being attacked
     public bool isAttackingBuilding = false;
 
     void Start()
@@ -37,53 +37,69 @@ public class UnitMovement : MonoBehaviour
             {
                 myAgent.SetDestination(hit.point);
             }
-            if (!isAttackingBuilding && Physics.Raycast(ray, out hit, Mathf.Infinity, enemyBuilding))
+        }
+
+        // Find nearest enemy building and start attacking it
+        FindNearestEnemyBuilding();
+
+        // Track time since last attack
+        timeSinceLastAttack += Time.deltaTime;
+    }
+
+    void FindNearestEnemyBuilding()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, enemyBuilding);
+
+        // Reset nearestDistance and nearestBuilding
+        nearestDistance = Mathf.Infinity;
+        nearestBuilding = null;
+
+        foreach (Collider col in hitColliders)
+        {
+            // Calculate distance
+            float distance = Vector3.Distance(transform.position, col.transform.position);
+
+            // Check if this building is nearer than the previous nearest one
+            if (distance < nearestDistance)
             {
-               
-                enemyHit = hit;
-                StartCoroutine(AttackEnemyBuilding());
+                nearestDistance = distance;
+                nearestBuilding = col.gameObject;
+            }
+        }
+
+        // Debug the distance to nearest building
+        if (nearestBuilding != null && nearestDistance <= attackRange)
+        {
+            if (timeSinceLastAttack >= attackInterval)
+            {
+                AttackEnemyBuilding();
+                timeSinceLastAttack = 0f; // Reset the timer
             }
         }
     }
-
-    IEnumerator AttackEnemyBuilding()
+    void AttackEnemyBuilding()
     {
-        isAttackingBuilding = true; 
+        isAttackingBuilding = true; // Set flag to true to prevent further attacks
 
-    
+        // Pause the NavMeshAgent's movement
         myAgent.isStopped = true;
 
-     
-        myAgent.SetDestination(enemyHit.point);
-
-        Debug.Log("Attacking enemy building!");
-
-       
-        Debug.Log("Object hit: " + enemyHit.collider.gameObject.name);
-
-       
-        EnemyBuildingHealth enemyHealth = enemyHit.collider.GetComponent<EnemyBuildingHealth>();
+        EnemyBuildingHealth enemyHealth = nearestBuilding.GetComponent<EnemyBuildingHealth>();
         if (enemyHealth != null)
         {
-           
-            while (enemyHealth.health > 0)
+            // Deal damage to the enemy building
+            enemyHealth.TakeDamage(damagePerAttack);
+            Debug.Log("Dealing damage to enemy building!");
+            
+            // Check if the building is destroyed
+            if (enemyHealth.health <= 0)
             {
-                
-                enemyHealth.TakeDamage(damagePerTick);
-
-                Debug.Log("Dealing damage to enemy building!");
-
-                
-                yield return new WaitForSeconds(tickInterval);
+                Debug.Log("Enemy building destroyed!");
+                isAttackingBuilding = false;
             }
-
-           
-            Debug.Log("Enemy building destroyed!");
         }
 
-   
+        // Resume the NavMeshAgent's movement
         myAgent.isStopped = false;
-
-        isAttackingBuilding = false; 
     }
 }

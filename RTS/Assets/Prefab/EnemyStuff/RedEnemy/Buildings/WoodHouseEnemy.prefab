@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2392353339137932518}
   - component: {fileID: 1252194371793458187}
   - component: {fileID: 3149089860658702103}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: SpawnLocation
   m_TagString: DeliveryPoint
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8003453107694110936}
   - component: {fileID: 5816467058675192139}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: NavMeshObstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,6 +196,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WoodHouseEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 534b67b3c10689f49881da40805c1c28,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -302,6 +307,7 @@ MonoBehaviour:
   workerPrefab: {fileID: 2081812629112915837, guid: 35046fda64bf9684abc3cff1486f1a9a,
     type: 3}
   spawnLocation: {fileID: 2392353339137932518}
+  closestEnemyEconomy: {fileID: 0}
   WorkerList: []
   timesSpawned: 0
   timer: 0
