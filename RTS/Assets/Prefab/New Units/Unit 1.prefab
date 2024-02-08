@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 6439297743994548941}
   - component: {fileID: 7961663952128411162}
   - component: {fileID: 4115894561497302847}
-  - component: {fileID: 3103453715449247049}
   m_Layer: 0
   m_Name: Unit 1
   m_TagString: EnemyUnit
@@ -143,25 +142,15 @@ MonoBehaviour:
   enemyBuilding:
     serializedVersion: 2
     m_Bits: 2048
+  playerUnits:
+    serializedVersion: 2
+    m_Bits: 0
   attackRange: 15
   nearestBuilding: {fileID: 0}
   damagePerAttack: 13
   attackInterval: 3
-  isAttackingBuilding: 0
---- !u!114 &3103453715449247049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3353734757946766153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c8152875b9004c46a608b339bfbcc62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 165
-  currentHealth: 165
+  isEnemy: 0
+  isAttacking: 0
 --- !u!1 &5600916168785432236
 GameObject:
   m_ObjectHideFlags: 0
