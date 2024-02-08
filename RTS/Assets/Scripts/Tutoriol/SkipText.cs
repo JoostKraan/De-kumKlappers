@@ -37,7 +37,7 @@ public class SkipText : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && camp != null)
             {
-                if (userInterface) userInterface.CloseUI();
+                //if (userInterface) userInterface.CloseUI();
                 nextLine.SetActive(true);
                 Destroy(gameObject);
             }
