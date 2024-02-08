@@ -5,6 +5,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Selection : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class Selection : MonoBehaviour
     private BuildingPlacement buildingPlacement;
     public GameObject objUI;
     public EventSystem EventSystem;
+    public Buttons UIHandler;
+    public TrainingCamp tr;
     internal static Terrain activeObject;
 
     // Start is called before the first frame update
@@ -27,17 +30,16 @@ public class Selection : MonoBehaviour
            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
            RaycastHit hit;
            if (Physics.Raycast(ray, out hit, 1000)) {
+               if (EventSystem.current.IsPointerOverGameObject()) return;
                 if (hit.collider.gameObject.CompareTag("PlaceObject")) {
+                    if (hit.collider.gameObject.name.Contains("Camp")) {
+                        tr = null;
+                        tr = hit.collider.gameObject.GetComponent<TrainingCamp>();
+                    }
 
                     Select(hit.collider.gameObject);
-                    if (hit.collider.gameObject.name.Contains("Camp"))
-                    {
-                        TrainingCamp tr = hit.collider.gameObject.GetComponent<TrainingCamp>();
-                        tr.ShopActive();
-                    }
                 }
                 else {
-                    if (EventSystem.current.IsPointerOverGameObject()) return;
                     Deselect();
                 }
             }
@@ -53,18 +55,34 @@ public class Selection : MonoBehaviour
         if (obj == buildingPlacement.pendingPrefab) return;
         if (obj == selectedObject) { Deselect(); return; };
         if (selectedObject != null) Deselect();
-        //Outline outline = obj.GetComponent<Outline>();
-       // if (outline == null) obj.AddComponent<Outline>();
-        //else outline.enabled = true;
         objNameText.text = obj.name;
         selectedObject = obj;
         objUI.SetActive(true);
+
+        if (tr != null) {
+            UIHandler.trainingCampUI.SetActive(true);
+            tr.countdownText = UIHandler.timerText.GetComponent<TMP_Text>();
+            tr.ActiveUI = UIHandler;
+
+            for (int i = 0; i < UIHandler.trainingButtons.transform.childCount; i++) {
+                GameObject uiButton = UIHandler.trainingButtons.transform.GetChild(i).gameObject;
+                uiButton.GetComponent<Button>().interactable = !tr.isCountingDown;
+            }
+        }
     }
 
     private void Deselect() { 
         if (selectedObject == null) return;
-        //selectedObject.GetComponent<Outline>().enabled = false;
         selectedObject = null;
+
+        if (tr != null) {
+            UIHandler.trainingCampUI.SetActive(false);
+            tr.countdownText = null;
+            tr.ActiveUI = null;
+            UIHandler.timerText.GetComponent<TMP_Text>().text = "Select which to train.";
+        }
+
+        tr = null;
         objNameText.text = "Select Building";
         objUI.SetActive(false);
     }
@@ -91,5 +109,16 @@ public class Selection : MonoBehaviour
 
     public void CloseUI() {
         Deselect();
+    }
+
+    public void TrainSoldier(int index) {
+        if (tr != null) {
+            tr.SetPrefabToSpawn(index);
+
+            for (int i = 0; i < UIHandler.trainingButtons.transform.childCount; i++) {
+                GameObject uiButton = UIHandler.trainingButtons.transform.GetChild(i).gameObject;
+                uiButton.GetComponent<Button>().interactable = false;
+            }
+        }
     }
 }
