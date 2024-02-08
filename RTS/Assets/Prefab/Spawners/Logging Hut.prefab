@@ -280,7 +280,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 15
+  m_Radius: 20
   m_Center: {x: 54.5473, y: 6.799452, z: -0.00000047683716}
 --- !u!4 &2189548778798308507 stripped
 Transform:

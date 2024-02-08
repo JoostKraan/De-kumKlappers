@@ -5,23 +5,31 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class BuildingPlacement : MonoBehaviour {
     Gamemanager gamemanager;
 
+    [Header("Buildings")]
     public GameObject[] buildingPrefabs;
     public List<GameObject> ActiveBuildings = new List<GameObject>();
+    public List<GameObject> spawnpoints = new List<GameObject>();
+    public GameObject movementGameObject;
 
     public GameObject pendingPrefab;
+    [Header("Nav | Materials")]
     [SerializeField] private NavMeshSurface navMesh;
     [SerializeField] private Material[] materials;
     [SerializeField] private Material BaseMaterial;
 
+    [Header("Misc")]
     private Vector3 pos;
+    private Random RNG = new Random();
 
     private RaycastHit hit;
     [SerializeField] private LayerMask layerMask;
 
+    [Header("Placement")]
     public float gridSize;
     public float rotationAmount;
     public bool canPlace;
@@ -29,6 +37,16 @@ public class BuildingPlacement : MonoBehaviour {
     private void Start()
     {
         gamemanager = GameObject.FindObjectOfType<Gamemanager>();
+        int RandomIndex = RNG.Next(1, spawnpoints.Count);
+
+        for (int i = 0; i < spawnpoints.Count; i++) {
+            if (i == RandomIndex) continue;
+            spawnpoints[i].SetActive(false);
+        }
+
+        float x = spawnpoints[RandomIndex].transform.position.x;
+        float z = spawnpoints[RandomIndex].transform.position.z;
+        movementGameObject.transform.position = new Vector3(x + -35, 58, z + -35);
     }
 
     void Update()
@@ -126,15 +144,13 @@ public class BuildingPlacement : MonoBehaviour {
         pendingPrefab = null;
     }
 
-    public void CancelPlacement()
-    {
+    public void CancelPlacement() {
         GameObject objToDestroy = pendingPrefab;
         pendingPrefab = null;
         Destroy(objToDestroy);
     }
 
-    public void RotateObject()
-    {
+    public void RotateObject() {
         pendingPrefab.transform.Rotate(Vector3.up, rotationAmount);
     }
 

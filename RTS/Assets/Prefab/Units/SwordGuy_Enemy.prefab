@@ -43,9 +43,9 @@ GameObject:
   - component: {fileID: 4062631504615766241}
   - component: {fileID: 7615772584347797552}
   - component: {fileID: 1047348184226145631}
-  - component: {fileID: 3524594719358032412}
-  - component: {fileID: 7611205998757049905}
+  - component: {fileID: 5849236883504140903}
   - component: {fileID: 6029092466500214452}
+  - component: {fileID: -6869520318885676263}
   m_Layer: 11
   m_Name: SwordGuy_Enemy
   m_TagString: EnemyUnit
@@ -62,7 +62,7 @@ Transform:
   m_GameObject: {fileID: 2514380334000404489}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -738.9562, y: -399.26, z: -13.63}
+  m_LocalPosition: {x: 89.4039, y: 11.056, z: 518.8308}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -143,7 +143,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &3524594719358032412
+--- !u!114 &5849236883504140903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -152,36 +152,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 2514380334000404489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 269b3d7cb8ecf09499eed4a17bae60a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  timeToSpawn: 30
---- !u!114 &7611205998757049905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2514380334000404489}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 282b57bbfbfae3c49b11a69857cc9579, type: 3}
+  m_Script: {fileID: 11500000, guid: 193a3e2b21b4b044c9dc9b5f2d22dcbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ground:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 12
   enemyBuilding:
     serializedVersion: 2
-    m_Bits: 2048
-  isEnemy: 1
-  isAttackingBuilding: 0
-  damagePerTick: 10
-  tickInterval: 5
-  attackRange: 15
-  damagePerAttack: 13
-  attackInterval: 3
+    m_Bits: 4096
+  attackRange: 10
   nearestBuilding: {fileID: 0}
+  inCombat: 0
+  damagePerAttack: 10
+  sqoud: []
+  playerUnits: []
+  focustUnit: {fileID: 0}
+  attackInterval: 2
+  playerHealth: {fileID: 0}
+  isAttackingBuilding: 0
 --- !u!114 &6029092466500214452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +185,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 120
   currentHealth: 120
+  isDead: 0
+--- !u!135 &-6869520318885676263
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2514380334000404489}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2737044754047167302
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,10 +435,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3004717333836572083}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 710a993f5313a2b448363cb3b150c333,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2823095492537539443}
   m_SourcePrefab: {fileID: 100100000, guid: 710a993f5313a2b448363cb3b150c333, type: 3}
 --- !u!1 &3611264499604418223 stripped
 GameObject:
@@ -456,20 +463,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2823095492537539443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3611264499604418223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e055add91e47b154b84de971b24956f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitMovement: {fileID: 7611205998757049905}
-  animator: {fileID: 3004717333836572083}
 --- !u!4 &4131517476235523093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 710a993f5313a2b448363cb3b150c333,
