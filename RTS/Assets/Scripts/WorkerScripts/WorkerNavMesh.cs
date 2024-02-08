@@ -23,6 +23,7 @@ public class WorkerNavMesh : MonoBehaviour
     private MeshRenderer workerMesh;
     private NavMeshAgent navMeshAgent;
     [SerializeField] private GameObject tool;
+    [SerializeField] private GameObject backTool;
 
     public List<GameObject> treeToHarvest; // List of objects to check for proximity
     public List<GameObject> stoneToHarvest;
@@ -75,6 +76,8 @@ public class WorkerNavMesh : MonoBehaviour
         MoveBetweenPoints();
         if (isCountingDown)
         {
+            tool.SetActive(true);
+            backTool.SetActive(false);
             animator.SetBool("idle", false);
             animator.SetBool("Walking", false);
             if (Miners || ironMiner)
@@ -94,6 +97,8 @@ public class WorkerNavMesh : MonoBehaviour
         }
         else if(!isCountingDown)
         {
+            backTool.SetActive(true);
+            tool.SetActive(false);
             if (Miners || ironMiner)
             {
                 animator.SetBool("Mining", false);
