@@ -12,12 +12,10 @@ public class UnitCombat : MonoBehaviour
     public int damagePerAttack = 10;
     public List<GameObject> enemyUnits = new List<GameObject>();
     public GameObject focusUnit;
-    public EnemyHealth enemyHealth;
     public float attackInterval = 5f;
-    private bool canAttack = true;
+    private float timeSinceLastAttack = 0f;
 
     public Animator animator;
-
     private void Start()
     {
         myAgent = GetComponent<NavMeshAgent>();
@@ -29,8 +27,8 @@ public class UnitCombat : MonoBehaviour
         {
             if (enemyUnits.Contains(other.gameObject)) return;
             enemyUnits.Add(other.gameObject);
-            focusUnit = other.gameObject;
-            enemyHealth = focusUnit.GetComponent<EnemyHealth>();
+           focusUnit = other.gameObject;
+
             // If not already in combat, start attacking
             if (!inCombat)
             {
@@ -56,7 +54,7 @@ public class UnitCombat : MonoBehaviour
             }
 
             // Wait for a short duration before checking for the next attack
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -64,22 +62,27 @@ public class UnitCombat : MonoBehaviour
     {
         if (focusUnit != null)
         {
+            EnemyHealth enemyHealth = focusUnit.GetComponent<EnemyHealth>();
+
             if (enemyHealth != null && !enemyHealth.isDead)
             {
                 // Attack the focused enemy unit if it's available and within attack range
                 float distanceToEnemyUnit = Vector3.Distance(transform.position, focusUnit.transform.position);
-                if (distanceToEnemyUnit <= meleeRange && canAttack)
+                if (distanceToEnemyUnit <= meleeRange)
                 {
                     animator.SetBool("Idle", false);
                     animator.SetBool("Walking", false);
                     animator.SetBool("Fighting", true);
+                    // Check if it's time to attack based on attack interval
+                    if (timeSinceLastAttack >= attackInterval)
+                    {
+                        // Perform the attack
+                        enemyHealth.TakeDamage(damagePerAttack);
+                        Debug.Log("Dealing damage to enemy unit!");
 
-                    // Perform the attack
-                    enemyHealth.TakeDamage(damagePerAttack);
-                    Debug.Log("Dealing damage to enemy unit!");
-
-                    // Start the attack cooldown
-                    StartCoroutine(AttackCooldown());
+                        // Reset the attack timer
+                        timeSinceLastAttack = 0f;
+                    }
                 }
                 else
                 {
@@ -94,13 +97,6 @@ public class UnitCombat : MonoBehaviour
                 SelectRandomEnemyUnit();
             }
         }
-    }
-
-    IEnumerator AttackCooldown()
-    {
-        canAttack = false;
-        yield return new WaitForSeconds(attackInterval);
-        canAttack = true;
     }
 
     void SelectRandomEnemyUnit()
