@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 9191986047505086633}
   - component: {fileID: 293051149730939403}
   - component: {fileID: 3180484863140104572}
+  - component: {fileID: -739627158052947608}
   m_Layer: 0
   m_Name: SwordGuy
   m_TagString: PlayerUnit
@@ -255,7 +256,6 @@ MonoBehaviour:
   damagePerAttack: 5
   attackInterval: 2
   isAttackingBuilding: 0
-  animator: {fileID: 4507143778793143816}
 --- !u!114 &293051149730939403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,7 +289,27 @@ MonoBehaviour:
   enemyUnits: []
   focusUnit: {fileID: 0}
   attackInterval: 2
-  animator: {fileID: 4507143778793143816}
+--- !u!135 &-739627158052947608
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900632602218060983}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3266562375334082137
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,6 +468,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4507143778793143816}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 710a993f5313a2b448363cb3b150c333,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6082442681405916033}
   m_SourcePrefab: {fileID: 100100000, guid: 710a993f5313a2b448363cb3b150c333, type: 3}
 --- !u!4 &1654531343580315347 stripped
 Transform:
@@ -482,3 +506,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6082442681405916033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143084300942894185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e055add91e47b154b84de971b24956f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitMovement: {fileID: 9191986047505086633}
+  animator: {fileID: 4507143778793143816}
